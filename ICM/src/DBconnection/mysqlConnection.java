@@ -1170,21 +1170,25 @@ public static ArrayList<Request> getmyRequestFromDB(Connection con, String usern
 				stm.setString(7, "wait");
 				stm.executeUpdate();
 				mysqlConnection.updateCurrentPhase(con, id, Phase.performance);
-				/*
+				
 				PreparedStatement stm5 = con.prepareStatement(
 						"SELECT MAX(icm.requestinphase.repetion) FROM icm.requestinphase where request_id=? AND phase=?;");
-				System.out.println(id+"       555555555555555555");
-				stm.setInt(1, id);
-				stm.setString(2, "decision");
+				stm5.setInt(1, id);
+				stm5.setString(2, "decision");
 				ResultSet rs2=stm5.executeQuery();
 				if(rs2.next()) {
 				stm3=con.prepareStatement("UPDATE icm.requestinphase SET state='over' WHERE request_id = ? and phase='decision' and repetion=?;");
 				stm3.setInt(1, id);
 				stm3.setInt(2, rs2.getInt(1));
-				stm3.executeUpdate();*/
-				
+				stm3.executeUpdate();			
+				}
 				}
 				else if(dec.equals("reject")) {
+					stm2 = con.prepareStatement("SELECT R.repetion FROM icm.requestinphase R WHERE request_id=? AND phase=?;");
+					stm2.setInt(1, id);
+					stm2.setString(2, "closing");
+					ResultSet rs10 = stm2.executeQuery();
+					if(!rs10.next()) {
 					stm = con.prepareStatement("INSERT INTO requestinphase VALUES(?,?,?,?,?,?,?);");
 					stm.setInt(1, id);
 					stm.setString(2, "closing");
@@ -1194,52 +1198,51 @@ public static ArrayList<Request> getmyRequestFromDB(Connection con, String usern
 					stm.setString(6, null);
 					stm.setString(7, "wait");
 					stm.executeUpdate();
-					System.out.println("5555555555");
-				/*	PreparedStatement stm5 = con.prepareStatement(
+					PreparedStatement stm6 = con.prepareStatement(
 							"SELECT MAX(icm.requestinphase.repetion) FROM icm.requestinphase where request_id=? AND phase=?;");
-					stm.setInt(1, id);
-					stm.setString(2, "decision");
-					ResultSet rs2=stm5.executeQuery();
-					/*
-					if(rs2.next()) {
+					stm6.setInt(1, id);
+					stm6.setString(2, "decision");
+					ResultSet rs3=stm6.executeQuery();
+					
+					if(rs3.next()) {
 					stm3=con.prepareStatement("UPDATE icm.requestinphase SET state='over' WHERE request_id = ? and phase='decision' and repetion=?;");
 					stm3.setInt(1, id);
-					stm3.setInt(2, rs2.getInt(1));
+					stm3.setInt(2, rs3.getInt(1));
 					stm3.executeUpdate();
-					}*/
+					}
 					mysqlConnection.updateCurrentPhase(con, id, Phase.closing);
+					}
 				}
 				else {
-					int Max=0;
+					int Max1=0;
 					stm2 = con.prepareStatement("SELECT R.repetion FROM icm.requestinphase R WHERE request_id=? AND phase=?;");
 					stm2.setInt(1, id);
 					stm2.setString(2, "evaluation");
-					ResultSet rs = stm2.executeQuery();	
-					while(rs.next()) {
-						if(rs.getInt(1)>=Max)
-							Max=rs.getInt(1);
+					ResultSet rs5 = stm2.executeQuery();	
+					while(rs5.next()) {
+						if(rs5.getInt(1)>=Max1)
+							Max1=rs5.getInt(1);
 					}
 					stm = con.prepareStatement("INSERT INTO requestinphase VALUES(?,?,?,?,?,?,?);");
 					stm.setInt(1, id);
 					stm.setString(2, "evaluation");
-					stm.setInt(3, Max+1);
+					stm.setInt(3, Max1+1);
 					stm.setString(4, null);
 					stm.setString(5, null);
 					stm.setString(6, null);
 					stm.setString(7, "wait");
 					stm.executeUpdate();
-					/*
-					PreparedStatement stm5 = con.prepareStatement(
+					PreparedStatement stm7 = con.prepareStatement(
 							"SELECT MAX(icm.requestinphase.repetion) FROM icm.requestinphase where request_id=? AND phase=?;");
-					stm.setInt(1, id);
-					stm.setString(2, "decision");
-					ResultSet rs2=stm5.executeQuery();*/
-					/*if(rs2.next()) {
+					stm7.setInt(1, id);
+					stm7.setString(2, "decision");
+					ResultSet rs9=stm7.executeQuery();
+					if(rs9.next()) {
 					stm3=con.prepareStatement("UPDATE icm.requestinphase SET state='over' WHERE request_id = ? and phase='decision' and repetion=?;");
 					stm3.setInt(1, id);
-					stm3.setInt(2, rs2.getInt(1));
+					stm3.setInt(2, rs9.getInt(1));
 					stm3.executeUpdate();
-					}*/
+					}
 					mysqlConnection.updateCurrentPhase(con, id, Phase.evaluation);
 				}
 			} catch (SQLException e) {

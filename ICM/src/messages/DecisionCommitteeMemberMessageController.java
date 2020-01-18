@@ -61,6 +61,7 @@ public class DecisionCommitteeMemberMessageController implements Initializable {
 		ctrl.DecisionLable.setText(ctrl.notdetails);
 	}
 	public void approveAction(ActionEvent e) {	
+		approve.setDisable(true);
 		if(ClientConsole.map.get(requestID).equals("frozen")) {
 			ClientConsole.displayFreezeError();
 			return;

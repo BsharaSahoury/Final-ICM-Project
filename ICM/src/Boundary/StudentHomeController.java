@@ -123,7 +123,7 @@ public class StudentHomeController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		// TODO Auto-generated method stub
 		UserNameMenu.setText(student.getFirstName() + " " + student.getLastName());
 	}
@@ -132,7 +132,7 @@ public class StudentHomeController implements Initializable {
 		f.call();
 		Platform.runLater(() -> {
 			try {
-				Thread.sleep(10);
+				Thread.sleep(5);
 				f.call();
 
 			} catch (InterruptedException e) {

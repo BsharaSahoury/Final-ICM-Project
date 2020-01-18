@@ -62,7 +62,7 @@ public class TesterHomeController implements Initializable {
 					primaryStage.setOnCloseRequest(event -> {
 						System.out.println("EXIT ICM");
 						LogOutController logOut = new LogOutController();
-						logOut.exit(primaryStage,Tester);
+						logOut.exit(primaryStage, Tester);
 					});
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -77,57 +77,70 @@ public class TesterHomeController implements Initializable {
 
 	public void GoToHome(ActionEvent event) throws Exception {
 		HomeController home = new HomeController();
-		home.start(splitpane);
+		runLater(() -> {
+			home.start(splitpane);
+		});
 	}
 
-	
 	public void RequestWorkedOnAction(ActionEvent event) throws Exception {
 		RequestWorkON = new RequestsWorkedOnController();
-		RequestWorkON.start(splitpane, "/Boundary/RequestsWorkOnTester.fxml",Tester,"Tester","testing");
-		}
-   
+		runLater(() -> {
+			RequestWorkON.start(splitpane, "/Boundary/RequestsWorkOnTester.fxml", Tester, "Tester", "testing");
+		});
+	}
 
 	public void RequestSubmissionAction(ActionEvent event) throws Exception {
 		RequestSubmissionController Submit = new RequestSubmissionController();
-		Submit.start(splitpane,Tester);
+		runLater(() -> {
+			Submit.start(splitpane, Tester);
+		});
 	}
 
 	public void ProfileSettingAction(ActionEvent event) throws Exception {
 		ProfileSetting = new ProfileSettingController();
 		runLater(() -> {
-			ProfileSetting.start(splitpane,Tester,"Tester");
-	});	
+			ProfileSetting.start(splitpane, Tester, "Tester");
+		});
 	}
 
 	public void MyRequestsAction(ActionEvent event) throws Exception {
 		MyRequests = new MyRequestsController();
-		MyRequests.start(splitpane, Tester,"Tester");
+		runLater(() -> {
+			MyRequests.start(splitpane, Tester, "Tester");
+		});
 	}
 
 	public void AboutICMAction(ActionEvent event) throws Exception {
 		AboutICMController about = new AboutICMController();
-		about.start(splitpane);
+		runLater(() -> {
+			about.start(splitpane);
+		});
 	}
 
 	public void LogOutAction(ActionEvent event) throws Exception {
 		LogOutController logOut = new LogOutController();
 		primaryStage.close();
-		logOut.start(primaryStage,Tester);
+		logOut.start(primaryStage, Tester);
 	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		UserNameMenu.setText(Tester.getFirstName()+" "+Tester.getLastName());
+		UserNameMenu.setText(Tester.getFirstName() + " " + Tester.getLastName());
 	}
+
 	public void clickNotifications(ActionEvent event) throws Exception {
-		NotificationsController notific=new NotificationsController();
-		notific.start(splitpane,Tester);
+		NotificationsController notific = new NotificationsController();
+		runLater(() -> {
+			notific.start(splitpane, Tester);
+		});
 	}
+
 	private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {
 			try {
-				Thread.sleep(10);
+				Thread.sleep(5);
 				f.call();
 
 			} catch (InterruptedException e) {
@@ -138,4 +151,3 @@ public class TesterHomeController implements Initializable {
 	}
 
 }
-

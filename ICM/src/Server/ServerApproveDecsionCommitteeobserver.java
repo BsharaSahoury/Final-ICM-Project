@@ -42,7 +42,6 @@ public class ServerApproveDecsionCommitteeobserver implements Observer {
 						b=Explaindec.split("\n");
 						mysqlConnection.insertNotificationDetailsToDB(con, decisionnot, not+"\n"+b[1]);
 						try {
-							System.out.println("xxc");
 							client.sendToClient("Chairman approve successul");
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
