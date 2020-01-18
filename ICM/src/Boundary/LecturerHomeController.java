@@ -47,100 +47,99 @@ public class LecturerHomeController implements Initializable {
 	public static ProfileSettingController ProfileSetting;
 	public static LecturerHomeController l;
 
-
 	public void start(Employee lecturer) {
-		this.lecturer=lecturer;
-		l=this;
-		primaryStage=LoginController.primaryStage;
+		this.lecturer = lecturer;
+		l = this;
+		primaryStage = LoginController.primaryStage;
 
 		Platform.runLater(new Runnable() {
 
 			@Override
 			public void run() {
-			try{
-				Parent root = FXMLLoader.load(getClass().getResource("/Boundary/Lecturer-Home.fxml"));
-				Scene scene = new Scene(root);
-				primaryStage.setScene(scene);
-				primaryStage.setResizable(false);
-				primaryStage.setTitle("ICM");
-				primaryStage.show();
-				primaryStage.setOnCloseRequest(event -> {
-					System.out.println("EXIT ICM");
-					LogOutController logOut = new LogOutController();
-					logOut.exit(primaryStage, lecturer);
-				});
-			} catch (Exception e) {
-				e.printStackTrace();
+				try {
+					Parent root = FXMLLoader.load(getClass().getResource("/Boundary/Lecturer-Home.fxml"));
+					Scene scene = new Scene(root);
+					primaryStage.setScene(scene);
+					primaryStage.setResizable(false);
+					primaryStage.setTitle("ICM");
+					primaryStage.show();
+					primaryStage.setOnCloseRequest(event -> {
+						System.out.println("EXIT ICM");
+						LogOutController logOut = new LogOutController();
+						logOut.exit(primaryStage, lecturer);
+					});
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-		}
-	});
-}
-public Stage getPrimaryStage() {
+		});
+	}
+
+	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
 
-public void GoToHome(ActionEvent event) throws Exception {
-	HomeController home = new HomeController();
-	runLater(() -> {
-		home.start(splitpane);
-	});
-}
+	public void GoToHome(ActionEvent event) throws Exception {
+		HomeController home = new HomeController();
+		runLater(() -> {
+			home.start(splitpane);
+		});
+	}
 
-public void RequestSubmissionAction(ActionEvent event) throws Exception {
-	RequestSubmissionController Submit = new RequestSubmissionController();
-	runLater(() -> {
-		Submit.start(splitpane, lecturer);
-	});
-}
+	public void RequestSubmissionAction(ActionEvent event) throws Exception {
+		RequestSubmissionController Submit = new RequestSubmissionController();
+		runLater(() -> {
+			Submit.start(splitpane, lecturer);
+		});
+	}
 
-public void ProfileSettingAction(ActionEvent event) throws Exception {
-	ProfileSetting = new ProfileSettingController();
-	runLater(() -> {
-		ProfileSetting.start(splitpane, lecturer, "Lecturer");
-	});
-}
+	public void ProfileSettingAction(ActionEvent event) throws Exception {
+		ProfileSetting = new ProfileSettingController();
+		runLater(() -> {
+			ProfileSetting.start(splitpane, lecturer, "Lecturer");
+		});
+	}
 
-public void MyRequestsAction(ActionEvent event) throws Exception {
-	MyRequests = new MyRequestsController();
-	runLater(() -> {
-		MyRequests.start(splitpane, lecturer, "Lecturer");
-	});
-}
+	public void MyRequestsAction(ActionEvent event) throws Exception {
+		MyRequests = new MyRequestsController();
+		runLater(() -> {
+			MyRequests.start(splitpane, lecturer, "Lecturer");
+		});
+	}
 
-public void AboutICMAction(ActionEvent event) throws Exception {
-	AboutICMController about = new AboutICMController();
-	runLater(() -> {
-	about.start(splitpane);
-	});
-}
+	public void AboutICMAction(ActionEvent event) throws Exception {
+		AboutICMController about = new AboutICMController();
+		runLater(() -> {
+			about.start(splitpane);
+		});
+	}
 
-public void LogOutAction(ActionEvent event) throws Exception {
-	LogOutController logOut = new LogOutController();
-	primaryStage.close();
-	runLater(() -> {
-	logOut.start(primaryStage, lecturer);
-	});
-}
-@Override
-public void initialize(URL location, ResourceBundle resources) {
-	// TODO Auto-generated method stub
-	UserNameMenu.setText(lecturer.getFirstName() + " " + lecturer.getLastName());
-}
+	public void LogOutAction(ActionEvent event) throws Exception {
+		LogOutController logOut = new LogOutController();
+		primaryStage.close();
+		runLater(() -> {
+			logOut.start(primaryStage, lecturer);
+		});
+	}
 
-private void runLater(Func f) {
-	f.call();
-	Platform.runLater(() -> {
-		try {
-			Thread.sleep(10);
-			f.call();
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		UserNameMenu.setText(lecturer.getFirstName() + " " + lecturer.getLastName());
+	}
 
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	});
+	private void runLater(Func f) {
+		f.call();
+		Platform.runLater(() -> {
+			try {
+				Thread.sleep(10);
+				f.call();
+
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+	}
+
 }
-
-
-}
-	
