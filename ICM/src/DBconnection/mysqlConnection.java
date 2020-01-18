@@ -51,7 +51,7 @@ public class mysqlConnection {
 	        	/* handle the error*/
 	        	 System.out.println("Driver definition failed");
 	        	 }      
-	        try 
+	        try  
 	        {  
 	        	DB_USERNAME = Server.ServerController.get_DB_UserName();
 	    		DB_PASSWORD = Server.ServerController.get_DB_Password();
@@ -987,13 +987,14 @@ public static ArrayList<Request> getmyRequestFromDB(Connection con, String usern
 			try {
 				st = con.createStatement();
 				ResultSet rs = st.executeQuery("SELECT employee.* FROM employee WHERE job='chairman';");
-				if(rs.next())
-					Chairman = new Employee(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(8));	
+				if(rs.next()) 
+					Chairman = new Employee(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(8));
 				return Chairman;
 			} catch (SQLException e) {
 	// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 			return null;
 		}
 

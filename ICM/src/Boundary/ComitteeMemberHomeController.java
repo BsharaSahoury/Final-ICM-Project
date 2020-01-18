@@ -55,7 +55,6 @@ public class ComitteeMemberHomeController implements Initializable {
     private static int flag=0;
 	public void start(Employee employee) {
 		this.comitteeMember = employee;
-		this.Chairman=employee;
 		this.employee=employee;
 		primaryStage = LoginController.primaryStage;
 		Platform.runLater(new Runnable() {
@@ -84,7 +83,7 @@ public class ComitteeMemberHomeController implements Initializable {
  }
 	public Stage getPrimaryStage() {
 		return primaryStage;
-	}
+	} 
 
 	public void GoToHome(ActionEvent event) throws Exception {
 		HomeController home = new HomeController();
