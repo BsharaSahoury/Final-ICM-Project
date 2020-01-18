@@ -2668,5 +2668,21 @@ public static ArrayList<Request> getmyRequestFromDB(Connection con, String usern
 			e.printStackTrace();
 		}
 	}
+	public static Employee getMyEmployee(Connection con,String username) {
+		Employee employee = null;
+		PreparedStatement st = null;
+		try {
+            st=con.prepareStatement("SELECT employee.* FROM employee WHERE username=?;");
+            st.setString(1, username);
+			ResultSet rs = st.executeQuery();
+			if (rs.next()) {
+				employee = new Employee(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(8));
+			}
+		} catch (SQLException e) {
+// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return employee;
+	}
 
 }

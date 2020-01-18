@@ -55,6 +55,8 @@ public class ServerGetEvaluatorsObserver implements Observer {
 						String classname=(String)arg2[1];
 						Connection con=mysqlConnection.makeAndReturnConnection();
 						ArrayList<Employee> comitteMembers=mysqlConnection.getEmployees(con, "comittee member");
+						Employee chairman=mysqlConnection.getChairman(con);
+						comitteMembers.add(chairman);
 						Object[] msg= {"employees",comitteMembers,classname};
 						try {
 							client.sendToClient(msg);
