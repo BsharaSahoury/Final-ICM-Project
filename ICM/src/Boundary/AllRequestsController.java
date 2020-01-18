@@ -164,6 +164,7 @@ public class AllRequestsController implements Initializable {
 				AdministratorHomeController.AllRequests.loader.<AllRequestsController>getController().tableRequests
 						.setItems(FXCollections.observableArrayList(arrofRequests));
 			} else {
+				if(arrofRequests!=null) {
 				for (int i = 0; i < arrofRequests.size(); i++)
 					if ((arrofRequests.get(i)).getStatus().equals(groupbystatus))
 						arr.add(arrofRequests.get(i));
@@ -173,6 +174,7 @@ public class AllRequestsController implements Initializable {
 				else
 					AdministratorHomeController.AllRequests.loader.<AllRequestsController>getController().tableRequests
 							.setItems(FXCollections.observableArrayList(arr));
+			}
 			}
 		}
 	}

@@ -179,6 +179,7 @@ public class MyRequestsController implements Initializable  {
 				if(groupbystatus.equals("All")) {
 					arr=arrofRequests;
 				}else {
+					if(arrofRequests!=null) {
 					for(int i=0;i<arrofRequests.size();i++) 
 						if((arrofRequests.get(i)).getStatus().equals(groupbystatus))
 							arr.add(arrofRequests.get(i));	
@@ -211,6 +212,7 @@ public class MyRequestsController implements Initializable  {
 						break;
 					}
 				}	
+				}
 		}
 		}
 
