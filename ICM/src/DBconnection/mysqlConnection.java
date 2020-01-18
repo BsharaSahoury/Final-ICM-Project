@@ -1727,21 +1727,20 @@ public static ArrayList<Request> getmyRequestFromDB(Connection con, String usern
 		PreparedStatement stmt1=null;
 		long millis = System.currentTimeMillis();
 		try {
-			stmt1 = con.prepareStatement("SELECT E.* FROM icm.update E WHERE updater_name=?AND essence=? AND date=? AND request_id=?;");		
-			stmt1.setString(1, Inspector.getUsername());
-			stmt1.setString(2,explain);
-			stmt1.setDate(3, new java.sql.Date(millis));
-			stmt1.setInt(4, requestid);
+			stmt1 = con.prepareStatement("SELECT MAX(E.NO) FROM icm.update E;");		
 			ResultSet rs=stmt1.executeQuery();
-			if(!rs.next()) {
-			stm = con.prepareStatement("INSERT INTO icm.update VALUES(?,?,?,?,?);");		
+			int max=0;
+			if(rs.next()) {
+				max=rs.getInt(1)+1;
+			}
+			stm = con.prepareStatement("INSERT INTO icm.update VALUES(?,?,?,?,?,?);");		
 			stm.setString(1, Inspector.getUsername());
 			stm.setString(2,Inspector.getFirstName()+Inspector.getLastName() );
 			stm.setString(3, explain);
 			stm.setDate(4, new java.sql.Date(millis));
 			stm.setInt(5, requestid);
+			stm.setInt(6, max);
 			stm.executeUpdate();
-			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -2519,21 +2518,28 @@ public static ArrayList<Request> getmyRequestFromDB(Connection con, String usern
 			stm.setInt(4,repetion);
 			stm.executeUpdate();
 			}
-			if(start!=null&&due!=null) {
+			if(start!=null) {
 			stm2 = con.prepareStatement("UPDATE requestinphase SET start_date=?,due_date=? WHERE request_id=? AND phase=? AND repetion=?;");
 			Date st=Date.valueOf(start);
-			Date du=Date.valueOf(due);
 			long s=st.getTime()+(int) (1000 * 60 * 60 * 24 );
 			st = new java.sql.Date(s);
-			 long dd=du.getTime()+(int) (1000 * 60 * 60 * 24 );
-			 du = new java.sql.Date(dd);
 			stm2.setDate(1, st);
-			stm2.setDate(2, du);
-			stm2.setInt(3, id);
-			stm2.setString(4, phase);
-			stm2.setInt(5,repetion);
+			stm2.setInt(2, id);
+			stm2.setString(3, phase);
+			stm2.setInt(4,repetion);
 			stm2.executeUpdate();			
 		}
+			else if(due!=null){
+				stm2 = con.prepareStatement("UPDATE requestinphase SET due_date=? WHERE request_id=? AND phase=? AND repetion=?;");
+				Date du=Date.valueOf(due);
+				 long dd=du.getTime()+(int) (1000 * 60 * 60 * 24 );
+				 du = new java.sql.Date(dd);
+				stm2.setDate(1, du);
+				stm2.setInt(2, id);
+				stm2.setString(3, phase);
+				stm2.setInt(4,repetion);
+				stm2.executeUpdate();	
+			}
 		} catch (SQLException e) {
 // TODO Auto-generated catch block
 			e.printStackTrace();

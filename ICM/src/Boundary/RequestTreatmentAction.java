@@ -187,12 +187,14 @@ public class RequestTreatmentAction extends AllRequestsController implements Ini
 			alert.setTitle("Warning");
 			alert.setContentText("You didn't update anything");
 			alert.showAndWait();
-		} else if (ctrl.DatePickerFrom.getValue() == null && ctrl.DatePickerTo.getValue() != null) {
+		} else if (ctrl.DatePickerFrom.getValue() == null && ctrl.DatePickerTo.getValue() != null&&
+				   ctrl.DatePickerFrom.getPromptText().equals("")&&ctrl.DatePickerTo.getPromptText().equals("")) {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Warning");
 			alert.setContentText("If you chose 'to' date you must choose 'start' date");
 			alert.showAndWait();
-		} else if (ctrl.DatePickerFrom.getValue() != null && ctrl.DatePickerTo.getValue() == null) {
+		} else if (ctrl.DatePickerFrom.getValue() != null && ctrl.DatePickerTo.getValue() == null&&
+				   ctrl.DatePickerFrom.getPromptText().equals("")&&ctrl.DatePickerTo.getPromptText().equals("")) {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Warning");
 			alert.setContentText("If you chose 'start' date you must choose 'to' date");
@@ -212,7 +214,6 @@ public class RequestTreatmentAction extends AllRequestsController implements Ini
 			alertSuccess.setContentText("PLease fill explain for your update");
 			alertSuccess.showAndWait();
 		}
-		//
 		else if (ctrl.currentphase.getText().equals("performance")
 				&& (ctrl.PhaseAdministrator.getSelectionModel().getSelectedIndex() >= 0)) {
 			ctrl.selected = chooseengineer.getSelectionModel().getSelectedItems();
@@ -231,15 +232,21 @@ public class RequestTreatmentAction extends AllRequestsController implements Ini
 				String phaseadmin = ctrl.PhaseAdministrator.getSelectionModel().getSelectedItem().toString();
 				LocalDate start = null;
 				LocalDate end = null;
-				if (DatePickerFrom.getValue() != null && DatePickerTo.getValue() != null) {
+				if (DatePickerFrom.getValue() != null) {
 					start = DatePickerFrom.getValue();
+					
+				}
+				else {
+					start=null;
+				}
+				if(DatePickerTo.getValue() != null) {
 					end = DatePickerTo.getValue();
+				}else {
+					end=null;
 				}
 				int id = ctrl.chosenRequest.getId();
 				int repetion = ctrl.chosenRequest.getRepetion();
 				String explain = Explaintxt2.getText();
-				System.out.println("ffff");
-				System.out.println(ctrl.lastadmin);
 				Object[] msg = { "manualRequestTreatmentRecruitPerformer", phaseadmin, id, phase, repetion, start, end,
 						explain, arr, ctrl.lastadmin };
 				try {
@@ -259,12 +266,19 @@ public class RequestTreatmentAction extends AllRequestsController implements Ini
 			} else {
 				phaseadmin = ctrl.PhaseAdministrator.getSelectionModel().getSelectedItem().toString();
 			}
-
 			LocalDate start = null;
 			LocalDate end = null;
-			if (DatePickerFrom.getValue() != null && DatePickerTo.getValue() != null) {
+			if (DatePickerFrom.getValue() != null) {
 				start = DatePickerFrom.getValue();
+				
+			}
+			else {
+				start=null;
+			}
+			if(DatePickerTo.getValue() != null) {
 				end = DatePickerTo.getValue();
+			}else {
+				end=null;
 			}
 			int id = ctrl.chosenRequest.getId();
 			int repetion = ctrl.chosenRequest.getRepetion();
