@@ -166,20 +166,47 @@ public class PermissionsController implements Initializable {
 			selectedJ="inspector";
 			tfInspector.setText(selectedE.getFullname());
 		}
-		if(rbChair.isSelected()) {
-			employe2replace=tfChair.getText();
-			selectedJ="chairman";
-			tfChair.setText(selectedE.getFullname());
+		if (rbChair.isSelected()) {
+			if (selectedE.getFullname().equals(tfCom2.getText()) || selectedE.getFullname().equals(tfCom2.getText())) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("TEST");
+				alert.setHeaderText("fail");
+				alert.setContentText("you can't choose the same comitte member for the 2 spots!");
+				alert.showAndWait();
+				return;
+			} else {
+				employe2replace = tfChair.getText();
+				selectedJ = "chairman";
+				tfChair.setText(selectedE.getFullname());
+			}
 		}
 		if(rbCom2.isSelected()) {
+			if (selectedE.getFullname().equals(tfChair.getText()) || selectedE.getFullname().equals(tfCom3.getText())) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("TEST");
+				alert.setHeaderText("fail");
+				alert.setContentText("you can't choose the same comitte member for the 2 spots!");
+				alert.showAndWait();
+				return;
+			} else {
 			selectedJ="comittee member";
 			employe2replace=tfCom2.getText();
 			tfCom2.setText(selectedE.getFullname());
+			}
 		}
 		if(rbCom3.isSelected()) {
+			if (selectedE.getFullname().equals(tfChair.getText()) || selectedE.getFullname().equals(tfCom2.getText())) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("TEST");
+				alert.setHeaderText("fail");
+				alert.setContentText("you can't choose the same comitte member for the 2 spots!");
+				alert.showAndWait();
+				return;
+			} else {
 			selectedJ="comittee member";
 			employe2replace=tfCom3.getText();
 			tfCom3.setText(selectedE.getFullname());
+			}
 		}
 	}
 	public void save1Action(ActionEvent e) {
