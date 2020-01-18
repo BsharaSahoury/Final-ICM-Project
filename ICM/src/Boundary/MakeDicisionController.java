@@ -7,8 +7,10 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import Client.ClientConsole;
+import Client.Func;
 import Entity.RequestPhase;
 import Entity.User;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -71,7 +73,7 @@ public class MakeDicisionController implements Initializable {
 	}
 
 	public void SendToChairMan(ActionEvent e) {
-		
+
 		if (!Approve.isSelected() && !Reject.isSelected() && !AdditionalInfo.isSelected()) {
 			Alert alertWarning = new Alert(AlertType.WARNING);
 			alertWarning.setTitle("Warning Alert Title");
@@ -107,17 +109,14 @@ public class MakeDicisionController implements Initializable {
 
 	public void showEvaluationReport() {
 		CommitteeEvaluationController evaluation = new CommitteeEvaluationController();
-		evaluation.start(splitpane, ctrl.selected, ctrl.user);
+		runLater(() -> {
+			evaluation.start(splitpane, ctrl.selected, ctrl.user);
+		});
 	}
 
 	public void BackBtnAction(ActionEvent e) {
-
-		System.out.println("okay bshara");
-
 		ChairmanHomeController.RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnChairman.fxml",
 				ChairmanHomeController.getchairman(), "Chairman", "decision");
-
-		System.out.println("okay bshara2");
 
 	}
 
@@ -125,5 +124,19 @@ public class MakeDicisionController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		ExplainDectxt.setDisable(true);
+	}
+
+	private void runLater(Func f) {
+		f.call();
+		Platform.runLater(() -> {
+			try {
+				Thread.sleep(5);
+				f.call();
+
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
 	}
 }

@@ -94,7 +94,7 @@ public class AdministratorHomeController implements Initializable {
 		f.call();
 		Platform.runLater(() -> {
 			try {
-				Thread.sleep(10);
+				Thread.sleep(5);
 				f.call();
 
 			} catch (InterruptedException e) {
@@ -107,7 +107,7 @@ public class AdministratorHomeController implements Initializable {
 	public void GoToHome(ActionEvent event) throws Exception {
 		HomeController home = new HomeController();
 		runLater(() -> {
-		home.start(splitpane);
+			home.start(splitpane);
 		});
 	}
 
@@ -123,7 +123,7 @@ public class AdministratorHomeController implements Initializable {
 		RequestSubmissionController Submit = new RequestSubmissionController();
 		Submit.start(splitpane, Administrator);
 		runLater(() -> {
-			Submit.start(splitpane, Administrator);	
+			Submit.start(splitpane, Administrator);
 		});
 	}
 
@@ -149,7 +149,7 @@ public class AdministratorHomeController implements Initializable {
 		AboutICMController about = new AboutICMController();
 		about.start(splitpane);
 		runLater(() -> {
-			about.start(splitpane);	
+			about.start(splitpane);
 		});
 	}
 
@@ -170,7 +170,7 @@ public class AdministratorHomeController implements Initializable {
 		NotificationsController notific = new NotificationsController();
 		notific.start(splitpane, Administrator);
 		runLater(() -> {
-			notific.start(splitpane, Administrator);	
+			notific.start(splitpane, Administrator);
 		});
 	}
 

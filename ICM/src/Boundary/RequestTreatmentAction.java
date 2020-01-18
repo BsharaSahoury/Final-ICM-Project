@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import Client.ClientConsole;
+import Client.Func;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -135,7 +137,7 @@ public class RequestTreatmentAction extends AllRequestsController implements Ini
 		}
 	}
 
-	public void ApplyAction() {		
+	public void ApplyAction() {
 		String explain = null;
 		explain = Explaintxt.getText();
 		if (explain.equals("")) {
@@ -162,7 +164,9 @@ public class RequestTreatmentAction extends AllRequestsController implements Ini
 	}
 
 	public void BackBtnAction(ActionEvent e) {
-		InspectorHomeController.AllRequests.start(splitpane, "/Boundary/allRequests.fxml", "Inspector");
+		runLater(() -> {
+			InspectorHomeController.AllRequests.start(splitpane, "/Boundary/allRequests.fxml", "Inspector");
+		});
 	}
 
 	public void setcombotext(String currentadmin) {
@@ -170,8 +174,6 @@ public class RequestTreatmentAction extends AllRequestsController implements Ini
 			ctrl.PhaseAdministrator.setPromptText(currentadmin);
 			ctrl.lastadmin = ctrl.PhaseAdministrator.getPromptText();
 		}
-		// ctrl.phaseadminlable.setVisible(true);
-		// ctrl.PhaseAdministrator.setVisible(true);
 	}
 
 	public void fillCombo(ArrayList<String> names) {
@@ -187,14 +189,14 @@ public class RequestTreatmentAction extends AllRequestsController implements Ini
 			alert.setTitle("Warning");
 			alert.setContentText("You didn't update anything");
 			alert.showAndWait();
-		} else if (ctrl.DatePickerFrom.getValue() == null && ctrl.DatePickerTo.getValue() != null&&
-				   ctrl.DatePickerFrom.getPromptText().equals("")&&ctrl.DatePickerTo.getPromptText().equals("")) {
+		} else if (ctrl.DatePickerFrom.getValue() == null && ctrl.DatePickerTo.getValue() != null
+				&& ctrl.DatePickerFrom.getPromptText().equals("") && ctrl.DatePickerTo.getPromptText().equals("")) {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Warning");
 			alert.setContentText("If you chose 'to' date you must choose 'start' date");
 			alert.showAndWait();
-		} else if (ctrl.DatePickerFrom.getValue() != null && ctrl.DatePickerTo.getValue() == null&&
-				   ctrl.DatePickerFrom.getPromptText().equals("")&&ctrl.DatePickerTo.getPromptText().equals("")) {
+		} else if (ctrl.DatePickerFrom.getValue() != null && ctrl.DatePickerTo.getValue() == null
+				&& ctrl.DatePickerFrom.getPromptText().equals("") && ctrl.DatePickerTo.getPromptText().equals("")) {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Warning");
 			alert.setContentText("If you chose 'start' date you must choose 'to' date");
@@ -213,8 +215,7 @@ public class RequestTreatmentAction extends AllRequestsController implements Ini
 			alertSuccess.setHeaderText("Miss");
 			alertSuccess.setContentText("PLease fill explain for your update");
 			alertSuccess.showAndWait();
-		}
-		else if (ctrl.currentphase.getText().equals("performance")
+		} else if (ctrl.currentphase.getText().equals("performance")
 				&& (ctrl.PhaseAdministrator.getSelectionModel().getSelectedIndex() >= 0)) {
 			ctrl.selected = chooseengineer.getSelectionModel().getSelectedItems();
 			if (selected.size() == 0) {
@@ -234,15 +235,14 @@ public class RequestTreatmentAction extends AllRequestsController implements Ini
 				LocalDate end = null;
 				if (DatePickerFrom.getValue() != null) {
 					start = DatePickerFrom.getValue();
-					
+
+				} else {
+					start = null;
 				}
-				else {
-					start=null;
-				}
-				if(DatePickerTo.getValue() != null) {
+				if (DatePickerTo.getValue() != null) {
 					end = DatePickerTo.getValue();
-				}else {
-					end=null;
+				} else {
+					end = null;
 				}
 				int id = ctrl.chosenRequest.getId();
 				int repetion = ctrl.chosenRequest.getRepetion();
@@ -270,15 +270,14 @@ public class RequestTreatmentAction extends AllRequestsController implements Ini
 			LocalDate end = null;
 			if (DatePickerFrom.getValue() != null) {
 				start = DatePickerFrom.getValue();
-				
+
+			} else {
+				start = null;
 			}
-			else {
-				start=null;
-			}
-			if(DatePickerTo.getValue() != null) {
+			if (DatePickerTo.getValue() != null) {
 				end = DatePickerTo.getValue();
-			}else {
-				end=null;
+			} else {
+				end = null;
 			}
 			int id = ctrl.chosenRequest.getId();
 			int repetion = ctrl.chosenRequest.getRepetion();
@@ -292,5 +291,19 @@ public class RequestTreatmentAction extends AllRequestsController implements Ini
 				e.printStackTrace();
 			}
 		}
+	}
+
+	private void runLater(Func f) {
+		f.call();
+		Platform.runLater(() -> {
+			try {
+				Thread.sleep(5);
+				f.call();
+
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
 	}
 }
