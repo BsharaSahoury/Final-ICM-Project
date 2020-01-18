@@ -32,10 +32,7 @@ public class ServerRequestExtensionApproveToAdminObserver implements Observer {
 					String RequestPhase = (String) arg3[2];
 					LocalDate dueDate = (LocalDate) arg3[3];
 					String explain = (String) arg3[4];
-					/*
-					 * String d[] = (String[]) arg3[2]; String d1 = d[0] + "#" + d[1]; Phase p =
-					 * (Phase) arg3[3];
-					 */
+					String phaseAdministrator = (String) arg3[5];
 					Connection con = mysqlConnection.makeAndReturnConnection();
 					mysqlConnection.updateDuedate(con, id, RequestPhase, dueDate);
 					long millis = System.currentTimeMillis();
@@ -49,6 +46,26 @@ public class ServerRequestExtensionApproveToAdminObserver implements Observer {
 					mysqlConnection.insertNotificationDetailsToDB(con, n, explain);
 
 					mysqlConnection.sendExtensionConfiramtionToAdmin(con, n);
+					Employee e = mysqlConnection.getMyEmployee(con, phaseAdministrator);
+					String notifcation = "the Inspector approved your request to extend the duration for the request number "
+							+ id;
+					Notification not = new Notification(notifcation, new java.sql.Date(millis),
+							"answer to extension request");
+					not = mysqlConnection.insertNotificationToDB(con, not);
+					mysqlConnection.insertNotificationForUserToDB(con, not, e);
+
+				} else if (keymessage.equals("send Request extension reject to Admin")) {
+					int id = (int) arg3[1];
+					String phaseAdministrator = (String) arg3[2];
+					Connection con = mysqlConnection.makeAndReturnConnection();
+					long millis = System.currentTimeMillis();
+					Employee e = mysqlConnection.getMyEmployee(con, phaseAdministrator);
+					String notifcation = "the Inspector reject your request to extend the duration for the request number "
+							+ id;
+					Notification not = new Notification(notifcation, new java.sql.Date(millis),
+							"answer to extension request");
+					not = mysqlConnection.insertNotificationToDB(con, not);
+					mysqlConnection.insertNotificationForUserToDB(con, not, e);
 
 				}
 			}
