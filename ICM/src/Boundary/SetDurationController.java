@@ -47,6 +47,8 @@ public class SetDurationController implements Initializable {
 	@FXML
 	private Label note;
 	@FXML
+	private Label note2;
+	@FXML
 	private TextArea ExtensionReasonText;
 	@FXML
 	private TextField RequestID;
@@ -173,6 +175,11 @@ public class SetDurationController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		long millis = System.currentTimeMillis();
+		Date date = new java.sql.Date(millis);
+		long diff = RequestsWorkedOnController.getRP().getDueDate().getTime() - date.getTime();
+		long diffdays = diff / (24 * 60 * 60 * 1000);
+		long diffHours = diff / (60 * 60 * 1000) - (diffdays * 24);
 		if (RequestsWorkedOnController.getRP().getState().equals(State.waitingForApprove)) {
 			note.setVisible(false);
 			note.setText("this duratin wating for Inapector approve");
@@ -205,14 +212,14 @@ public class SetDurationController implements Initializable {
 
 			RequestID.setText(Integer.toString(RequestsWorkedOnController.getRP().getId()));
 			RequestPhase.setText(RequestsWorkedOnController.getRP().getPhase().toString());
-
-			long millis = System.currentTimeMillis();
-			Date date = new java.sql.Date(millis);
-			long diff = RequestsWorkedOnController.getRP().getDueDate().getTime() - date.getTime();
-			long diffdays = diff / (24 * 60 * 60 * 1000);
-			long diffHours = diff / (60 * 60 * 1000) - (diffdays * 24);
 			ReaminingTimeForThisPhase
 					.setText(String.valueOf(diffdays) + " Days and " + String.valueOf(diffHours) + " Hours");
+		}
+		if(diffdays<3) {
+			SendExtraTimeBtn.setDisable(true);
+			note2.setVisible(false);
+			note2.setText("you can't ask for an extension, the due date is less than 3 days away!");
+			note2.setVisible(true);
 		}
 	}
 }
