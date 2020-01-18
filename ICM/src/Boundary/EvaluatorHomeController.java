@@ -80,27 +80,30 @@ public Stage getPrimaryStage() {
 	}
 
 public void GoToHome(ActionEvent event) throws Exception {
-	try {
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Boundary/Home.fxml"));
-		lowerAnchorPane = loader.load();
-		splitpane.getItems().set(1, lowerAnchorPane);
-	} catch (IOException e) {		
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+	HomeController home = new HomeController();
+	runLater(() -> {
+		home.start(splitpane);
+	}); 
 }
 
 public void RequestWorkedOnAction(ActionEvent event) throws Exception {
 	RequestWorkON = new RequestsWorkedOnController();
-	RequestWorkON.start(splitpane, "/Boundary/RequestsWorkOnEvaluator.fxml",evaluator,"Evaluator","evaluation");}
+	runLater(() -> {
+		RequestWorkON.start(splitpane, "/Boundary/RequestsWorkOnEvaluator.fxml",evaluator,"Evaluator","evaluation");
+	});	
+}
 
 public void RequestSubmissionAction(ActionEvent event) throws Exception {
 	RequestSubmissionController Submit=new RequestSubmissionController();
-	Submit.start(splitpane,evaluator);
+	runLater(() -> {
+		Submit.start(splitpane,evaluator);
+	});
 }
 public void MyRequestsAction() throws Exception {
 	MyRequests = new MyRequestsController();
-	MyRequests.start(splitpane,evaluator,"Evaluator");
+	runLater(() -> {
+		MyRequests.start(splitpane,evaluator,"Evaluator");
+	});
 }
 
 public void ProfileSettingAction(ActionEvent event) throws Exception {
@@ -112,16 +115,23 @@ public void ProfileSettingAction(ActionEvent event) throws Exception {
 
 public void AboutICMAction(ActionEvent event) throws Exception {
 	AboutICMController about=new AboutICMController();
-	about.start(splitpane);
+	runLater(() -> {
+		about.start(splitpane);
+	});
 }
 public void clickNotifications(ActionEvent event) throws Exception {
 	NotificationsController notific=new NotificationsController();
-	notific.start(splitpane,evaluator);
+	runLater(() -> {
+		notific.start(splitpane,evaluator);
+	});
 }
 public void LogOutAction(ActionEvent event) throws Exception {
 	LogOutController logOut = new LogOutController();
 	primaryStage.close();
-	logOut.start(primaryStage,evaluator);
+	runLater(() -> {
+		logOut.start(primaryStage,evaluator);
+	});
+	
 }
 @Override
 public void initialize(URL location, ResourceBundle resources) {

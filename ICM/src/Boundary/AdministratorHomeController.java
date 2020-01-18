@@ -78,12 +78,16 @@ public class AdministratorHomeController implements Initializable {
 
 	public void PermissionsAction(ActionEvent e) {
 		PermissionsController pc = new PermissionsController();
-		pc.start(splitpane);
+		runLater(() -> {
+			pc.start(splitpane);
+		});
 	}
 
 	public void generateReportAction(ActionEvent e) {
 		ReportController rc = new ReportController();
-		rc.start(splitpane);
+		runLater(() -> {
+			rc.start(splitpane);
+		});
 	}
 
 	private void runLater(Func f) {
@@ -102,7 +106,6 @@ public class AdministratorHomeController implements Initializable {
 
 	public void GoToHome(ActionEvent event) throws Exception {
 		HomeController home = new HomeController();
-		home.start(splitpane);
 		runLater(() -> {
 		home.start(splitpane);
 		});
@@ -153,7 +156,9 @@ public class AdministratorHomeController implements Initializable {
 	public void LogOutAction(ActionEvent event) throws Exception {
 		LogOutController logOut = new LogOutController();
 		primaryStage.close();
-		logOut.start(primaryStage, Administrator);
+		runLater(() -> {
+			logOut.start(primaryStage, Administrator);
+		});
 	}
 
 	@Override

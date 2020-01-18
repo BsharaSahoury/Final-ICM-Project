@@ -25,9 +25,11 @@ public class ServerProfileSettingObserver implements Observer {
 		ConnectionToClient client=(ConnectionToClient)args[0];
 		if(args[1] instanceof String[]) {
 			String[] Message=(String[])args[1];
+			if(Message[0] instanceof String) {
 			String keyMessage=Message[0];
-			if(Message.length==3&&keyMessage.equals("ProfileSetting")) {
-				System.out.println("ServerProfileSettingObserver **********\n\n***************");
+			if(Message.length==3&&keyMessage.equals("ProfileSetting"))
+				if(Message[1] instanceof String && Message[2] instanceof String)
+				{
 				Connection con=mysqlConnection.makeAndReturnConnection();
 				ArrayList<String> arr=mysqlConnection.getUserData(con,Message[1],Message[2]);
 				Object[] send=new Object[3];
@@ -42,6 +44,7 @@ public class ServerProfileSettingObserver implements Observer {
 			}
 			}
 			}
+		}
 		}
 		
 	}

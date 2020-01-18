@@ -125,15 +125,16 @@ public class ComitteeMemberHomeController implements Initializable {
 
 	public void ProfileSettingAction(ActionEvent event) throws Exception {
 		ProfileSetting = new ProfileSettingController();
-		System.out.println(employee.getJob());
-		System.out.println("in methooooooooooooooooooooooooood");
+		if(comitteeMember.getJob().equals("comittee member"))
 		runLater(() -> {
-			if(comitteeMember.getJob().equals("comittee member"))
-				ProfileSetting.start(splitpane,employee,"Committee member");
-			else
-				ProfileSetting.start(splitpane,employee,"Chairman");
-
+				ProfileSetting.start(splitpane,comitteeMember,"Committee member");
 		});
+		else
+			runLater(() -> {
+					ProfileSetting.start(splitpane,employee,"Chairman");
+			});
+
+
 	}
 
 	public void MyRequestsAction(ActionEvent event) throws Exception {
@@ -153,7 +154,9 @@ public class ComitteeMemberHomeController implements Initializable {
 	public void LogOutAction(ActionEvent event) throws Exception {
 		LogOutController logOut = new LogOutController();
 		primaryStage.close();
-		logOut.start(primaryStage,comitteeMember);
+		runLater(() -> {
+			logOut.start(primaryStage,comitteeMember);
+		});
 	}
 
 	@Override
