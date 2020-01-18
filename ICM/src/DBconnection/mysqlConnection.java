@@ -279,7 +279,6 @@ public static ArrayList<RequestPhase> getDataFromDB(Connection con){
 			ResultSet rs=stmt1.executeQuery("SELECT R.* FROM icm.request R;");
 			while(rs.next())
 	 		{
-				System.out.println("llll");
 				Initiatorname=getinitiatorname(con,rs.getString(9));
 				stmt4 = con.prepareStatement("SELECT E.phase,E.state,E.repetion FROM icm.requestinphase E WHERE request_id=? AND phase=?;");
 				stmt4.setInt(1, rs.getInt(7));
