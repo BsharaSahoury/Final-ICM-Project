@@ -51,7 +51,6 @@ public class ServerGetInitiatorObserver implements Observer {
 					}
 					else if(keymessage.equals("Send to initiator that request approved")) {
 						int id=(int)arg2[1];
-						System.out.println(id);
 						Connection con=mysqlConnection.makeAndReturnConnection();
 						User initiator=mysqlConnection.getInitiatorUser(con, id);
 						if(!initiator.equals(null)) {

@@ -170,9 +170,14 @@ public class ServerManualRecruitObserver implements Observer {
 						LocalDate due=(LocalDate)arg3[6];
 						String explain=(String)arg3[7];
 						Connection con=mysqlConnection.makeAndReturnConnection();
-						Employee employee=mysqlConnection.getSpecificEmployee(con,fullname);
+						Employee employee=null;
+						if(fullname!=null)
+						employee=mysqlConnection.getSpecificEmployee(con,fullname);
 						Employee Inspector=mysqlConnection.getInspector(con);
+						if(fullname!=null)
 						mysqlConnection.assignorChangeEmployee(con, employee.getUsername(), repetion, id, phase,start,due);
+						else
+						mysqlConnection.assignorChangeEmployee(con, null, repetion, id, phase,start,due);
 						mysqlConnection.EnterUpdateToDBUpdateTable(con, Inspector,id,explain);
 						if(phase.equals("evaluation"))
 						mysqlConnection.updateCurrentPhase(con, id, Phase.evaluation);
@@ -183,6 +188,7 @@ public class ServerManualRecruitObserver implements Observer {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+						if(fullname!=null) {
 						long millis=System.currentTimeMillis();
 						Notification n1=new Notification(
 								"You've been recruited to evaluate request#"+id,
@@ -190,6 +196,7 @@ public class ServerManualRecruitObserver implements Observer {
 								"recruitNotificationForEvaluator");
 						n1=mysqlConnection.insertNotificationToDB(con, n1);
 						mysqlConnection.insertNotificationForUserToDB(con, n1,employee);
+						}
 					}
 					else if(keymessage.equals("manualRequestTreatmentRecruitPerformer")) {
 						String fullname=(String)arg3[1];				

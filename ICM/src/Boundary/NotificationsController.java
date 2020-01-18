@@ -23,6 +23,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import messages.AnswerExtension;
 import messages.AutomaticRecruitMessageController;
 import messages.CommitteeDecisionApproveController;
 import messages.CommitteeDecisionAskForaddInfoController;
@@ -349,13 +350,20 @@ public class NotificationsController implements Initializable {
 				int id4 = Integer.valueOf(b6[0]);
 				IDRequestForDecision=id4;
 				String[] b7 = new String[2];
-				System.out.println(content + "                       6966969699669699");
 				b7 = content.split("time on phase ");
 				b7 = b7[1].split(", Do");
 			    phase1=b7[0];
 			    massageToAdmenToApproveExtension ecm1 = new massageToAdmenToApproveExtension();
 				ecm1.start(splitpane, id4,content,phase1);
 				break;
+			case "answer to extension request":
+				content = n2.getContent();
+				String myid = content.replaceAll("[^0-9]", "");
+				id = Integer.valueOf(myid);
+				AnswerExtension  aa = new AnswerExtension();
+				aa.start(splitpane, content);
+				break;
+
 			}
 
 			
