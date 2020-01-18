@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.CommitteeEvaluationController">
+   <children>
+      <AnchorPane layoutX="-6.0" prefHeight="600.0" prefWidth="728.0">
+         <children>
+            <Line endX="428.0" endY="-13.0" layoutX="298.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
+            <Label layoutX="34.0" layoutY="6.0" text="ICM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="62.0" layoutY="5.0" text="-&gt;" />
+            <Label layoutX="35.0" layoutY="30.0" prefHeight="51.0" prefWidth="425.0" text="Evaluation Report">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="91.0" prefHeight="31.0" prefWidth="134.0" text="Request id:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="46.0" layoutY="280.0" prefHeight="27.0" prefWidth="194.0" text="Expected result:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="77.0" layoutY="7.0" text="All Requests -&gt;Decision for request -&gt;Evaluation report">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="53.0" layoutY="209.0" text="Description of change:">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <ImageView fitHeight="18.0" fitWidth="22.0" layoutX="8.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/back-arrow.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="15.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/request-id.jfif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="15.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/risk.jfif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="30.0" layoutX="15.0" layoutY="512.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/current.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="51.0" layoutY="352.0" prefHeight="27.0" prefWidth="159.0" text="constraints:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="146.0" prefHeight="31.0" prefWidth="177.0" text="Location of change:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="242.0" fitWidth="228.0" layoutX="486.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/evaluation-report.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="51.0" layoutY="430.0" prefHeight="27.0" prefWidth="159.0" text="Risks:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="510.0" prefHeight="27.0" prefWidth="264.0" text="Estimated performance duration:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="15.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/location-icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="13.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/description-icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="45.0" fitWidth="27.0" layoutX="13.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/expectedresultnew.jfif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="45.0" fitWidth="27.0" layoutX="13.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/constraints_limits-512.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="requestID" layoutX="157.0" layoutY="98.0" text="Request if" />
+            <Label fx:id="LocOfChange" layoutX="225.0" layoutY="153.0" text="Location of change" />
+            <Label fx:id="DesOfChange" layoutX="238.0" layoutY="197.0" prefHeight="51.0" prefWidth="434.0" text="Description of change" />
+            <Label fx:id="ExcpResult" layoutX="185.0" layoutY="268.0" prefHeight="51.0" prefWidth="434.0" text="Expected result" />
+            <Label fx:id="Constraint" layoutX="157.0" layoutY="341.0" prefHeight="51.0" prefWidth="434.0" text="Constraints" />
+            <Label fx:id="Risk" layoutX="120.0" layoutY="418.0" prefHeight="51.0" prefWidth="434.0" text="Risks" />
+            <Label fx:id="Duration" layoutX="323.0" layoutY="512.0" prefHeight="23.0" prefWidth="178.0" text="Estimated performance duration" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

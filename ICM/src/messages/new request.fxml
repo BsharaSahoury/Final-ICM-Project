@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="messages.newRequestforcommitte">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="728.0">
+         <children>
+            <Line endX="429.0" endY="-12.999996185302734" layoutX="299.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
+            <Label layoutX="26.0" layoutY="6.0" text="ICM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="52.0" layoutY="6.0" text="-&gt;" />
+            <Label layoutX="64.0" layoutY="6.0" text="Notifications-&gt; new Request">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="121.0" layoutY="206.0" />
+            <Label layoutX="49.0" layoutY="56.0" prefHeight="31.0" prefWidth="183.0" text="New Request:" underline="true">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="label1" layoutX="46.0" layoutY="116.0" prefHeight="19.0" prefWidth="207.0" text="You have new request with id: ">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="150.0" text="You can start work , good luck.">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

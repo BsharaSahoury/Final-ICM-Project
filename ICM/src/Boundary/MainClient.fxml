@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="393.0" prefWidth="482.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.MainClientController">
+   <children>
+      <Label layoutX="113.0" layoutY="254.0" text="IP:">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="ip" layoutX="177.0" layoutY="263.0" prefHeight="32.0" prefWidth="170.0" text="localhost" />
+      <Button layoutX="201.0" layoutY="322.0" mnemonicParsing="false" onAction="#connect" prefHeight="39.0" prefWidth="88.0" style="-fx-background-radius: 444; -fx-background-color: #9d1b34;" text="connect" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Label fx:id="wrong" layoutX="296.0" layoutY="322.0" prefHeight="35.0" prefWidth="194.0" text="wrong ip, please try again!" textFill="#9d1b34" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="140.0" fitWidth="238.0" layoutX="146.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/client-icm.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="365.0" layoutY="152.0" text="Client" textFill="#9d1b34">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="35.0" layoutY="47.0" text="Welcome to" textFill="#9d1b34">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Server.ServerController">
+   <children>
+      <Text layoutX="129.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MySQL Password :">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Button fx:id="connectBtn" layoutX="214.0" layoutY="424.0" mnemonicParsing="false" onAction="#connecting" prefHeight="36.0" prefWidth="81.0" style="-fx-background-radius: 44; -fx-background-color: #9d1b34;" text="connect" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Label layoutX="129.0" layoutY="166.0" text="Database" textFill="#9d1b34">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="129.0" layoutY="191.0" text="MySQL Hostname:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="129.0" layoutY="225.0" text="MySQL Schema:">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="129.0" layoutY="332.0" text="Server" textFill="#9d1b34">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="129.0" layoutY="389.0" text="IP:">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="IP_txt" layoutX="203.0" layoutY="385.0" prefHeight="19.0" prefWidth="113.0" promptText="IP" />
+      <TextField fx:id="dbUsername" layoutX="258.0" layoutY="253.0" prefHeight="19.0" prefWidth="113.0" promptText="username" />
+      <TextField fx:id="dbHostname" layoutX="258.0" layoutY="189.0" prefHeight="19.0" prefWidth="113.0" promptText="hostname" />
+      <TextField fx:id="dbSchema" layoutX="258.0" layoutY="221.0" prefHeight="19.0" prefWidth="113.0" promptText="schema" />
+      <Text layoutX="129.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MySQL Usename:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Label layoutX="129.0" layoutY="357.0" text="Port:">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Port_txt" layoutX="203.0" layoutY="353.0" prefHeight="19.0" prefWidth="113.0" promptText="Port" />
+      <ImageView fitHeight="140.0" fitWidth="238.0" layoutX="163.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Untitled-41-01.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="381.0" layoutY="119.0" text="Server" textFill="#9d1b34">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="14.0" text="Welcome to" textFill="#9d1b34">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="wrong" alignment="BOTTOM_CENTER" layoutY="461.0" prefHeight="35.0" prefWidth="500.0" text="wrong MySQL Password, please try again!" textAlignment="CENTER" textFill="#9d1b34" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="112.0" layoutY="281.0" prefHeight="17.0" prefWidth="19.0" text="*" textFill="#9d1b34">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font></Label>
+      <Label layoutX="21.0" layoutY="470.0" prefHeight="17.0" prefWidth="142.0" text="(*) Required fields" textFill="#9d1b34" />
+      <PasswordField fx:id="dbPassword" layoutX="258.0" layoutY="285.0" prefHeight="19.0" prefWidth="113.0" promptText="password" />
+      <Label layoutX="111.0" layoutY="247.0" prefHeight="17.0" prefWidth="19.0" text="*" textFill="#9d1b34">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

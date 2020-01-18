@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="messages.ExtensionConfirmationMessage">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="728.0">
+         <children>
+            <Line endX="429.0" endY="-12.999996185302734" layoutX="299.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
+            <Label layoutX="26.0" layoutY="6.0" text="ICM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="52.0" layoutY="6.0" text="-&gt;" />
+            <Label layoutX="64.0" layoutY="6.0" text="Notifications-&gt;ExtensionConfirmationMessage">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="121.0" layoutY="206.0" />
+            <Label layoutX="23.0" layoutY="54.0" prefHeight="31.0" prefWidth="347.0" text="Extension-Confirmation-Message:" underline="true">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="requestLabel" layoutX="38.0" layoutY="91.0" prefHeight="27.0" prefWidth="497.0" text="New extension request ">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Button fx:id="ApproveBtn" layoutX="41.0" layoutY="526.0" mnemonicParsing="false" onAction="#approveAction" prefHeight="31.0" prefWidth="266.0" style="-fx-background-color: #9d1b34; -fx-background-radius: 20px;" text="Approve" textFill="WHITE" />
+            <ImageView fitHeight="118.0" fitWidth="179.0" layoutX="550.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/approve-reject-icon.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="evaluatorLabel" layoutX="41.0" layoutY="435.0" text="Would you like to approve this extension request ? ">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label layoutX="39.0" layoutY="127.0" text="Request-Id:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="39.0" layoutY="161.0" text="Request-Phase:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="39.0" layoutY="198.0" text="Phase administrator:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="369.0" text="New due date:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="38.0" layoutY="266.0" text="Extension-Reason:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="RequestIdLabel" layoutX="136.0" layoutY="119.0" prefHeight="27.0" prefWidth="212.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="RequestPhaseLabel" layoutX="174.0" layoutY="158.0" prefHeight="27.0" prefWidth="289.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="phaseAdministratorLabel" layoutX="221.0" layoutY="197.0" prefHeight="20.0" prefWidth="258.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="NewDueDateLabel" layoutX="158.0" layoutY="366.0" prefHeight="27.0" prefWidth="298.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Button fx:id="RejectBtn" layoutX="426.0" layoutY="526.0" mnemonicParsing="false" onAction="#RejectBtn" prefHeight="31.0" prefWidth="266.0" style="-fx-background-color: #9d1b34; -fx-background-radius: 20px;" text="Reject" textFill="WHITE" />
+            <Label layoutX="41.0" layoutY="328.0" text="Old due date:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="OldDueDateLabel" layoutX="162.0" layoutY="322.0" prefHeight="27.0" prefWidth="298.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <TextArea fx:id="ExtensionReasonLabel" layoutX="174.0" layoutY="234.0" prefHeight="83.0" prefWidth="479.0" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
