@@ -121,8 +121,7 @@ public class SetDurationController implements Initializable {
 
 		boolean ExtensionReason = ExtensionReasonText.getText().equals("");
 		LocalDate due = dueDate.getValue();
-		if(rp.getStartDate()==null)
-		{
+		if (rp.getStartDate() == null) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Send Extension Time Request");
 			alert.setHeaderText("ERROR");
@@ -130,8 +129,7 @@ public class SetDurationController implements Initializable {
 			alert.showAndWait();
 			return;
 		}
-		if(rp.getState().equals(State.waitingForApprove))
-		{
+		if (rp.getState().equals(State.waitingForApprove)) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Send Extension Time Request");
 			alert.setHeaderText("ERROR");

@@ -29,9 +29,8 @@ public class ServerCommitteeDecisionObserver implements Observer{
 					String[] Message=(String[])args[1];
 					if(Message[0].equals("Committee Member Decision")) {
 						Connection con=mysqlConnection.makeAndReturnConnection();
-						int Requestid=Integer.parseInt(Message[3]);
-						Employee ChairManUsername=mysqlConnection.FindEmployee(con,Requestid,"decision");
-						if(ChairManUsername.equals(null)) {
+						Employee ChairManUsername=mysqlConnection.getChairman(con);
+						if(ChairManUsername==null) {
 							 Alert alertWarning = new Alert(AlertType.WARNING);
 						     alertWarning.setTitle("Warning Alert Title");
 						     alertWarning.setHeaderText("Warning!");

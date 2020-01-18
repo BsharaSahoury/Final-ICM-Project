@@ -9,6 +9,8 @@ import java.util.ResourceBundle;
 import org.omg.PortableServer.POAManagerPackage.State;
 
 import Client.ClientConsole;
+import Client.Func;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -83,9 +85,21 @@ public class RequestChangesStatusToActiveForAdmin extends AllRequestsController 
 	}
 
 	public void BackBtnAction(ActionEvent e) {
-
+		runLater(() -> {
 		InspectorHomeController.AllRequests.start(splitpane, "/Boundary/allRequests.fxml", "Inspector");
-
+		});
 	}
+	private void runLater(Func f) {
+		f.call();
+		Platform.runLater(() -> {
+			try {
+				Thread.sleep(5);
+				f.call();
 
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+	}
 }

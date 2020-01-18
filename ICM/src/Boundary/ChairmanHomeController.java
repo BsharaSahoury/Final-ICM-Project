@@ -89,7 +89,7 @@ public class ChairmanHomeController implements Initializable {
 		f.call();
 		Platform.runLater(() -> {
 			try {
-				Thread.sleep(10);
+				Thread.sleep(5);
 				f.call();
 
 			} catch (InterruptedException e) {
