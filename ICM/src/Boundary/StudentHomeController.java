@@ -80,12 +80,16 @@ public class StudentHomeController implements Initializable {
 
 	public void GoToHome(ActionEvent event) throws Exception {
 		HomeController home = new HomeController();
-		home.start(splitpane);
+		runLater(() -> {
+			home.start(splitpane);
+		});
 	}
 
 	public void RequestSubmissionAction(ActionEvent event) throws Exception {
 		RequestSubmissionController Submit = new RequestSubmissionController();
-		Submit.start(splitpane, student);
+		runLater(() -> {
+			Submit.start(splitpane, student);
+		});
 	}
 
 	public void ProfileSettingAction(ActionEvent event) throws Exception {
@@ -104,17 +108,22 @@ public class StudentHomeController implements Initializable {
 
 	public void AboutICMAction(ActionEvent event) throws Exception {
 		AboutICMController about = new AboutICMController();
-		about.start(splitpane);
+		runLater(() -> {
+			about.start(splitpane);
+		});
 	}
 
 	public void LogOutAction(ActionEvent event) throws Exception {
 		LogOutController logOut = new LogOutController();
 		primaryStage.close();
-		logOut.start(primaryStage, student);
+		runLater(() -> {
+			logOut.start(primaryStage, student);
+		});
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
 		// TODO Auto-generated method stub
 		UserNameMenu.setText(student.getFirstName() + " " + student.getLastName());
 	}
