@@ -23,19 +23,19 @@ public class ClientProfileSettingObserver implements Observer{
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
 		if (arg1 instanceof Object[]) {
-			Object[] send = (Object[]) arg1;
-			if (send[0] instanceof String) {
-				String message = (String) send[0];
+			Object[] getMsg = (Object[]) arg1;
+			if (getMsg.length==3 && getMsg[0] instanceof String) {
+				String message = (String) getMsg[0];
 				if (message.equals("ProfileSetting")) {
-					if (send[1] instanceof ArrayList<?>) {
-						ArrayList<String> arr = (ArrayList<String>) send[1];
-						if (send[2] instanceof String) {
-							String job = (String) send[2];
+					if (getMsg[1] instanceof ArrayList<?>) {
+						ArrayList<String> arr = (ArrayList<String>) getMsg[1];
+						if (getMsg[2] instanceof String) {
+							String job = (String) getMsg[2];
 							if (job.equals("Inspector"))
 								InspectorHomeController.ProfileSetting.fillProfileSettingData(arr);
 							else if (job.equals("Evaluator"))
 								EvaluatorHomeController.ProfileSetting.fillProfileSettingData(arr);
-							else if (job.equals("Comittee member"))
+							else if (job.equals("Committee member"))
 								ComitteeMemberHomeController.ProfileSetting.fillProfileSettingData(arr);
 							else if (job.equals("Administrator"))
 								AdministratorHomeController.ProfileSetting.fillProfileSettingData(arr);

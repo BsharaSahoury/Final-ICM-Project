@@ -74,7 +74,7 @@ public class ProfileSettingController {
 			this.user=user;
 			this.userjob=userJob;
 			primaryStage=LoginController.primaryStage;
-			Object[] msg=new String[3];
+			String[] msg=new String[3];
 			this.cc=LoginController.cc;
 			try{	
 				loader = new FXMLLoader(getClass().getResource("/Boundary/ProfileSetting.fxml"));
@@ -83,9 +83,6 @@ public class ProfileSettingController {
 				msg[0]="ProfileSetting";
 				msg[1]=user.getUsername();
 				msg[2]=userjob;
-				System.out.println("ProfileSettingContoller************************");
-				System.out.println(msg);
-
 				cc.getClient().sendToServer(msg);
 			} catch(Exception e) {
 				e.printStackTrace();
@@ -108,7 +105,7 @@ public class ProfileSettingController {
 			email_txt.setEditable(false);
 			faculty_txt.setText(arr.get(4));
 			faculty_txt.setEditable(false);
-			role_txt.setText("arkan");
+			role_txt.setText(arr.get(5));
 			role_txt.setEditable(false);
 		}
 	}

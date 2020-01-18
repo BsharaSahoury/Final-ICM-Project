@@ -125,11 +125,9 @@ public class ComitteeMemberHomeController implements Initializable {
 
 	public void ProfileSettingAction(ActionEvent event) throws Exception {
 		ProfileSetting = new ProfileSettingController();
-		System.out.println(employee.getJob());
-		System.out.println("in methooooooooooooooooooooooooood");
 		runLater(() -> {
 			if(comitteeMember.getJob().equals("comittee member"))
-				ProfileSetting.start(splitpane,employee,"Committee member");
+				ProfileSetting.start(splitpane,comitteeMember,"Committee member");
 			else
 				ProfileSetting.start(splitpane,employee,"Chairman");
 
