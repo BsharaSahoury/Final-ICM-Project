@@ -65,8 +65,6 @@ public class DecisionCommitteeMemberMessageController implements Initializable {
 			ClientConsole.displayFreezeError();
 			return;
 		}
-		if(flag==-1) {
-			flag=0;
 		Object[] message= {"approve committee decision",requestID,CommitteeDecision,ctrl.notdetails};
 		try {
 			LoginController.cc.getClient().sendToServer(message);
@@ -74,7 +72,7 @@ public class DecisionCommitteeMemberMessageController implements Initializable {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}	
-		}/*else {	
+		/*else {	
 			 Alert alertSuccess = new Alert(AlertType.WARNING);
 			 alertSuccess.setTitle("Warning");
 			 alertSuccess.setHeaderText("Already Approve");
