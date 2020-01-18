@@ -181,7 +181,7 @@ public class RequestsWorkedOnController implements Initializable {
 				arr=arrofRequests;
 			}
 			else {
-			
+				if(arrofRequests!=null) {
 				for(int i=0;i<arrofRequests.size();i++) 
 					if((arrofRequests.get(i)).getState().equals(State.valueOf(groupbystatus))) 
 						arr.add(arrofRequests.get(i));			
@@ -201,7 +201,8 @@ public class RequestsWorkedOnController implements Initializable {
 					TesterHomeController.RequestWorkON.loader.<RequestsWorkedOnController>getController().tableRequests.setItems(FXCollections.observableArrayList(arr));
 					break;
 				}
-			}		
+			}
+			}
 	      }
 	} 
 	public void SetDuration() {
