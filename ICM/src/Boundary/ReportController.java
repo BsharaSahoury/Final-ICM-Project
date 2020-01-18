@@ -378,6 +378,7 @@ public class ReportController implements Initializable {
 
 	}
 	public void generateDelaysReport() {
+		System.out.println("sss");
 		if(combo3.getSelectionModel().getSelectedItem()==null) {
 			Alert alert = new Alert(AlertType.ERROR);
 	        alert.setTitle("TEST");
