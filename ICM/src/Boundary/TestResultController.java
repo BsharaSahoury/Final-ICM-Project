@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import Client.ClientConsole;
@@ -17,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
@@ -64,19 +66,26 @@ public class TestResultController implements Initializable {
 	}
 
 	public void SuccessSendBtn() {
-		try {
-			String keymessage = "send Passed test result";
-			Object[] message = { keymessage, r.getId(), null };
-			LoginController.cc.getClient().sendToServer(message);
-			Alert alertWarning = new Alert(AlertType.CONFIRMATION);
-			alertWarning.setHeaderText("SUCCESS!");
-			alertWarning.setContentText("Passed test result has been sent to Inspector");
-			alertWarning.showAndWait();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 
+		Alert alertWarning = new Alert(AlertType.CONFIRMATION);
+		alertWarning.setTitle("Warning Alert !!");
+		alertWarning.setHeaderText("Confirm!");
+		alertWarning.setContentText("Are you sure that you want send test result to Inspector!!! ");
+		Optional<ButtonType> result = alertWarning.showAndWait();
+		ButtonType button = result.orElse(ButtonType.CANCEL);
+		if (button == ButtonType.OK) {
+			try {
+				String keymessage = "send Passed test result";
+				Object[] message = { keymessage, r.getId(), null };
+				LoginController.cc.getClient().sendToServer(message);
+
+				SuccessSendBtn.setDisable(true);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
 	}
 
 	public void FaildSendBtn() {
