@@ -47,7 +47,11 @@ public class DurationController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		dueDate.setValue(RequestsWorkedOnController.getRP().getDueDate().toLocalDate());
+		if (RequestsWorkedOnController.getRP().getStartDate() != null
+				&& RequestsWorkedOnController.getRP().getDueDate() != null)
+			{
+			dueDate.setValue(RequestsWorkedOnController.getRP().getDueDate().toLocalDate());
 		startDate.setValue(RequestsWorkedOnController.getRP().getStartDate().toLocalDate());
+			}
 	}
 }

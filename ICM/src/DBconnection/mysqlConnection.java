@@ -276,11 +276,11 @@ public class mysqlConnection {
 			e.printStackTrace();
 		}
 		try {
-			ResultSet rs = stmt1.executeQuery("SELECT R.* FROM icm.request R;");
+			ResultSet rs = stmt1.executeQuery("SELECT R.* FROM icm.request R ORDER BY id DESC;");
 			while (rs.next()) {
 				Initiatorname = getinitiatorname(con, rs.getString(9));
 				stmt4 = con.prepareStatement(
-						"SELECT E.phase,E.state,E.repetion FROM icm.requestinphase E WHERE request_id=? AND phase=?;");
+						"SELECT E.phase,E.state,E.repetion FROM icm.requestinphase E WHERE request_id=? AND phase=? ORDER BY request_id DESC;");
 				stmt4.setInt(1, rs.getInt(7));
 				stmt4.setString(2, phases[i]);
 				ResultSet rs4 = stmt4.executeQuery();
