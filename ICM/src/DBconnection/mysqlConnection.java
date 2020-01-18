@@ -2493,7 +2493,7 @@ public class mysqlConnection {
 			}
 			if (start != null) {
 				stm2 = con.prepareStatement(
-						"UPDATE requestinphase SET start_date=?,due_date=? WHERE request_id=? AND phase=? AND repetion=?;");
+						"UPDATE requestinphase SET start_date=? WHERE request_id=? AND phase=? AND repetion=?;");
 				Date st = Date.valueOf(start);
 				long s = st.getTime() + (int) (1000 * 60 * 60 * 24);
 				st = new java.sql.Date(s);
