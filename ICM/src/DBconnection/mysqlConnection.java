@@ -1324,10 +1324,15 @@ public class mysqlConnection {
 			stm2.setInt(1, er.getRequestID());
 			stm2.setInt(2, maxRepetion);
 			stm2.executeUpdate();
+			LocalDate date1=LocalDate.now().plusDays(1);
+			LocalDate date2=LocalDate.now().plusDays(8);
+			
 			long millis = System.currentTimeMillis();
-			Date Startdate = new java.sql.Date(millis);
+			millis=millis+(int) (1000 * 60 * 60 * 24);
+		
+			Date Startdate = Date.valueOf(date1);
 			long week = Startdate.getTime() + (int) (1000 * 60 * 60 * 24 * 7);
-			Date dueDate = new java.sql.Date(week);
+			Date dueDate = Date.valueOf(date2);
 			PreparedStatement stm3 = con.prepareStatement("INSERT INTO icm.requestinphase  VALUES(?,?,?,?,?,?,?) ");
 			stm3.setInt(1, er.getRequestID());
 			stm3.setString(2, "decision");
@@ -2502,7 +2507,8 @@ public class mysqlConnection {
 				stm2.setString(3, phase);
 				stm2.setInt(4, repetion);
 				stm2.executeUpdate();
-			} else if (due != null) {
+			} 
+			if (due != null) {
 				stm2 = con.prepareStatement(
 						"UPDATE requestinphase SET due_date=? WHERE request_id=? AND phase=? AND repetion=?;");
 				Date du = Date.valueOf(due);
