@@ -91,19 +91,25 @@ public class EngineerHomeController implements Initializable {
 
 	public void RequestThatIlead(ActionEvent event) throws Exception {
 		RequestWorkON = new RequestsWorkedOnController();
-		RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnPerformer.fxml", performanceLeader, "Performance Leader",
-				"performance");
+		runLater(() -> {
+			RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnPerformer.fxml", performanceLeader, "Performance Leader",
+					"performance");
+			});
 	}
 
 	public void RequestWorkedOnAction(ActionEvent event) throws Exception {
 		RequestWorkON = new RequestsWorkedOnController();
-		RequestWorkON.start(splitpane, "/Boundary/Engineer-Home.fxml", performanceLeader, "Performance Leader",
-				"performance");
+		runLater(() -> {
+			RequestWorkON.start(splitpane, "/Boundary/Engineer-Home.fxml", performanceLeader, "Performance Leader",
+					"performance");
+			});
 	}
 
 	public void RequestSubmissionAction(ActionEvent event) throws Exception {
 		RequestSubmissionController Submit = new RequestSubmissionController();
-		Submit.start(splitpane, performanceLeader);
+		runLater(() -> {
+			Submit.start(splitpane, performanceLeader);
+		});
 	}
 
 	public void ProfileSettingAction(ActionEvent event) throws Exception {
@@ -115,23 +121,31 @@ public class EngineerHomeController implements Initializable {
 
 	public void MyRequestsAction(ActionEvent event) throws Exception {
 		MyRequests = new MyRequestsController();
-		MyRequests.start(splitpane, performanceLeader, "Performance Leader");
+		runLater(() -> {
+			MyRequests.start(splitpane, performanceLeader, "Performance Leader");
+		});
 	}
 
 	public void AboutICMAction(ActionEvent event) throws Exception {
 		AboutICMController about = new AboutICMController();
-		about.start(splitpane);
+		runLater(() -> {
+			about.start(splitpane);
+		});
 	}
 
 	public void LogOutAction(ActionEvent event) throws Exception {
 		LogOutController logOut = new LogOutController();
 		primaryStage.close();
-		logOut.start(primaryStage, performanceLeader);
+		runLater(() -> {
+			logOut.start(primaryStage, performanceLeader);
+		});
 	}
 
 	public void clickNotifications(ActionEvent event) throws Exception {
 		NotificationsController notific = new NotificationsController();
-		notific.start(splitpane, performanceLeader);
+		runLater(() -> {
+			notific.start(splitpane, performanceLeader);
+		});
 	}
 
 	@Override

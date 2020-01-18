@@ -98,17 +98,24 @@ public class InspectorHomeController implements Initializable {
 
 	public void GoToHome(ActionEvent event) throws Exception {
 		HomeController home = new HomeController();
-		home.start(splitpane);
+		runLater(() -> {
+			home.start(splitpane);
+		});
+		
 	}
 
 	public void AllRequestsAction(ActionEvent event) throws Exception {
 		AllRequests = new AllRequestsController();
-		AllRequests.start(splitpane, "/Boundary/allRequests.fxml", "Inspector");
+		runLater(() -> {
+			AllRequests.start(splitpane, "/Boundary/allRequests.fxml", "Inspector");
+		});
 	}
 
 	public void RequestSubmissionAction(ActionEvent event) throws Exception {
 		RequestSubmissionController Submit = new RequestSubmissionController();
-		Submit.start(splitpane, inspector);
+		runLater(() -> {
+			Submit.start(splitpane, inspector);
+		});
 	}
 
 	public void ProfileSettingAction(ActionEvent event) throws Exception {
@@ -120,18 +127,24 @@ public class InspectorHomeController implements Initializable {
 
 	public void MyRequestsAction() throws Exception {
 		MyRequests = new MyRequestsController();
-		MyRequests.start(splitpane, inspector, "Inspector");
+		runLater(() -> {
+			MyRequests.start(splitpane, inspector, "Inspector");
+		});
 	}
 
 	public void AboutICMAction(ActionEvent event) throws Exception {
 		AboutICMController about = new AboutICMController();
-		about.start(splitpane);
+		runLater(() -> {
+			about.start(splitpane);
+		});
 	}
 
 	public void LogOutAction(ActionEvent event) throws Exception {
 		LogOutController logOut = new LogOutController();
 		primaryStage.close();
-		logOut.start(primaryStage, inspector);
+		runLater(() -> {
+			logOut.start(primaryStage, inspector);
+		});
 	}
 
 	public static Employee getinspector() {
@@ -140,7 +153,9 @@ public class InspectorHomeController implements Initializable {
 
 	public void setallrequest() {
 		AllRequests = new AllRequestsController();
-		AllRequests.start(splitpane, "/Boundary/allRequests.fxml", "Inspector");
+		runLater(() -> {
+			AllRequests.start(splitpane, "/Boundary/allRequests.fxml", "Inspector");
+		});
 	}
 
 	@Override
@@ -151,7 +166,9 @@ public class InspectorHomeController implements Initializable {
 
 	public void clickNotifications(ActionEvent event) throws Exception {
 		NotificationsController notific = new NotificationsController();
-		notific.start(splitpane, inspector);
+		runLater(() -> {
+			notific.start(splitpane, inspector);
+		});
 	}
 
 	private void runLater(Func f) {

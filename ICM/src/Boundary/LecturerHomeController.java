@@ -45,83 +45,87 @@ public class LecturerHomeController implements Initializable {
 	private static Employee lecturer;
 	public static MyRequestsController MyRequests;
 	public static ProfileSettingController ProfileSetting;
+	public static LecturerHomeController l;
+
 
 	public void start(Employee lecturer) {
 		this.lecturer=lecturer;
+		l=this;
 		primaryStage=LoginController.primaryStage;
 		Platform.runLater(new Runnable() {
 
 			@Override
 			public void run() {
-		try{
-			Parent root = FXMLLoader.load(getClass().getResource("/Boundary/Lecturer-Home.fxml"));			
-			Scene scene = new Scene(root);		
-			primaryStage.setScene(scene);
-			primaryStage.setResizable(false);
-			primaryStage.setTitle("ICM-Home");			
-			primaryStage.show();
-			primaryStage.setOnCloseRequest( event ->
-		    {
-				System.out.println("EXIT ICM");
-				LogOutController logOut = new LogOutController();
-				logOut.exit(primaryStage,lecturer);
-		    });			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}	
+			try{
+				Parent root = FXMLLoader.load(getClass().getResource("/Boundary/Lecturer-Home.fxml"));
+				Scene scene = new Scene(root);
+				primaryStage.setScene(scene);
+				primaryStage.setResizable(false);
+				primaryStage.setTitle("ICM");
+				primaryStage.show();
+				primaryStage.setOnCloseRequest(event -> {
+					System.out.println("EXIT ICM");
+					LogOutController logOut = new LogOutController();
+					logOut.exit(primaryStage, lecturer);
+				});
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
+		}
 	});
-	}
+}
 public Stage getPrimaryStage() {
 		return primaryStage;
 	}
 
 public void GoToHome(ActionEvent event) throws Exception {
-	try {
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Boundary/Home.fxml"));
-		lowerAnchorPane = loader.load();
-		splitpane.getItems().set(1, lowerAnchorPane);
-	} catch (IOException e) {		
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+	HomeController home = new HomeController();
+	runLater(() -> {
+		home.start(splitpane);
+	});
 }
 
 public void RequestSubmissionAction(ActionEvent event) throws Exception {
-	RequestSubmissionController Submit=new RequestSubmissionController();
-	Submit.start(splitpane,lecturer);
+	RequestSubmissionController Submit = new RequestSubmissionController();
+	runLater(() -> {
+		Submit.start(splitpane, lecturer);
+	});
 }
 
 public void ProfileSettingAction(ActionEvent event) throws Exception {
 	ProfileSetting = new ProfileSettingController();
 	runLater(() -> {
-		ProfileSetting.start(splitpane,lecturer,"Lecturer");
-});	
+		ProfileSetting.start(splitpane, lecturer, "Lecturer");
+	});
 }
 
 public void MyRequestsAction(ActionEvent event) throws Exception {
 	MyRequests = new MyRequestsController();
-	MyRequests.start(splitpane, lecturer,"Lecturer");
+	runLater(() -> {
+		MyRequests.start(splitpane, lecturer, "Lecturer");
+	});
 }
 
 public void AboutICMAction(ActionEvent event) throws Exception {
-	AboutICMController about=new AboutICMController();
+	AboutICMController about = new AboutICMController();
+	runLater(() -> {
 	about.start(splitpane);
+	});
 }
+
 public void LogOutAction(ActionEvent event) throws Exception {
 	LogOutController logOut = new LogOutController();
 	primaryStage.close();
-	logOut.start(primaryStage,lecturer);
+	runLater(() -> {
+	logOut.start(primaryStage, lecturer);
+	});
 }
 @Override
 public void initialize(URL location, ResourceBundle resources) {
 	// TODO Auto-generated method stub
-	UserNameMenu.setText(lecturer.getFirstName()+" "+lecturer.getLastName());
+	UserNameMenu.setText(lecturer.getFirstName() + " " + lecturer.getLastName());
 }
-public void clickNotifications(ActionEvent event) throws Exception {
-	NotificationsController notific=new NotificationsController();
-	notific.start(splitpane,lecturer);
-}
+
 private void runLater(Func f) {
 	f.call();
 	Platform.runLater(() -> {
@@ -135,4 +139,6 @@ private void runLater(Func f) {
 		}
 	});
 }
+
 }
+	

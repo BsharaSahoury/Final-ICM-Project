@@ -151,7 +151,9 @@ public class ComitteeMemberHomeController implements Initializable {
 	public void LogOutAction(ActionEvent event) throws Exception {
 		LogOutController logOut = new LogOutController();
 		primaryStage.close();
-		logOut.start(primaryStage,comitteeMember);
+		runLater(() -> {
+			logOut.start(primaryStage,comitteeMember);
+		});
 	}
 
 	@Override
