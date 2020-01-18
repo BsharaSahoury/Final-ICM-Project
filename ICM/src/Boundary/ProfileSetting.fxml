@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="612.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.ProfileSettingController">
+<AnchorPane prefHeight="612.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.ProfileSettingController">
    <children>
       <Line endX="406.0" endY="-13.0" layoutX="299.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
       <Label layoutX="18.0" layoutY="6.0" text="ICM">
@@ -27,7 +27,6 @@
             <Image url="@../Images/user2-setting-512.png" />
          </image>
       </ImageView>
-      <Label layoutX="121.0" layoutY="206.0" />
       <Label layoutX="182.0" layoutY="150.0" text="ID :" textFill="#530101">
          <font>
             <Font size="14.0" />

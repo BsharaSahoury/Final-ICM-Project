@@ -121,6 +121,12 @@ public class LecturerHomeController implements Initializable {
 			logOut.start(primaryStage, lecturer);
 		});
 	}
+	public void clickNotifications(ActionEvent event) throws Exception {
+		NotificationsController notific = new NotificationsController();
+		runLater(() -> {
+			notific.start(splitpane, lecturer);
+		});
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

@@ -1529,7 +1529,7 @@ public static ArrayList<Request> getmyRequestFromDB(Connection con, String usern
 		ArrayList<RequestPhase> list=new ArrayList<>();
 		try {
 			stm=con.prepareStatement("SELECT request_id,phase,repetion,phase_administrator FROM requestinphase WHERE due_date=?;");
-			LocalDate tommorrow1=today.toLocalDate().plusDays(1);
+			LocalDate tommorrow1=today.toLocalDate().plusDays(2);
 			Date tommorrow=Date.valueOf(tommorrow1);
 			stm.setDate(1, tommorrow);
 			ResultSet rs=stm.executeQuery();

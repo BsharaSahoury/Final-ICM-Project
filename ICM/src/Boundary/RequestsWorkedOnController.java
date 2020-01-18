@@ -211,7 +211,6 @@ public class RequestsWorkedOnController implements Initializable {
 			}
 		}
 	}
-
 	public void SetDuration() {
 		chosen = tableRequests.getSelectionModel().getSelectedIndex();
 		if (chosen != -1) {
@@ -414,6 +413,13 @@ public class RequestsWorkedOnController implements Initializable {
 		}
 	}
 
+			
+   
+
+	
+	
+	
+
 	public static int getselectedindex() {
 		return chosen;
 	}
@@ -492,6 +498,7 @@ public class RequestsWorkedOnController implements Initializable {
 		colSubDate.setCellValueFactory(new PropertyValueFactory<RequestPhase, Date>("date"));
 		colState.setCellValueFactory(new PropertyValueFactory<RequestPhase, Integer>("State"));
 	}
+
 	private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {
