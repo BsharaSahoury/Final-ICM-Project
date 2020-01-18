@@ -92,6 +92,12 @@
             </Button>
             <Button layoutY="2.0" mnemonicParsing="false" onAction="#BackBtnAction" style="-fx-background-insets: 1254652;" />
             <Button layoutX="405.0" layoutY="112.0" mnemonicParsing="false" onAction="#BackBtnAction" style="-fx-background-insets: 1254652;" />
+            <Label layoutX="20.0" layoutY="564.0" prefHeight="17.0" prefWidth="109.0" text="(*) Required fields" textFill="#9d1b34" />
+            <Label layoutX="21.0" layoutY="215.0" prefHeight="17.0" prefWidth="19.0" text="*" textFill="#9d1b34">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
    </children>
 </AnchorPane>

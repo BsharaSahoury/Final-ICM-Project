@@ -185,11 +185,11 @@ public class ComitteeMemberHomeController implements Initializable {
 		f.call();
 		Platform.runLater(() -> {
 			try {
-				Thread.sleep(5);
+				Thread.sleep(1);
 				f.call();
 
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 		});
