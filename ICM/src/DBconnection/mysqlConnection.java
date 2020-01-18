@@ -1385,7 +1385,7 @@ public class mysqlConnection {
 		PreparedStatement stm = null;
 		try {
 			stm = con.prepareStatement("UPDATE requestinphase SET state='work' WHERE state='wait' AND start_date=?;");
-			stm.setDate(1, today);
+			stm.setDate(1, Date.valueOf(today.toLocalDate().plusDays(1)));
 			stm.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
