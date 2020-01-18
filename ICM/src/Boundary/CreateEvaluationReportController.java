@@ -45,7 +45,6 @@ public class CreateEvaluationReportController implements Initializable {
 	private Request chosenRequest;
 	private static int id;
 	public static CreateEvaluationReportController evaluationReport;
-
 	public void start(SplitPane splitpane, int id) {
 		try {
 			this.id = id;

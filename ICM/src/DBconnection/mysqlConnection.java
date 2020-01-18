@@ -383,6 +383,7 @@ public class mysqlConnection {
 										rs4.getDate(6));
 								result = new RequestPhase(null, null, s, Phase.valueOf(rs3.getString(2)),
 										State.valueOf(rs3.getString(7)));
+								result.setRepetion(max);
 								arr.add(result);
 							}
 						}
@@ -1192,12 +1193,7 @@ public class mysqlConnection {
 					stm3.executeUpdate();
 				}
 			} else if (dec.equals("reject")) {
-				stm2 = con.prepareStatement(
-						"SELECT R.repetion FROM icm.requestinphase R WHERE request_id=? AND phase=?;");
-				stm2.setInt(1, id);
-				stm2.setString(2, "closing");
-				ResultSet rs10 = stm2.executeQuery();
-				if (!rs10.next()) {
+			
 					stm = con.prepareStatement("INSERT INTO requestinphase VALUES(?,?,?,?,?,?,?);");
 					stm.setInt(1, id);
 					stm.setString(2, "closing");
@@ -1212,14 +1208,16 @@ public class mysqlConnection {
 					stm6.setInt(1, id);
 					stm6.setString(2, "decision");
 					ResultSet rs3 = stm6.executeQuery();
-
+					System.out.println("llll");
+					System.out.println(id);
 					if (rs3.next()) {
+						System.out.println("ggg");
 						stm3 = con.prepareStatement(
 								"UPDATE icm.requestinphase SET state='over' WHERE request_id = ? and phase='decision' and repetion=?;");
 						stm3.setInt(1, id);
 						stm3.setInt(2, rs3.getInt(1));
 						stm3.executeUpdate();
-					}
+					
 					mysqlConnection.updateCurrentPhase(con, id, Phase.closing);
 				}
 			} else {
@@ -2669,5 +2667,19 @@ public class mysqlConnection {
 		}
 		return employee;
 	}
-
+     public static void changestatewaitforapproveDecision(Connection con,int id,int repetion) {
+    		PreparedStatement st = null;
+			System.out.println("xxc");
+			System.out.println(id);
+			System.out.println(repetion);
+    		try {
+    			st=con.prepareStatement("UPDATE icm.requestinphase SET state='waitingForApprove' WHERE request_id=? AND phase='decision' AND repetion=?;");
+    			st.setInt(1,id);
+                st.setInt(2, repetion);
+            	st.executeUpdate();
+    		} catch (SQLException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+     }
 }

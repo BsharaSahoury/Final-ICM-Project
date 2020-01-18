@@ -30,6 +30,11 @@ public class ServerCommitteeDecisionObserver implements Observer{
 					if(Message[0].equals("Committee Member Decision")) {
 						Connection con=mysqlConnection.makeAndReturnConnection();
 						Employee ChairManUsername=mysqlConnection.getChairman(con);
+						if(Message.length==5) {
+							int id=Integer.parseInt(Message[3]);  
+							int repetion=Integer.parseInt(Message[4]);
+							mysqlConnection.changestatewaitforapproveDecision(con,id,repetion);
+						}
 						if(ChairManUsername==null) {
 							 Alert alertWarning = new Alert(AlertType.WARNING);
 						     alertWarning.setTitle("Warning Alert Title");

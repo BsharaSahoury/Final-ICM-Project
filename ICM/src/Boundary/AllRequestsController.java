@@ -83,12 +83,9 @@ public class AllRequestsController implements Initializable {
 		this.cc = LoginController.cc;
 		String[] AllRequests = new String[2];
 		try {
-			System.out.println("sss");
 			loader = new FXMLLoader(getClass().getResource(path));
 			lowerAnchorPane = loader.load();
-			System.out.println("sss");
 			splitpane.getItems().set(1, lowerAnchorPane);
-			System.out.println("mmmm");
 			this.splitpane = splitpane;
 			AllRequests[0] = "All Requests";
 			AllRequests[1] = job;
@@ -100,15 +97,12 @@ public class AllRequestsController implements Initializable {
 
 	public void setTableRequests(ArrayList<RequestPhase> arr1) {
 		list = FXCollections.observableArrayList(arr1);
-		// tableRequests.setStyle("-fx-alignment: CENTER;");
-		// colName.set
 		tableRequests.setItems(list);
 	}
 
 	public void fillTable(ArrayList<RequestPhase> arr1) {
 		arrofRequests = arr1;
 		loader.<AllRequestsController>getController().setTableRequests(arr1);
-
 	}
 
 	public void searchaction() {
@@ -164,17 +158,18 @@ public class AllRequestsController implements Initializable {
 				AdministratorHomeController.AllRequests.loader.<AllRequestsController>getController().tableRequests
 						.setItems(FXCollections.observableArrayList(arrofRequests));
 			} else {
-				if(arrofRequests!=null) {
-				for (int i = 0; i < arrofRequests.size(); i++)
-					if ((arrofRequests.get(i)).getStatus().equals(groupbystatus))
-						arr.add(arrofRequests.get(i));
-				if (job.equals("Inspector"))
-					InspectorHomeController.AllRequests.loader.<AllRequestsController>getController().tableRequests
-							.setItems(FXCollections.observableArrayList(arr));
-				else
-					AdministratorHomeController.AllRequests.loader.<AllRequestsController>getController().tableRequests
-							.setItems(FXCollections.observableArrayList(arr));
-			}
+				if (arrofRequests != null) {
+					for (int i = 0; i < arrofRequests.size(); i++)
+						if ((arrofRequests.get(i)).getStatus().equals(groupbystatus))
+							arr.add(arrofRequests.get(i));
+					if (job.equals("Inspector"))
+						InspectorHomeController.AllRequests.loader.<AllRequestsController>getController().tableRequests
+								.setItems(FXCollections.observableArrayList(arr));
+					else
+						AdministratorHomeController.AllRequests.loader
+								.<AllRequestsController>getController().tableRequests
+										.setItems(FXCollections.observableArrayList(arr));
+				}
 			}
 		}
 	}
@@ -187,7 +182,6 @@ public class AllRequestsController implements Initializable {
 				f.call();
 
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		});
@@ -197,11 +191,11 @@ public class AllRequestsController implements Initializable {
 		chosenRequest = tableRequests.getSelectionModel().getSelectedIndex();
 		if (chosenRequest != -1) {
 			RequestPhase s = tableRequests.getSelectionModel().getSelectedItem();
-			if(ClientConsole.map.get(s.getId()).equals("frozen")) {
+			if (ClientConsole.map.get(s.getId()).equals("frozen")) {
 				ClientConsole.displayFreezeError();
 				return;
 			}
-			
+
 			RequestInfoController requestifo = new RequestInfoController();
 			requestifo.start(splitpane, s.getR(), job);
 			runLater(() -> {
@@ -229,11 +223,11 @@ public class AllRequestsController implements Initializable {
 	}
 
 	public void RequestTreatmentAction(ActionEvent e) {
-		
+
 		chosenRequest = tableRequests.getSelectionModel().getSelectedIndex();
 		if (chosenRequest != -1) {
 			chosenR = tableRequests.getSelectionModel().getSelectedItem();
-			if(ClientConsole.map.get(chosenR.getId()).equals("frozen")) {
+			if (ClientConsole.map.get(chosenR.getId()).equals("frozen")) {
 				ClientConsole.displayFreezeError();
 				return;
 			}
@@ -271,7 +265,6 @@ public class AllRequestsController implements Initializable {
 		try {
 			InspectorHomeController.AllRequests.start(splitpane, "/Boundary/allRequests.fxml", "Inspector");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

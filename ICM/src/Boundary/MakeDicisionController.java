@@ -87,7 +87,7 @@ public class MakeDicisionController implements Initializable {
 			alertWarning.setContentText("Please fill Explain about the decision");
 			alertWarning.showAndWait();
 		} else {
-			String[] Message = new String[4];
+			String[] Message = new String[5];
 			Message[0] = "Committee Member Decision";
 			if (Approve.isSelected())
 				Message[1] = "approve";
@@ -97,6 +97,7 @@ public class MakeDicisionController implements Initializable {
 				Message[1] = "ask for additional Information";
 			Message[2] = ExplainDectxt.getText();
 			Message[3] = Integer.toString(ctrl.selected.getR().getId());
+			Message[4]=Integer.toString(ctrl.selected.getRepetion());
 			try {
 				cc.getClient().sendToServer(Message);
 				Sendbtn.setDisable(true);
@@ -130,7 +131,7 @@ public class MakeDicisionController implements Initializable {
 		f.call();
 		Platform.runLater(() -> {
 			try {
-				Thread.sleep(5);
+				Thread.sleep(1);
 				f.call();
 
 			} catch (InterruptedException e) {
