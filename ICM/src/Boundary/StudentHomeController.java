@@ -115,6 +115,7 @@ public class StudentHomeController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
 		// TODO Auto-generated method stub
 		UserNameMenu.setText(student.getFirstName() + " " + student.getLastName());
 	}
