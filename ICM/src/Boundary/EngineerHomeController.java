@@ -79,14 +79,10 @@ public class EngineerHomeController implements Initializable {
 	}
 
 	public void GoToHome(ActionEvent event) throws Exception {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Boundary/Home.fxml"));
-			lowerAnchorPane = loader.load();
-			splitpane.getItems().set(1, lowerAnchorPane);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		HomeController home = new HomeController();
+		runLater(() -> {
+			home.start(splitpane);
+		}); 
 	}
 
 	public void RequestThatIlead(ActionEvent event) throws Exception {
