@@ -18,7 +18,11 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * approve the decision of the request 
+ *
+ *
+ */
 public class Passedmessagecontroller implements Initializable {
 	@FXML
 	Label DecisionLable;
@@ -44,12 +48,19 @@ public class Passedmessagecontroller implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * set Notification content 
+	 * @param details
+	 * 
+	 **/
 	public static void setdetails(String details) {
 		ctrl.notdetails = details;
 
 	}
-
+/**
+ * approving the decision by clicking on button
+ * @param e ActionEvent (click on the button )
+ */
 	public void approveAction(ActionEvent e) {
 		if (ClientConsole.map.get(requestID).equals("frozen")) {
 			ClientConsole.displayFreezeError();
@@ -64,7 +75,11 @@ public class Passedmessagecontroller implements Initializable {
 			e1.printStackTrace();
 		}
 	}
-
+	/**
+	 * set Notification content 
+	 * @param details
+	 * 
+	 **/
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		CommitteeDecision = NotificationsController.getDecisionofcommitteemember();

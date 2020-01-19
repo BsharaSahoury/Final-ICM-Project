@@ -35,7 +35,7 @@ import javafx.stage.Stage;
 
 public class massageToAdmenToApproveExtension implements Initializable {
 	/**
-	 * 
+	 * Notification to Administrator for approving the extension of the request 
 	 */
 	private static final long serialVersionUID = 1L;
 	@FXML
@@ -65,7 +65,13 @@ public class massageToAdmenToApproveExtension implements Initializable {
 	private int notificationID;
 	private static String notdetails;
 	private String ExtensionRequest;
-
+/**
+ * Open notification GUI
+ * @param splitpane GUI
+ * @param id Request-Id
+ * @param content Notification-Content
+ * @param phase1 Request-Phase
+ */
 	public void start(SplitPane splitpane, int id, String content, String phase1) {
 		primaryStage = LoginController.primaryStage;
 		try {
@@ -91,7 +97,10 @@ public class massageToAdmenToApproveExtension implements Initializable {
 		this.requestID = id;
 		this.phase = phase1;
 	}
-
+	 /**
+	  * set Notification content
+	  * @param data
+	  */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		notificationID = NotificationsController.getidnotification();
@@ -104,14 +113,22 @@ public class massageToAdmenToApproveExtension implements Initializable {
 			e1.printStackTrace();
 		}
 	}
-
+	/**
+	 * set Notification content 
+	 * @param details
+	 * 
+	 **/
 	public static void setdetails(String details) {
 		massageToAdmenToApproveExtension.notdetails = details;
 		String[] b = new String[2];
 		b = massageToAdmenToApproveExtension.notdetails.split("#");
 		ctrl.ExtensionReasonLabel.setText(b[0]);
 	}
-
+	/**
+	 * set Notification content 
+	 * @param details
+	 * 
+	 **/
 	public void setData(String[] data) {
 		ctrl.OldDueDateLabel.setText(data[0]);
 		ctrl.NewDueDateLabel.setText(data[1]);

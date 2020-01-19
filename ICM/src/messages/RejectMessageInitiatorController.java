@@ -19,6 +19,11 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * Initiator receive Reject Notification with the details of rejection and
+ * decide to approve *
+ */
 public class RejectMessageInitiatorController implements Initializable {
 	@FXML
 	Label DecisionLable;
@@ -32,6 +37,11 @@ public class RejectMessageInitiatorController implements Initializable {
 	public static int flag = -1;
 	private static String notdetails;
 
+	/*
+	 * @param splitpane GUI
+	 * 
+	 * @param path GUI path
+	 */
 	public void start(SplitPane splitpane, String path) {
 		primaryStage = LoginController.primaryStage;
 		try {
@@ -54,12 +64,20 @@ public class RejectMessageInitiatorController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * set Notification content 
+	 * @param details
+	 * 
+	 **/
 	public static void setdetails(String details) {
 		ctrl.notdetails = details;
 		ctrl.DecisionLable.setText(ctrl.notdetails);
 	}
-
+/**
+ * check if the request frozen if yes show warning alert 
+ * if not frozen update the decision of the initiator approving
+ * @param e
+ */
 	public void approveAction(ActionEvent e) {
 		if (ClientConsole.map.get(requestID).equals("frozen")) {
 			ClientConsole.displayFreezeError();
@@ -74,7 +92,9 @@ public class RejectMessageInitiatorController implements Initializable {
 			e1.printStackTrace();
 		}
 	}
-
+/**
+ * Initialize variables before open notification 
+ */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 

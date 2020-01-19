@@ -7,7 +7,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * Notification for recruit performance 
+ * 
+ *
+ */
 public class RecruitPerformanceMessageController {
 	@FXML
 	Label label1;
@@ -16,7 +20,13 @@ public class RecruitPerformanceMessageController {
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
 	public static SplitPane splitpane;
-
+/**
+ * for start Notification GUI 
+ * @param splitpane GUI
+ * @param id Request Id
+ * @param path GUI path
+ * @param content Notification Content
+ */
 	public void start(SplitPane splitpane, int id, String path, String content) {
 		primaryStage = LoginController.primaryStage;
 		try {
