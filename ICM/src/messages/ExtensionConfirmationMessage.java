@@ -32,7 +32,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * Extension Confirmation Notification send to inspector to make the decision if approve or not.
+ * 
+ *
+ */
 public class ExtensionConfirmationMessage implements Initializable {
 	/**
 	 * 
@@ -74,7 +78,13 @@ public class ExtensionConfirmationMessage implements Initializable {
 	private int notificationID;
 	private static String notdetails;
 	private String ExtensionRequest;
-
+/**
+ * open Notification GUI
+ * @param splitpane FXMLLOADER ( resource )
+ * @param id Request-Id
+ * @param content Notification-content
+ * @param phase1 Request-phase
+ */
 	public void start(SplitPane splitpane, int id, String content, String phase1) {
 		primaryStage = LoginController.primaryStage;
 		try {
@@ -99,7 +109,10 @@ public class ExtensionConfirmationMessage implements Initializable {
 		this.requestID = id;
 		this.phase = phase1;
 	}
-
+/**
+ * when click on the approve the extension of the request will updated and sent to Administartor.
+ * @param e ActionEvent ( when click on the button )
+ */
 	public void approveAction(ActionEvent e) {
 
 		Alert alertWarning = new Alert(AlertType.INFORMATION);
@@ -133,7 +146,10 @@ public class ExtensionConfirmationMessage implements Initializable {
 		}
 
 	}
-
+	/**
+	 * when click on the approve the extension of the request will rejected.
+	 * @param e ActionEvent ( when click on the button )
+	 */
 	public void RejectBtn(ActionEvent e) {
 
 		Alert alertWarning = new Alert(AlertType.INFORMATION);
@@ -160,22 +176,33 @@ public class ExtensionConfirmationMessage implements Initializable {
 		}
 
 	}
-
+/**
+ * set Notification content 
+ * @param details
+ */
 	public static void setdetails(String details) {
 		ctrl.notdetails = details;
 		String[] b = new String[2];
 		b = ctrl.notdetails.split("#");
 		ctrl.ExtensionReasonLabel.setText(b[0]);
 	}
-
+/**
+ * for get the phase of request
+ * @return
+ */
 	public static String getRequestPhase() {
 		return phase;
 	}
-
+/**
+ * for get Request ID
+ * @return
+ */
 	public static int getRequestId() {
 		return requestID;
 	}
-
+/**
+ * Initialize variables before open notification.
+ */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		notificationID = NotificationsController.getidnotification();
@@ -189,7 +216,10 @@ public class ExtensionConfirmationMessage implements Initializable {
 		}
 
 	}
-
+/**
+ * set Notification content
+ * @param data
+ */
 	public void setData(String[] data) {
 		ctrl.OldDueDateLabel.setText(data[0]);
 		ctrl.NewDueDateLabel.setText(data[1]);

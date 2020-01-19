@@ -1,12 +1,18 @@
 package messages;
 
 import Boundary.LoginController;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+/**
+ * Notification contains the decision of extension time of request . 
+ * you can know if extension request approved or no
+ * @label1 contains the answer of the extension
+ */
 
 public class AnswerExtension {
 

@@ -22,7 +22,11 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * the reject notification from committee member.
+ * 
+ *
+ */
 public class CommitteeDecisionRejectController implements Initializable {
 	@FXML
 	Label DecisionLable;
@@ -38,7 +42,11 @@ public class CommitteeDecisionRejectController implements Initializable {
 	public static int flag = -1;
 	private static String notdetails;
 	private static int notificationID;
-
+/**
+ * open GUI notification 
+ * @param splitpane GUI
+ * @param path choose the suitable notification GUI for FXMLLOADER
+ */
 	public void start(SplitPane splitpane, String path) {
 		primaryStage = LoginController.primaryStage;
 		try {
@@ -58,12 +66,18 @@ public class CommitteeDecisionRejectController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * set Notification content
+ * @param details
+ */
 	public static void setdetails(String details) {
 		ctrl.notdetails = details;
 		ctrl.DecisionLable.setText(ctrl.notdetails);
 	}
-
+/**
+ * send the reject decision to initiator when clicking on the button. 
+ * @param e ActionEvent ( Clicking on button)
+ */
 	public void SendToInitiatorAction(ActionEvent e) {
 		if (ClientConsole.map.get(requestID).equals("frozen")) {
 			ClientConsole.displayFreezeError();
@@ -87,7 +101,9 @@ public class CommitteeDecisionRejectController implements Initializable {
 			alertSuccess.showAndWait();
 		}
 	}
-
+/**
+ * Initialize variables before start the controller.
+ */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		requestID = NotificationsController.getidofrequestforDecision();

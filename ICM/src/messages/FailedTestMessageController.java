@@ -25,7 +25,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * send to Inspector Failure test Notification with failure reason from tester.
+ * 
+ *
+ */
 public class FailedTestMessageController implements Initializable {
 	@FXML
 	Label requestLabel;
@@ -46,7 +50,11 @@ public class FailedTestMessageController implements Initializable {
 	private ObservableList<String> list;
 	private int notificationID;
 	private static String notdetails;
-
+/**
+ * open Notification GUI
+ * @param splitpane GUI
+ * @param id Request-Id
+ */
 	public void start(SplitPane splitpane, int id) {
 		primaryStage = LoginController.primaryStage;
 		try {
@@ -72,7 +80,10 @@ public class FailedTestMessageController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * 
+ * @param e ActionEvent ( when click on the button )
+ */
 	public void RecruitAction(ActionEvent e) {
 		if (ClientConsole.map.get(requestID).equals("frozen")) {
 			ClientConsole.displayFreezeError();
@@ -103,14 +114,21 @@ public class FailedTestMessageController implements Initializable {
 			e1.printStackTrace();
 		}
 	}
-
+	/**
+	 * set Notification content 
+	 * @param details
+	 * 
+	 **/
 	public static void setdetails(String details) {
 
 		ctrl.notdetails = details;
 		ctrl.FailureDetails.setText(ctrl.notdetails);
 
 	}
-
+	 /**
+	  * set Notification content
+	  * @param data
+	  */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		notificationID = NotificationsController.getidnotification();
@@ -126,9 +144,4 @@ public class FailedTestMessageController implements Initializable {
 
 	}
 
-	public void fillCombo(ArrayList<String> names) {
-		list = FXCollections.observableArrayList(names);
-		combo.setItems(list);
-
-	}
 }

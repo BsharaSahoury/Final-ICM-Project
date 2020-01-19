@@ -66,7 +66,14 @@ public class mysqlConnection {
 		return null;
 
 	}
-
+/**
+ * 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param username the username of the user
+ * @param password the password of the user
+ * @return User 
+ * the method get the username and the password and return the user with his details
+ */
 	public static User isInDB(Connection con, String username, String password) {
 		PreparedStatement stm = null;
 		try {
@@ -101,7 +108,13 @@ public class mysqlConnection {
 		return null;
 
 	}
-
+/**
+ * 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param username the username of the user
+ * @param password the password of the user
+ * the method update the user to logged in
+ */
 	public static void updateUSerLoggedInToYes(Connection con, String username, String password) {
 		PreparedStatement stm = null;
 		try {
@@ -115,7 +128,14 @@ public class mysqlConnection {
 		}
 
 	}
-
+/**
+ * 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param username the username of the user
+ * @param password the password of the user
+ * @return String like boolean return "true" if success else return "false"
+ * the method check if there Is Connected By Another Client with same username and password
+ */
 	public static String IsConnectedByAnotherClient(Connection con, String username, String password) {
 		PreparedStatement stm = null;
 		try {
@@ -136,7 +156,11 @@ public class mysqlConnection {
 		}
 		return "false";
 	}
-
+/**
+ * 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection.
+ * when the server start run we update all the users as logged out 
+ */
 	public static void SetAllUsersLoginToNo(Connection con) {
 
 		String username, password;
@@ -158,7 +182,15 @@ public class mysqlConnection {
 		}
 
 	}
-
+/**
+ * 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param username the username of the user
+ * @param password the password of the user
+ * @param endProgram String 
+ * @return String like boolean return "true" if success else return "false"
+ * the method update specific username and password as logged out when the user do log out
+ */
 	public static String logOutUser(Connection con, String username, String password, String endProgram) {
 		PreparedStatement stm = null;
 		String res = "true";
@@ -178,7 +210,13 @@ public class mysqlConnection {
 			return res;
 		}
 	}
-
+/**
+ * 
+* @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param username the username of the user
+ * @param userJob the job of the user
+ * @return String that contain all the data of the specific user 
+ */
 	public static ArrayList<String> getUserData(Connection con, String username, String userJob) {
 		PreparedStatement stm = null;
 		ResultSet rs;
@@ -232,7 +270,12 @@ public class mysqlConnection {
 		}
 		return res;
 	}
-
+/**
+ * 
+* @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param username the username of the user
+ * @return  string that contain the initiator name
+ */
 	public static String getinitiatorname(Connection con, String username) {
 		PreparedStatement stmt2 = null;
 		String Initiatorname = null;
@@ -257,7 +300,11 @@ public class mysqlConnection {
 		}
 		return Initiatorname;
 	}
-
+/**
+ * 
+* @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @return ArrayList that contain all the request in database
+ */
 	public static ArrayList<RequestPhase> getDataFromDB(Connection con) {
 		String[] phases = { "closing", "testing", "performance", "decision", "evaluation" };
 		String Initiatorname = null;
@@ -333,7 +380,13 @@ public class mysqlConnection {
 		}
 		return arr;
 	}
-
+/**
+ * 
+* @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param username the username of the user 
+ * @param phase the phase of the request 
+ * @return ArrayList that contains RequsetPhase that work on specific user/employee
+ */
 	public static ArrayList<RequestPhase> getRequestsWorkOn(Connection con, String username, String phase) {
 		String Initiatorname = null;
 		ArrayList<RequestPhase> arr = new ArrayList<RequestPhase>();
@@ -408,7 +461,12 @@ public class mysqlConnection {
 		else
 			return null;
 	}
-
+/**
+ * 
+* @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param username the username of the user 
+ * @return ArrayList<Request>
+ */
 	public static ArrayList<Request> getmyRequestFromDB(Connection con, String username) {
 		String Initiatorname = null;
 		ArrayList<Request> arr = new ArrayList<Request>();
@@ -1906,7 +1964,14 @@ public class mysqlConnection {
 			e.printStackTrace();
 		}
 	}
+/**
+ * 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param id the id of the request
+ * @param newPhase the new phase that i chose
+ *  * the method update phase to new phase that i chose
 
+ */
 	public static void updateCurrentPhase(Connection con, int id, Phase newPhase) {
 		PreparedStatement stm;
 		try {
@@ -1920,7 +1985,13 @@ public class mysqlConnection {
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param request_id the id of the request
+ * @return EvaluationReport that contain the data
+ * the method get the report with the report details from database
+ */
 	public static EvaluationReport getevaluationreport(Connection con, int request_id) {
 		PreparedStatement stm = null;
 		EvaluationReport report = null;

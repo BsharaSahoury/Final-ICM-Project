@@ -22,7 +22,11 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * Committee Member ask for additional information decision notification
+ * 
+ *
+ */
 public class CommitteeDecisionAskForaddInfoController implements Initializable {
 	@FXML
 	Label DecisionLable;
@@ -40,7 +44,11 @@ public class CommitteeDecisionAskForaddInfoController implements Initializable {
 	public static int flag = -1;
 	private static String notdetails;
 	private static int notificationID;
-
+/**
+ * open CommitteeDecisionAskForaddInfo notification GUI
+ * @param splitpane OPEN GUI
+ * @param path for FXMLLOADER 
+ */
 	public void start(SplitPane splitpane, String path) {
 		primaryStage = LoginController.primaryStage;
 		try {
@@ -67,12 +75,18 @@ public class CommitteeDecisionAskForaddInfoController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * Set Notification contain 
+ * @param details Notification Content
+ */
 	public static void setdetails(String details) {
 		ctrl.notdetails = details;
 		ctrl.DecisionLable.setText(ctrl.notdetails);
 	}
-
+/**
+ *  when clicking on the recruit button will recruit the chosen evaluator 
+ * @param e
+ */
 	public void RecruitAction(ActionEvent e) {
 		if (ClientConsole.map.get(requestID).equals("frozen")) {
 			ClientConsole.displayFreezeError();
@@ -102,16 +116,20 @@ public class CommitteeDecisionAskForaddInfoController implements Initializable {
 			alertSuccess.showAndWait();
 		}
 	}
-
+/**
+ * Initialize variable before start the class
+ */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		requestID = NotificationsController.getidofrequestforDecision();
 		CommitteeDecision = NotificationsController.getDecisionofcommitteemember();
 		requestID = NotificationsController.getidofrequestforDecision();
 		notificationID = NotificationsController.getidnotification();
-		// DecisionLable.setText(NotificationsController.getExplainDecisionofcommitteemember());
 	}
-
+/**
+ * fill combobox evaluators
+ * @param names evaluators
+ */
 	public void fillCombo(ArrayList<String> names) {
 		list = FXCollections.observableArrayList(names);
 		combo.setItems(list);
