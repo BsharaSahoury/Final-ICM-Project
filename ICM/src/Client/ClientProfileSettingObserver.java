@@ -13,7 +13,11 @@ import Boundary.LecturerHomeController;
 import Boundary.PerformanceLeaderHomeController;
 import Boundary.StudentHomeController;
 import Boundary.TesterHomeController;
-
+/**
+ * in this observer we handle to set all the details that we received from the DB
+ * about the user in the profile setting window
+ *
+ */
 public class ClientProfileSettingObserver implements Observer {
 	public ClientProfileSettingObserver(Observable client) {
 		client.addObserver(this);

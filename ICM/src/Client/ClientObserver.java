@@ -11,7 +11,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-
+/**
+ * in this observer we show the user that the connection with the server failed or disconnected
+ *
+ */
 public class ClientObserver implements Observer {
 	public ClientObserver(Observable client) {
 		client.addObserver(this);

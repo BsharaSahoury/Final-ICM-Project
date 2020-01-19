@@ -10,12 +10,20 @@ import DBconnection.mysqlConnection;
 import Entity.Phase;
 import Entity.State;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * This is the observer that handle the approve of the Inspector to the duration
+ * that has been set by the phase administrator.
+ *
+ */
 public class ServerApproveDuratinObserver implements Observer {
 	public ServerApproveDuratinObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we insert the date the has been approved from the Inspector to DB
+ * and when the start date arrived we change the state of the request to work,
+ * So the employees could start work on the request.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

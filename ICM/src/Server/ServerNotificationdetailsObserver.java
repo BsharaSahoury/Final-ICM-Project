@@ -9,12 +9,18 @@ import java.util.Observer;
 import DBconnection.mysqlConnection;
 import Entity.Notification;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * In this observer we handle the situation when we want to see the details of any nitifiaction.
+ *
+ */
 public class ServerNotificationdetailsObserver implements Observer {
 	public ServerNotificationdetailsObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we return the details of the notification with the 'notid' id
+ * in order to display it to the user.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

@@ -17,7 +17,12 @@ import Entity.Request;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
+/**
+ * here in this observer we show message to the inspector that he approved 
+ * the decision of the request and and message send to the initiator waiting for his approve
+ * to close the request
+ *
+ */
 public class ClientMessageSentToInitiatorObserver implements Observer {
 	public ClientMessageSentToInitiatorObserver(Observable client) {
 		client.addObserver(this);

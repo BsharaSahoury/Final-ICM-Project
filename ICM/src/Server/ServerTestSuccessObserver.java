@@ -13,12 +13,18 @@ import Entity.Employee;
 import Entity.Notification;
 import Entity.Phase;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * in this observer we handle the situation when the request passed the testing phase
+ *
+ */
 public class ServerTestSuccessObserver implements Observer {
 	public ServerTestSuccessObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * in this function we change the phase of the request to closing and we send
+ * notification to the inspector that the requests is passed the testing and moved to closing phase.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

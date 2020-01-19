@@ -9,12 +9,16 @@ import java.util.Observer;
 import DBconnection.mysqlConnection;
 import Entity.ExtensionDuration;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * this observer handle the situation of ask for the performance report.
+ */
 public class ServerPerformanceReportObserver implements Observer {
 	public ServerPerformanceReportObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * in this function we return all of the reports of the type in keymessage from the DB
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

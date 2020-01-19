@@ -13,12 +13,19 @@ import Entity.Notification;
 import Entity.Phase;
 import Entity.RequestPhase;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * in this observer we handle the situation when the inspector approve the extension
+ * for specific request
+ *
+ */
 public class ServerRequestExtensionApproveToAdminObserver implements Observer {
 	public ServerRequestExtensionApproveToAdminObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we send notification to the administrator and to the phaseadministrator of the relevant request
+ *  when the inspector approve or reject the extension of specific request phase
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

@@ -9,12 +9,18 @@ import DBconnection.mysqlConnection;
 import Entity.Request;
 import Entity.RequestPhase;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * This observer check if the inspector already approved the duration of the relevant request.
+ *
+ */
 public class ServerCheckAprproveDurationObserver implements Observer {
 	public ServerCheckAprproveDurationObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * This function send to the client the request with the relevant information
+ * to check if the inspector already approved the duration that has been set to the request.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

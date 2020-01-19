@@ -7,7 +7,11 @@ import java.util.Observer;
 import Boundary.PermissionsController;
 import Entity.Employee;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+/**
+ * in this observer we set the employees in the permission page to allow the administrator
+ * to give them a permissions
+ *
+ */
 public class ClientInitPermissionsPageObserver implements Observer {
 	public ClientInitPermissionsPageObserver(Observable client) {
 		client.addObserver(this);

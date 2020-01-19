@@ -14,12 +14,18 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
-
+/**
+ * In this observer we fill the details of all the requests
+ *
+ */
 public class ClientAllRequestsObserver implements Observer {
 	public ClientAllRequestsObserver(Observable client) {
 		client.addObserver(this);
 	}
-
+/**
+ * in this function we received all the requests from the DB 
+ * and we fill them in the administrator and inspector all request tables
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub

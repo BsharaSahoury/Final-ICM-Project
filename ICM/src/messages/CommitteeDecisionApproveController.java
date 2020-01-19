@@ -21,7 +21,11 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * the approve decision of  the committee member Notification
+ * 
+ *
+ */
 public class CommitteeDecisionApproveController implements Initializable {
 	@FXML
 	Label DecisionLable;
@@ -35,7 +39,11 @@ public class CommitteeDecisionApproveController implements Initializable {
 	public static int flag = -1;
 	private static String notdetails;
 	private static int notificationID;
-
+/**
+ * open CommitteeDecisionApprove Notification 
+ * @param splitpane Notification GUI		
+ * @param path For open fxml ( used in fxml loader ) for open correct notification.
+ */
 	public void start(SplitPane splitpane, String path) {
 		primaryStage = LoginController.primaryStage;
 		try {
@@ -55,12 +63,17 @@ public class CommitteeDecisionApproveController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * Notification contents
+ * @param details contents
+ */
 	public static void setdetails(String details) {
 		ctrl.notdetails = details;
 		ctrl.DecisionLable.setText(ctrl.notdetails);
 	}
-
+ /**
+  * notification parameters will initialize
+  */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		requestID = NotificationsController.getidofrequestforDecision();

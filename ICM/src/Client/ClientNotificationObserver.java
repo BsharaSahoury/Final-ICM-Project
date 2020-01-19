@@ -6,7 +6,11 @@ import java.util.Observer;
 
 import Boundary.NotificationsController;
 import Entity.Notification;
-
+/**
+ * in this observer we handle to show the notifications that the user received 
+ * and he can open the notification to see the details
+ *
+ */
 public class ClientNotificationObserver implements Observer {
 	public ClientNotificationObserver(Observable client) {
 		client.addObserver(this);

@@ -6,7 +6,11 @@ import java.util.Observer;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
+/**
+ * in this observer we show message to the inspector that the reject of the committee member
+ * send to the initiator by sms and email to approve the decision
+ *
+ */
 public class ClientRejectRequestMessageSendToInitiatorObserver implements Observer {
 	public ClientRejectRequestMessageSendToInitiatorObserver(Observable client) {
 		client.addObserver(this);

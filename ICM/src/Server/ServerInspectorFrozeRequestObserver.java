@@ -9,12 +9,18 @@ import DBconnection.mysqlConnection;
 import Entity.Employee;
 import Entity.User;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * this observer handle the situation when the inspector freaze the request.
+ *
+ */
 public class ServerInspectorFrozeRequestObserver implements Observer {
 	public ServerInspectorFrozeRequestObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we change the status of the relevant request to frozen
+ * and we save the update and the explanation of the update in the update table in DB.
+ */
 	@Override
 	public void update(Observable arg0, Object arg) {
 		// TODO Auto-generated method stub

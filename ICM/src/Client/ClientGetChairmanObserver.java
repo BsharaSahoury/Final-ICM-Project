@@ -8,7 +8,11 @@ import Boundary.ChairmanHomeController;
 import Boundary.ComitteeMemberHomeController;
 import Boundary.RequestsWorkedOnController;
 import Entity.Employee;
-
+/**
+ * in this observer we save the chairman that we ask to receive from the DB
+ * in the committee member hom controller
+ *
+ */
 public class ClientGetChairmanObserver implements Observer {
 	public ClientGetChairmanObserver(Observable server) {
 		server.addObserver(this);

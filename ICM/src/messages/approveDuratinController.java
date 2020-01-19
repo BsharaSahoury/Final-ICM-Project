@@ -25,7 +25,11 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * 
+ * Decision of the request duration
+ * you can approve or change dates.
+ */
 public class approveDuratinController implements Initializable {
 	@FXML
 	Label label;
@@ -44,7 +48,15 @@ public class approveDuratinController implements Initializable {
 	public static SplitPane splitpane;
 	public static int id;
 	public static String phase;
-
+/**
+ *  will open splitpane of the notification 
+ * @param splitpane   open suitable notification GUI
+ * @param content     in the content sent the dates
+ * @param start       start date
+ * @param due         due date
+ * @param id          request id
+ * @param p           Request phase
+ */
 	public void start(SplitPane splitpane, String content, String start, String due, int id, String p) {
 		this.id = id;
 		this.phase = p;
@@ -62,7 +74,9 @@ public class approveDuratinController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
+/** 
+ * approve the duration of the request
+ */
 	public void approveAction() {
 		if (ClientConsole.map.get(id).equals("frozen")) {
 			ClientConsole.displayFreezeError();
@@ -92,7 +106,9 @@ public class approveDuratinController implements Initializable {
 			alertWarning.showAndWait();
 		}
 	}
-
+/**
+ * initialize the message content ( date of duration )
+ */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		String keymessage = "checkAprproveDuration";
@@ -105,7 +121,10 @@ public class approveDuratinController implements Initializable {
 		}
 
 	}
-
+/**
+ * check if the duration approved. if approved will show alert warning with suitable text. 
+ * @param rp Request phase
+ */
 	public void checkApprove(RequestPhase rp) {
 		Platform.runLater(new Runnable() {
 

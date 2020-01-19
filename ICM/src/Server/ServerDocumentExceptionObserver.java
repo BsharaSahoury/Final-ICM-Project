@@ -6,12 +6,18 @@ import java.util.Observer;
 
 import DBconnection.mysqlConnection;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * In the observer we add the document of the exception from the inspector.
+ *
+ */
 public class ServerDocumentExceptionObserver implements Observer {
 	public ServerDocumentExceptionObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we add to DB the documents of the exception from the inspector
+ * when the phase end with exception
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

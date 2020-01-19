@@ -22,7 +22,11 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * 	Decision Committee Member Notification 
+ * 
+ *
+ */
 public class DecisionCommitteeMemberMessageController implements Initializable {
 	@FXML
 	Label DecisionLable;
@@ -37,7 +41,10 @@ public class DecisionCommitteeMemberMessageController implements Initializable {
 	private String CommitteeDecision;
 	public static int flag = -1;
 	private static String notdetails;
-
+/**
+ * open Notification GUI
+ * @param splitpane GUI
+ */
 	public void start(SplitPane splitpane) {
 		primaryStage = LoginController.primaryStage;
 		try {
@@ -58,12 +65,18 @@ public class DecisionCommitteeMemberMessageController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * Set Notification contents.
+ * @param details
+ */
 	public static void setdetails(String details) {
 		ctrl.notdetails = details;
 		ctrl.DecisionLable.setText(ctrl.notdetails);
 	}
-
+/**
+ * 
+ * @param e ActionEvent ( clicking on button ).
+ */
 	public void approveAction(ActionEvent e) {
 		approve.setDisable(true);
 		if (ClientConsole.map.get(requestID).equals("frozen")) {
@@ -77,15 +90,11 @@ public class DecisionCommitteeMemberMessageController implements Initializable {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		/*
-		 * else { Alert alertSuccess = new Alert(AlertType.WARNING);
-		 * alertSuccess.setTitle("Warning");
-		 * alertSuccess.setHeaderText("Already Approve");
-		 * alertSuccess.setContentText("You already approved this decision");
-		 * alertSuccess.show(); }
-		 */
+	
 	}
-
+/**
+ * initialize notification variables before start the notification.
+ */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		notificationID = NotificationsController.getidnotification();

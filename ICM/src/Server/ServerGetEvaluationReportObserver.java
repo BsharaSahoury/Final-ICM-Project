@@ -8,12 +8,17 @@ import java.util.Observer;
 import DBconnection.mysqlConnection;
 import Entity.EvaluationReport;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * In this observer we handle the situation when we need to see the evaluation report
+ *
+ */
 public class ServerGetEvaluationReportObserver implements Observer {
 	public ServerGetEvaluationReportObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * this function return the evaluation report of a relevant request to the client
+ */
 	@Override
 	public void update(Observable arg0, Object arg) {
 		// TODO Auto-generated method stub

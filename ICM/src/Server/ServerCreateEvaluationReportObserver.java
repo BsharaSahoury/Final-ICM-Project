@@ -13,12 +13,18 @@ import Entity.Notification;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * in this observer we handle to enter the evaluation report into the DB 
+ *
+ */
 public class ServerCreateEvaluationReportObserver implements Observer {
 	public ServerCreateEvaluationReportObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we save the evaluation report in the DB
+ * and we send notification to the committee members that the request passed to the decision phase
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

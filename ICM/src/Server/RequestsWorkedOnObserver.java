@@ -12,12 +12,20 @@ import Entity.Request;
 import Entity.RequestPhase;
 import Entity.User;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * This is the observer of the request,
+ * that the engineers and the committee members working on.
+ *
+ */
 public class RequestsWorkedOnObserver implements Observer {
 	public RequestsWorkedOnObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we wait for a message from the committee members and the engineers,
+ * in order to get the requests that they working on from the DB and send them to the client,
+ * in order to fill the committee members and the engineers,so they can see this requests.
+ */
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub

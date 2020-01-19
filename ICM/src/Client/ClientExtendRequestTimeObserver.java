@@ -7,7 +7,12 @@ import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import ocsf.client.ObservableClient;
-
+/**
+ * In this observer we show the phase administrator that his extension request send
+ *to the inspector and when he tries to ask for anther extension we show him that he can
+ *only ask for extension one time per stage 
+ *
+ */
 public class ClientExtendRequestTimeObserver implements Observer {
 	public ClientExtendRequestTimeObserver(ObservableClient client) {
 		client.addObserver(this);

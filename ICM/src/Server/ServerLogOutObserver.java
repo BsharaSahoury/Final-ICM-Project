@@ -7,12 +7,18 @@ import java.util.Observer;
 
 import DBconnection.mysqlConnection;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * this observer handle the situation when the user want to log-out from the system.
+ *
+ */
 public class ServerLogOutObserver implements Observer {
 	public ServerLogOutObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * This function log-out the relevant user from the system and change the 'logggin' situation
+ * in user table to 'NO'
+ */
 	@Override
 	public void update(Observable o, Object arg) {
 		Object[] args = null;

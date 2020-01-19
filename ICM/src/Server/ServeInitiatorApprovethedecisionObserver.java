@@ -10,12 +10,19 @@ import DBconnection.mysqlConnection;
 import Entity.Employee;
 import Entity.Notification;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * This is the observer that handle
+ *  the approve of the Initiator to the decision of the employee
+ * 
+ */
 public class ServeInitiatorApprovethedecisionObserver implements Observer {
 	public ServeInitiatorApprovethedecisionObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this update function we check the decision that has been approved form the Inspector
+ * and send a notification to the initiator in order to approve this decision to close the request.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub

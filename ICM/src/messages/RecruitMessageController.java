@@ -7,7 +7,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ *Notification for telling the person that has been recruited for a request 
+ * @author BSHARA
+ *
+ */
 public class RecruitMessageController {
 	@FXML
 	Label label1;
@@ -16,7 +20,11 @@ public class RecruitMessageController {
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
 	public static SplitPane splitpane;
-
+/**
+ * start Notification GUI
+ * @param splitpane GUI
+ * @param id Request-Id
+ */
 	public void start(SplitPane splitpane, int id) {
 		primaryStage = LoginController.primaryStage;
 		try {

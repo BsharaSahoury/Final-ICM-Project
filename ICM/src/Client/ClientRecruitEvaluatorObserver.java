@@ -6,7 +6,10 @@ import java.util.Observer;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
+/**
+ * in this observer we show message to the inspector that his recruit saved sucessfully
+ *
+ */
 public class ClientRecruitEvaluatorObserver implements Observer {
 	public ClientRecruitEvaluatorObserver(Observable client) {
 		client.addObserver(this);

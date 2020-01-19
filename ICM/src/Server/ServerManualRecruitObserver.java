@@ -14,12 +14,18 @@ import Entity.Notification;
 import Entity.Phase;
 import javafx.collections.ObservableList;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * this observer handle the situation of any recruit that has been set by the inspector.
+ *
+ */
 public class ServerManualRecruitObserver implements Observer {
 	public ServerManualRecruitObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we assign the relevant employee to the request and we save the result
+ * in DB and we send notification to the employee that he has been recruited to the relevant request.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

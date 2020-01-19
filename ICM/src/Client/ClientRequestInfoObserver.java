@@ -5,7 +5,11 @@ import java.util.Observer;
 import Boundary.RequestInfoController;
 import Entity.Request;
 import ocsf.client.ObservableClient;;
-
+/**
+ * in this observer we set the information about the request that we received from the DB
+ * in the request info window
+ *
+ */
 public class ClientRequestInfoObserver implements Observer {
 
 	public ClientRequestInfoObserver(ObservableClient client) {

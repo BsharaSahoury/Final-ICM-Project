@@ -7,12 +7,17 @@ import java.util.Observer;
 
 import DBconnection.mysqlConnection;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * In this observer we handle the situation when we need the full name of specific Initiator.
+ *
+ */
 public class ServerGetFullNameOfEmployeeObserver implements Observer {
 	public ServerGetFullNameOfEmployeeObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we return the full name of the relevant Initiator from the DB to the client.
+ */
 	@Override
 	public void update(Observable arg0, Object arg) {
 		// TODO Auto-generated method stub

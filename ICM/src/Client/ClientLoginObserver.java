@@ -31,7 +31,10 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
+/**
+ * in this observer we decide witch window we have to open for the user depends on his job.
+ *
+ */
 public class ClientLoginObserver implements Observer {
 	private static InspectorHomeController inspector;
 	private Employee employee1;

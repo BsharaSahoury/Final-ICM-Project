@@ -10,12 +10,17 @@ import java.util.Observer;
 
 import DBconnection.mysqlConnection;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * In this observer we handle the situation of ask for details to the perioduc report
+ *
+ */
 public class ServerPeriodricReportForDaysObserver implements Observer {
 	public ServerPeriodricReportForDaysObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * in this function we return all of the relevant details  the we need to create the periodic report
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

@@ -6,7 +6,10 @@ import java.util.Observer;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
+/**
+ * in this observer we show message to the initiator that his approved for the decision saved sucessfully
+ *
+ */
 public class ClientInitiatorapprovedrequestdecisionObserver implements Observer {
 	public ClientInitiatorapprovedrequestdecisionObserver(Observable client) {
 		client.addObserver(this);

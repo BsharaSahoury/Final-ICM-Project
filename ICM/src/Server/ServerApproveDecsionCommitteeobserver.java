@@ -10,12 +10,19 @@ import DBconnection.mysqlConnection;
 import Entity.Employee;
 import Entity.Notification;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * This is the observer that handle the approve of the chairman to the committee members decision
+ *
+ */
 public class ServerApproveDecsionCommitteeobserver implements Observer {
 	public ServerApproveDecsionCommitteeobserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we add request to the DB with the relevant phase depends on committee decision
+ * and we send notification to the inspector with the committee decision and the approve of the chairman
+ * In order to recruit relevant phase administrator to the next phase.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub

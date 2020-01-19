@@ -10,12 +10,19 @@ import DBconnection.mysqlConnection;
 import ocsf.server.ConnectionToClient;
 import Entity.Request;
 import Entity.RequestPhase;
-
+/**
+ * in this observer we handle the situation when the initiator want to track the relevant request
+ *
+ */
 public class ServerRequestTrackObserver implements Observer {
 	public ServerRequestTrackObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * in this function we return the relevant request with all of the details 
+ * that the initiator can see when he want to track the request
+ * in order to display them on the request status window.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

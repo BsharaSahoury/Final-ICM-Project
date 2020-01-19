@@ -10,12 +10,19 @@ import DBconnection.mysqlConnection;
 import Entity.Employee;
 import Entity.Notification;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * This observer handle the automatic recruit of evaluator for any request.
+ *
+ */
 public class ServerAutomaticRecruitObserver implements Observer {
 	public ServerAutomaticRecruitObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * This function get the evaluator that has been approved to evaluate the relevant request
+ * and recruit him as phase administrator for the evaluation phase of the request
+ * and send notification for this evaluator that he has been recruited to evaluate the request.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

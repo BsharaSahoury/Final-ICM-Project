@@ -9,7 +9,10 @@ import Entity.Request;
 import Entity.RequestPhase;
 import javafx.application.Platform;
 import ocsf.client.ObservableClient;;
-
+/**
+ * 
+ * in this observer we show the track information about the request to the initiator
+ */
 public class ClientRequestTrack implements Observer {
 
 	public ClientRequestTrack(ObservableClient client) {

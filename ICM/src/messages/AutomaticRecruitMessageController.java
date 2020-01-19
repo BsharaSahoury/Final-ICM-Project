@@ -30,10 +30,14 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * Notification send to inspector for AutomaticRecruit from system for a new
+ * request submission.
+ * 
+ *
+ */
 public class AutomaticRecruitMessageController implements Initializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	@FXML
 	Label requestLabel;
@@ -56,6 +60,13 @@ public class AutomaticRecruitMessageController implements Initializable {
 	private String fullname;
 	private ObservableList<String> list;
 
+	/**
+	 * opens AutomaticRecruit notification
+	 * 
+	 * @param splitpane notification GUI
+	 * @param id        Request ID
+	 * @param fullname  the name of the recruited person
+	 */
 	public void start(SplitPane splitpane, int id, String fullname) {
 		primaryStage = LoginController.primaryStage;
 		try {
@@ -79,6 +90,13 @@ public class AutomaticRecruitMessageController implements Initializable {
 		}
 	}
 
+	/**
+	 * if click on approve button will recruit phase administrator for the request
+	 * if approved the recruit will send notification to the person contains that he
+	 * recruited successfully for request#.
+	 * 
+	 * @param e ActionEvent ( when click on approveAction)
+	 */
 	public void approveAction(ActionEvent e) {
 		if (ClientConsole.map.get(requestID).equals("frozen")) {
 			ClientConsole.displayFreezeError();
@@ -95,6 +113,12 @@ public class AutomaticRecruitMessageController implements Initializable {
 		}
 	}
 
+	/**
+	 * if the inspector want another person recruit , he can choose manually . the
+	 * inspector can choose from combobox suitable person and click approve.
+	 * 
+	 * @param e ActionEvent ( click on button)
+	 */
 	public void chooseOtherAction(ActionEvent e) {
 		String fullname = combo.getSelectionModel().getSelectedItem();
 		if (fullname == null) {
@@ -117,6 +141,10 @@ public class AutomaticRecruitMessageController implements Initializable {
 
 	}
 
+	/**
+	 * initialize all available evaluators for present to inspector if want to
+	 * choose manually.
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		Object[] msg = { "evaluators", getClass().getName() };
@@ -128,6 +156,11 @@ public class AutomaticRecruitMessageController implements Initializable {
 		}
 	}
 
+	/**
+	 * this method fill the combo
+	 * 
+	 * @param names evaluators
+	 */
 	public void fillCombo(ArrayList<String> names) {
 		Platform.runLater(new Runnable() {
 			@Override
@@ -145,6 +178,11 @@ public class AutomaticRecruitMessageController implements Initializable {
 		});
 	}
 
+	/**
+	 * if the inspector already set evaluator will disable button approve
+	 * 
+	 * @param request RequestPhase
+	 */
 	public void checkEvaluator(RequestPhase request) {
 		if (request.getEmployee() != null) {
 			approve.setDisable(true);

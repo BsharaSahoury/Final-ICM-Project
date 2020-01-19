@@ -16,7 +16,11 @@ import messages.ExtensionConfirmationMessage;
 import messages.FailedTestMessageController;
 import messages.RejectMessageInitiatorController;
 import messages.massageToAdmenToApproveExtension;
-
+/**
+ * in this observer we handle the details of the notification that we try to open for any user
+ * 
+ *
+ */
 public class ClientNotificationdetailsObserver implements Observer {
 	public ClientNotificationdetailsObserver(Observable client) {
 		client.addObserver(this);

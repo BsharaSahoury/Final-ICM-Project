@@ -6,7 +6,10 @@ import java.util.Observer;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
+/**
+ * in this observer we show message to the committee members that there decision send to chairman successfully
+ *
+ */
 public class ClientDecisionCommitteMemberObserver implements Observer {
 	public ClientDecisionCommitteMemberObserver(Observable client) {
 		client.addObserver(this);

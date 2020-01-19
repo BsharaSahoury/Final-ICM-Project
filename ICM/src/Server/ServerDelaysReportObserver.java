@@ -8,12 +8,18 @@ import java.util.Observer;
 
 import DBconnection.mysqlConnection;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * this observer return the details that we need for the delays report
+ *
+ */
 public class ServerDelaysReportObserver implements Observer {
 	public ServerDelaysReportObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * in this function we get the delays request from the DB with the relevant details
+ * In order to create the delays report.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {
