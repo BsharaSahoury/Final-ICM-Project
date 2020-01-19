@@ -100,8 +100,7 @@ public class RequestsWorkedOnController implements Initializable {
 			this.splitpane = splitpane;
 			RequestWorkedON[0] = "Requests worked on";
 			if (job.equals("Comittee Member") && phase.equals("decision")) {
-				RequestWorkedON[1] = user.getUsername();// ComitteeMemberHomeController.Chairman.getUsername();
-				// System.out.println(ComitteeMemberHomeController.Chairman.getUsername());
+				RequestWorkedON[1] = user.getUsername();	
 			} else if (job.equals("Engineer")) {
 				RequestWorkedON[0] = "engineer request work on";
 				RequestWorkedON[1] = user.getUsername();
