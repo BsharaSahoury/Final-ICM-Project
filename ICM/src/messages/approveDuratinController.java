@@ -41,38 +41,41 @@ public class approveDuratinController implements Initializable {
 	public static approveDuratinController ctrl;
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
-	public  static SplitPane splitpane;
+	public static SplitPane splitpane;
 	public static int id;
 	public static String phase;
-	public void start(SplitPane splitpane,String content, String start, String due, int id, String p) {
-		this.id=id;
-		this.phase=p;
-		primaryStage=LoginController.primaryStage;
-		try{	
+
+	public void start(SplitPane splitpane, String content, String start, String due, int id, String p) {
+		this.id = id;
+		this.phase = p;
+		primaryStage = LoginController.primaryStage;
+		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/messages/approveDuration.fxml"));
 			lowerAnchorPane = loader.load();
-			ctrl=loader.getController();
+			ctrl = loader.getController();
 			splitpane.getItems().set(1, lowerAnchorPane);
-			this.splitpane=splitpane;
+			this.splitpane = splitpane;
 			ctrl.label.setVisible(false);
 			ctrl.label.setText(content);
 			ctrl.label.setVisible(true);
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}			
+		}
 	}
-	public void approveAction(){
-		if(ClientConsole.map.get(id).equals("frozen")) {
+
+	public void approveAction() {
+		if (ClientConsole.map.get(id).equals("frozen")) {
 			ClientConsole.displayFreezeError();
 			return;
 		}
 		LocalDate startDate = start.getValue();
 		LocalDate dueDate = due.getValue();
 		LocalDate today = LocalDate.now();
-		if (startDate != null && dueDate != null & dueDate.compareTo(startDate) >= 0 && startDate.compareTo(today) >= 0) {
-			String keymessage ="ispector duration";
+		if (startDate != null && dueDate != null & dueDate.compareTo(startDate) >= 0
+				&& startDate.compareTo(today) >= 0) {
+			String keymessage = "ispector duration";
 			LocalDate d[] = { startDate, dueDate };
-			Object[] message = { keymessage, id, d,Enum.valueOf(Phase.class, phase),State.wait};
+			Object[] message = { keymessage, id, d, Enum.valueOf(Phase.class, phase), State.wait };
 
 			try {
 				LoginController.cc.getClient().sendToServer(message);
@@ -82,18 +85,18 @@ public class approveDuratinController implements Initializable {
 			}
 			approve.setDisable(true);
 
+		} else {
+			Alert alertWarning = new Alert(AlertType.WARNING);
+			alertWarning.setHeaderText("Warning!");
+			alertWarning.setContentText("Please check the dates correctly");
+			alertWarning.showAndWait();
 		}
-		 else {
-				Alert alertWarning = new Alert(AlertType.WARNING);
-				alertWarning.setHeaderText("Warning!");
-				alertWarning.setContentText("Please check the dates correctly");
-				alertWarning.showAndWait();
-		 }
 	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		String keymessage ="checkAprproveDuration";
-		Object[] message = { keymessage, id, NotificationsController.getMyPhase()};
+		String keymessage = "checkAprproveDuration";
+		Object[] message = { keymessage, id, NotificationsController.getMyPhase() };
 		try {
 			LoginController.cc.getClient().sendToServer(message);
 		} catch (IOException e) {
@@ -102,13 +105,13 @@ public class approveDuratinController implements Initializable {
 		}
 
 	}
+
 	public void checkApprove(RequestPhase rp) {
 		Platform.runLater(new Runnable() {
-			
+
 			@Override
 			public void run() {
-				if(rp.getState().equals(State.work)||rp.getState().equals(State.wait))
-				{
+				if (rp.getState().equals(State.work) || rp.getState().equals(State.wait)) {
 					note.setVisible(false);
 					note.setText("* You already approved duration");
 					note.setVisible(true);
@@ -118,9 +121,9 @@ public class approveDuratinController implements Initializable {
 				LocalDate dueDate = rp.getDueDate().toLocalDate();
 				start.setValue(startDate);
 				due.setValue(dueDate);
-				
+
 			}
 		});
-		
+
 	}
 }

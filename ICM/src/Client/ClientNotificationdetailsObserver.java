@@ -49,9 +49,9 @@ public class ClientNotificationdetailsObserver implements Observer {
 									ExtensionConfirmationMessage.ctrl.setdetails(details);
 								else if (job.equals("FailedTestDetails")) {
 									FailedTestMessageController.ctrl.setdetails(details);
+								} else if (job.equals("admin message")) {
+									massageToAdmenToApproveExtension.ctrl.setdetails(details);
 								}
-								else if (job.equals("admin message")) {
-									massageToAdmenToApproveExtension.ctrl.setdetails(details);}
 							}
 						});
 					}

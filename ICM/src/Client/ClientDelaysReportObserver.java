@@ -13,17 +13,17 @@ public class ClientDelaysReportObserver implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		if(arg instanceof Object[]) {
-			Object[] arg1=(Object[])arg;
-			if(arg1[0] instanceof String) {
-				String keymessage=(String)arg1[0];
-				if(keymessage.equals("No.Delays") || keymessage.equals("Delays Durations")) {
-					ArrayList<Long> arr=(ArrayList<Long>)arg1[1];
-					ReportController.ctrl.buildDelayGraph(keymessage,arr);
+		if (arg instanceof Object[]) {
+			Object[] arg1 = (Object[]) arg;
+			if (arg1[0] instanceof String) {
+				String keymessage = (String) arg1[0];
+				if (keymessage.equals("No.Delays") || keymessage.equals("Delays Durations")) {
+					ArrayList<Long> arr = (ArrayList<Long>) arg1[1];
+					ReportController.ctrl.buildDelayGraph(keymessage, arr);
 				}
 			}
 		}
-		
+
 	}
 
 }

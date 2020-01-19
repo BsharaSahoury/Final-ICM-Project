@@ -16,24 +16,24 @@ public class ExceptionMessageController {
 	public static ExceptionMessageController ctrl;
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
-	public  static SplitPane splitpane;
+	public static SplitPane splitpane;
 
 	public void start(SplitPane splitpane, int id, String phase) {
-		primaryStage=LoginController.primaryStage;
-		try{	
+		primaryStage = LoginController.primaryStage;
+		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/messages/Exception Message.fxml"));
 			lowerAnchorPane = loader.load();
-			ctrl=loader.getController();
+			ctrl = loader.getController();
 			splitpane.getItems().set(1, lowerAnchorPane);
-			this.splitpane=splitpane;
+			this.splitpane = splitpane;
 			ctrl.label1.setVisible(false);
-			ctrl.label1.setText("There is an exception occured due to not finishing request #"+id+" "+phase+" by the given time!");
+			ctrl.label1.setText("There is an exception occured due to not finishing request #" + id + " " + phase
+					+ " by the given time!");
 			ctrl.label1.setVisible(true);
-			
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 }
-

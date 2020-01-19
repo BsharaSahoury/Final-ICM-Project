@@ -25,7 +25,7 @@ public class ServerCheckAprproveDurationObserver implements Observer {
 				String keymessage = (String) arg3[0];
 				if (keymessage.equals("checkAprproveDuration")) {
 					int id = (int) arg3[1];
-					String phase=(String)arg3[2];
+					String phase = (String) arg3[2];
 					Connection con = mysqlConnection.makeAndReturnConnection();
 					RequestPhase r = mysqlConnection.getRequestPhase(con, id, phase);
 					Object[] send = new Object[2];

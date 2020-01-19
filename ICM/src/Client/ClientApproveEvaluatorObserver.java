@@ -26,7 +26,7 @@ public class ClientApproveEvaluatorObserver implements Observer {
 						Platform.runLater(new Runnable() {
 							@Override
 							public void run() {
-						AutomaticRecruitMessageController.ctrl.checkEvaluator(request);
+								AutomaticRecruitMessageController.ctrl.checkEvaluator(request);
 							}
 						});
 					}

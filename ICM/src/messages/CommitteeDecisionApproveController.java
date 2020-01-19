@@ -22,7 +22,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-
 public class CommitteeDecisionApproveController implements Initializable {
 	@FXML
 	Label DecisionLable;
@@ -30,42 +29,43 @@ public class CommitteeDecisionApproveController implements Initializable {
 	public static CommitteeDecisionApproveController ctrl;
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
-	public  static SplitPane splitpane;
+	public static SplitPane splitpane;
 	private int requestID;
 	private String CommitteeDecision;
-	 public static int flag=-1;
-	 private static String notdetails;
-	 private static int notificationID;
-	public void start(SplitPane splitpane,String path) {
-		primaryStage=LoginController.primaryStage;
-		try{	
+	public static int flag = -1;
+	private static String notdetails;
+	private static int notificationID;
+
+	public void start(SplitPane splitpane, String path) {
+		primaryStage = LoginController.primaryStage;
+		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
 			lowerAnchorPane = loader.load();
-			ctrl=loader.getController();
-			Object[] message= {"get explain notification",ctrl.notificationID,"inspector to recruit performance"};
+			ctrl = loader.getController();
+			Object[] message = { "get explain notification", ctrl.notificationID, "inspector to recruit performance" };
 			try {
 				LoginController.cc.getClient().sendToServer(message);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}	
+			}
 			splitpane.getItems().set(1, lowerAnchorPane);
-			this.splitpane=splitpane;			
-		} catch(Exception e) {
+			this.splitpane = splitpane;
+		} catch (Exception e) {
 			e.printStackTrace();
-		}			
+		}
 	}
+
 	public static void setdetails(String details) {
-		ctrl.notdetails=details;
+		ctrl.notdetails = details;
 		ctrl.DecisionLable.setText(ctrl.notdetails);
 	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		requestID=NotificationsController.getidofrequestforDecision();
-		CommitteeDecision=NotificationsController.getDecisionofcommitteemember();
-		requestID=NotificationsController.getidofrequestforDecision();
-		notificationID=NotificationsController.getidnotification();	
+		requestID = NotificationsController.getidofrequestforDecision();
+		CommitteeDecision = NotificationsController.getDecisionofcommitteemember();
+		requestID = NotificationsController.getidofrequestforDecision();
+		notificationID = NotificationsController.getidnotification();
 	}
 }
-
-

@@ -15,11 +15,10 @@ import javafx.stage.Stage;
 
 public class MainForClient extends Application {
 	public static Stage stage;
-	public static  String[] args;
-
+	public static String[] args;
 
 	public static void main(String[] args) {
-		MainForClient.args=args;
+		MainForClient.args = args;
 		System.out.println(args.toString());
 		MainForClient.launch(args);
 		// TODO Auto-generated method stub
@@ -29,23 +28,19 @@ public class MainForClient extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
-		// TODO Auto-generated method stub
-		Parent root = FXMLLoader.load(getClass().getResource("/Boundary/MainClient.fxml"));
-		Scene scene = new Scene(root);
-		primaryStage.setScene(scene);
-		primaryStage.setResizable(false);		
-		primaryStage.setTitle("ICM-Client");
-		primaryStage.show();
-		stage=primaryStage;
+			// TODO Auto-generated method stub
+			Parent root = FXMLLoader.load(getClass().getResource("/Boundary/MainClient.fxml"));
+			Scene scene = new Scene(root);
+			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
+			primaryStage.setTitle("ICM-Client");
+			primaryStage.show();
+			stage = primaryStage;
+		} catch (SocketException e1) {
+			System.out.println("Client Stopped!!");
+		} catch (RuntimeException e2) {
+			System.out.println("Client Stopped!!");
 		}
-		catch(SocketException e1) 
-		{
-			System.out.println("Client Stopped!!");	
-		}
-		catch(RuntimeException e2) 
-		{
-			System.out.println("Client Stopped!!");		
-		}		
 	}
 
 }

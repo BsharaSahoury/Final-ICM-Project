@@ -29,57 +29,59 @@ public class ChooseTesterMessageController implements Initializable {
 	ComboBox<String> combo;
 	@FXML
 	Button recruit;
-	
+
 	public static ChooseTesterMessageController ctrl;
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
-	public  static SplitPane splitpane;
+	public static SplitPane splitpane;
 	private ObservableList<String> list;
 	private static int requestID;
-	public void start(SplitPane splitpane,int id) {
-		primaryStage=LoginController.primaryStage;
-		this.requestID=id;
-		try{	
+
+	public void start(SplitPane splitpane, int id) {
+		primaryStage = LoginController.primaryStage;
+		this.requestID = id;
+		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/messages/ChooseTester-message.fxml"));
 			lowerAnchorPane = loader.load();
-			ctrl=loader.getController();
+			ctrl = loader.getController();
 			splitpane.getItems().set(1, lowerAnchorPane);
-			this.splitpane=splitpane;
+			this.splitpane = splitpane;
 			ctrl.label1.setVisible(false);
-			ctrl.label1.setText("Performance phase is complete for request#"+requestID+".");
+			ctrl.label1.setText("Performance phase is complete for request#" + requestID + ".");
 			ctrl.label1.setVisible(true);
-			
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
-		}			
+		}
 	}
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		Object[] msg= {"comittee members",getClass().getName()};
+		Object[] msg = { "comittee members", getClass().getName() };
 		try {
 			LoginController.cc.getClient().sendToServer(msg);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
-		
+		}
+
 	}
+
 	public void recruitAction(ActionEvent e) {
-		if(ClientConsole.map.get(requestID).equals("frozen")) {
+		if (ClientConsole.map.get(requestID).equals("frozen")) {
 			ClientConsole.displayFreezeError();
 			return;
 		}
-		String fullname=combo.getSelectionModel().getSelectedItem();
-		if(fullname==null) {
+		String fullname = combo.getSelectionModel().getSelectedItem();
+		if (fullname == null) {
 			Alert alert = new Alert(AlertType.WARNING);
-	        alert.setTitle("TEST");
-	        alert.setHeaderText("ERROR");
-	        alert.setContentText("please choose an tester");
-	        alert.showAndWait();
-	        return;
+			alert.setTitle("TEST");
+			alert.setHeaderText("ERROR");
+			alert.setContentText("please choose an tester");
+			alert.showAndWait();
+			return;
 		}
-		Object[] msg= {"manualTester",fullname,requestID};
+		Object[] msg = { "manualTester", fullname, requestID };
 		try {
 			LoginController.cc.getClient().sendToServer(msg);
 		} catch (IOException e1) {
@@ -87,8 +89,9 @@ public class ChooseTesterMessageController implements Initializable {
 			e1.printStackTrace();
 		}
 	}
+
 	public void fillCombo(ArrayList<String> names) {
-		list=FXCollections.observableArrayList(names);
+		list = FXCollections.observableArrayList(names);
 		combo.setItems(list);
 	}
 

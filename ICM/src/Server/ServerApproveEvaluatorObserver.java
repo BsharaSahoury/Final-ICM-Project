@@ -9,7 +9,7 @@ import DBconnection.mysqlConnection;
 import Entity.RequestPhase;
 import ocsf.server.ConnectionToClient;
 
-public class ServerApproveEvaluatorObserver  implements Observer {
+public class ServerApproveEvaluatorObserver implements Observer {
 	public ServerApproveEvaluatorObserver(Observable server) {
 		server.addObserver(this);
 	}
@@ -24,7 +24,7 @@ public class ServerApproveEvaluatorObserver  implements Observer {
 				String keymessage = (String) arg3[0];
 				if (keymessage.equals("evaluatorapproves")) {
 					int id = (int) arg3[1];
-					String phase=(String)arg3[2];
+					String phase = (String) arg3[2];
 					Connection con = mysqlConnection.makeAndReturnConnection();
 					RequestPhase r = mysqlConnection.getRequestPhase(con, id, phase);
 					Object[] send = new Object[2];
@@ -41,4 +41,3 @@ public class ServerApproveEvaluatorObserver  implements Observer {
 		}
 	}
 }
-

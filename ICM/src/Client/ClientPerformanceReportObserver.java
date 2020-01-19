@@ -14,20 +14,16 @@ public class ClientPerformanceReportObserver implements Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		if(arg1 instanceof Object[]) {
-			Object[] arg2=(Object[])arg1;
-			if(arg2[0] instanceof String) {
-				String keymessage=(String)arg2[0];
-				if(keymessage.equals("Extension durations") || keymessage.equals("repetion durations")) {
-					ArrayList<ExtensionDuration> arr=(ArrayList<ExtensionDuration>)arg2[1];
-					ReportController.ctrl.getPerformanceData(arr,keymessage);
+		if (arg1 instanceof Object[]) {
+			Object[] arg2 = (Object[]) arg1;
+			if (arg2[0] instanceof String) {
+				String keymessage = (String) arg2[0];
+				if (keymessage.equals("Extension durations") || keymessage.equals("repetion durations")) {
+					ArrayList<ExtensionDuration> arr = (ArrayList<ExtensionDuration>) arg2[1];
+					ReportController.ctrl.getPerformanceData(arr, keymessage);
 				}
-				}
-		}
-
 			}
 		}
-		
 
-
-
+	}
+}

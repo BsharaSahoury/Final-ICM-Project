@@ -27,8 +27,7 @@ public class ClientGetExtensionDataObsaerver implements Observer {
 						}
 
 					});
-				}
-				else if(keymessage.equals("get extension data admen")) {
+				} else if (keymessage.equals("get extension data admen")) {
 					String[] data = (String[]) arg1[1];
 					Platform.runLater(new Runnable() {
 						@Override

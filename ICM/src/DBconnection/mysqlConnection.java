@@ -828,10 +828,9 @@ public class mysqlConnection {
 				stm2 = con.prepareStatement("SELECT E.* FROM icm.employee E WHERE username=?;");
 				stm2.setString(1, username);
 				ResultSet rs2 = stm2.executeQuery();
-				if (rs2.next()) {
+				if (rs2.next())
 					Initiatorname = rs2.getString(2) + " " + rs2.getString(3);
-					role = rs2.getString(4);
-				}
+				role = rs2.getString(4);
 				if (Initiatorname == null) {
 					stm2 = con.prepareStatement("SELECT E.* FROM icm.student E WHERE username=?;");
 					stm2.setString(1, rs.getString(9));
@@ -842,7 +841,7 @@ public class mysqlConnection {
 				}
 				if (Initiatorname != null) {
 					if (rs.getBytes(10) == null) {
-						r = new Request(rs.getInt(7), Initiatorname, role, rs2.getString(8), rs.getString(8),
+						r = new Request(rs.getInt(7), Initiatorname, rs2.getString(5),role, rs.getString(8),
 								rs.getString(2), rs.getString(3), rs.getString(1), rs.getString(4), rs.getString(5),
 								rs.getDate(6), new MyFile(), null);
 					} else {
@@ -1194,31 +1193,28 @@ public class mysqlConnection {
 					stm3.executeUpdate();
 				}
 			} else if (dec.equals("reject")) {
-			
-					stm = con.prepareStatement("INSERT INTO requestinphase VALUES(?,?,?,?,?,?,?);");
-					stm.setInt(1, id);
-					stm.setString(2, "closing");
-					stm.setInt(3, 0);
-					stm.setString(4, null);
-					stm.setString(5, null);
-					stm.setString(6, null);
-					stm.setString(7, "wait");
-					stm.executeUpdate();
-					PreparedStatement stm6 = con.prepareStatement(
-							"SELECT MAX(icm.requestinphase.repetion) FROM icm.requestinphase where request_id=? AND phase=?;");
-					stm6.setInt(1, id);
-					stm6.setString(2, "decision");
-					ResultSet rs3 = stm6.executeQuery();
-					System.out.println("llll");
-					System.out.println(id);
-					if (rs3.next()) {
-						System.out.println("ggg");
-						stm3 = con.prepareStatement(
-								"UPDATE icm.requestinphase SET state='over' WHERE request_id = ? and phase='decision' and repetion=?;");
-						stm3.setInt(1, id);
-						stm3.setInt(2, rs3.getInt(1));
-						stm3.executeUpdate();
-					
+
+				stm = con.prepareStatement("INSERT INTO requestinphase VALUES(?,?,?,?,?,?,?);");
+				stm.setInt(1, id);
+				stm.setString(2, "closing");
+				stm.setInt(3, 0);
+				stm.setString(4, null);
+				stm.setString(5, null);
+				stm.setString(6, null);
+				stm.setString(7, "wait");
+				stm.executeUpdate();
+				PreparedStatement stm6 = con.prepareStatement(
+						"SELECT MAX(icm.requestinphase.repetion) FROM icm.requestinphase where request_id=? AND phase=?;");
+				stm6.setInt(1, id);
+				stm6.setString(2, "decision");
+				ResultSet rs3 = stm6.executeQuery();
+				if (rs3.next()) {
+					stm3 = con.prepareStatement(
+							"UPDATE icm.requestinphase SET state='over' WHERE request_id = ? and phase='decision' and repetion=?;");
+					stm3.setInt(1, id);
+					stm3.setInt(2, rs3.getInt(1));
+					stm3.executeUpdate();
+
 					mysqlConnection.updateCurrentPhase(con, id, Phase.closing);
 				}
 			} else {
@@ -1323,17 +1319,20 @@ public class mysqlConnection {
 			stm2.setInt(1, er.getRequestID());
 			stm2.setInt(2, maxRepetion);
 			stm2.executeUpdate();
+			LocalDate date1 = LocalDate.now().plusDays(1);
+			LocalDate date2 = LocalDate.now().plusDays(8);
+
 			long millis = System.currentTimeMillis();
-			Date Startdate = new java.sql.Date(millis);
-			long newmillis=Startdate.getTime()+(int) (1000 * 60 * 60 * 24);
-			Date newStartdate = new java.sql.Date(newmillis);
+			millis = millis + (int) (1000 * 60 * 60 * 24);
+
+			Date Startdate = Date.valueOf(date1);
 			long week = Startdate.getTime() + (int) (1000 * 60 * 60 * 24 * 7);
-			Date dueDate = new java.sql.Date(week);
+			Date dueDate = Date.valueOf(date2);
 			PreparedStatement stm3 = con.prepareStatement("INSERT INTO icm.requestinphase  VALUES(?,?,?,?,?,?,?) ");
 			stm3.setInt(1, er.getRequestID());
 			stm3.setString(2, "decision");
 			stm3.setInt(3, maxRepetion);
-			stm3.setDate(4, newStartdate);
+			stm3.setDate(4, Startdate);
 			stm3.setDate(5, dueDate);
 			Employee chairman = mysqlConnection.getChairman(con);
 			stm3.setString(6, chairman.getUsername());
@@ -2503,7 +2502,7 @@ public class mysqlConnection {
 				stm2.setString(3, phase);
 				stm2.setInt(4, repetion);
 				stm2.executeUpdate();
-			} 
+			}
 			if (due != null) {
 				stm2 = con.prepareStatement(
 						"UPDATE requestinphase SET due_date=? WHERE request_id=? AND phase=? AND repetion=?;");
@@ -2665,19 +2664,18 @@ public class mysqlConnection {
 		}
 		return employee;
 	}
-     public static void changestatewaitforapproveDecision(Connection con,int id,int repetion) {
-    		PreparedStatement st = null;
-			System.out.println("xxc");
-			System.out.println(id);
-			System.out.println(repetion);
-    		try {
-    			st=con.prepareStatement("UPDATE icm.requestinphase SET state='waitingForApprove' WHERE request_id=? AND phase='decision' AND repetion=?;");
-    			st.setInt(1,id);
-                st.setInt(2, repetion);
-            	st.executeUpdate();
-    		} catch (SQLException e) {
-    			// TODO Auto-generated catch block
-    			e.printStackTrace();
-    		}
-     }
+
+	public static void changestatewaitforapproveDecision(Connection con, int id, int repetion) {
+		PreparedStatement st = null;
+		try {
+			st = con.prepareStatement(
+					"UPDATE icm.requestinphase SET state='waitingForApprove' WHERE request_id=? AND phase='decision' AND repetion=?;");
+			st.setInt(1, id);
+			st.setInt(2, repetion);
+			st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

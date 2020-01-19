@@ -18,19 +18,19 @@ public class ClientGetEvaluationReportObserver implements Observer {
 		if (arg instanceof Object[]) {
 			Object[] arg2 = (Object[]) arg;
 			if (arg2[0] instanceof String) {
-				String keymessage=(String)arg2[0];
-				if(keymessage.equals("get evaluation report")) {
-					if(arg2[1] instanceof EvaluationReport ) {
-					EvaluationReport report=(EvaluationReport)arg2[1];
-					Platform.runLater(new Runnable() {
-						@Override
-						public void run() {	
-					CommitteeEvaluationController.ctrl1.setlabels(report);
-						}
-					});
+				String keymessage = (String) arg2[0];
+				if (keymessage.equals("get evaluation report")) {
+					if (arg2[1] instanceof EvaluationReport) {
+						EvaluationReport report = (EvaluationReport) arg2[1];
+						Platform.runLater(new Runnable() {
+							@Override
+							public void run() {
+								CommitteeEvaluationController.ctrl1.setlabels(report);
+							}
+						});
 					}
 				}
 			}
+		}
 	}
-}
 }
