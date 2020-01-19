@@ -22,6 +22,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * Notification for choosing tester when performance phase completed the tester
+ * is committee member
+ */
 public class ChooseTesterMessageController implements Initializable {
 	@FXML
 	Label label1;
@@ -37,6 +41,12 @@ public class ChooseTesterMessageController implements Initializable {
 	private ObservableList<String> list;
 	private static int requestID;
 
+	/**
+	 * open chooseTesterMessage
+	 * 
+	 * @param splitpane Choose Tester Notification
+	 * @param id        Request Id
+	 */
 	public void start(SplitPane splitpane, int id) {
 		primaryStage = LoginController.primaryStage;
 		this.requestID = id;
@@ -55,6 +65,9 @@ public class ChooseTesterMessageController implements Initializable {
 		}
 	}
 
+	/**
+	 * get committee members for choosing tester
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		Object[] msg = { "comittee members", getClass().getName() };
@@ -67,6 +80,10 @@ public class ChooseTesterMessageController implements Initializable {
 
 	}
 
+	/**
+	 * Recruit button will recruit chosen tester
+	 * @param e Action Event ( click on button)
+	 */
 	public void recruitAction(ActionEvent e) {
 		if (ClientConsole.map.get(requestID).equals("frozen")) {
 			ClientConsole.displayFreezeError();
@@ -89,7 +106,10 @@ public class ChooseTesterMessageController implements Initializable {
 			e1.printStackTrace();
 		}
 	}
-
+/**
+ *  Fill the combobox committee members for choose tester (tester is a committee member)
+ * @param names
+ */
 	public void fillCombo(ArrayList<String> names) {
 		list = FXCollections.observableArrayList(names);
 		combo.setItems(list);

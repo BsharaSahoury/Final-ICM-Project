@@ -7,7 +7,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * send reminder notification when remains one day to submit the request
+ * 
+ *
+ */
 public class ReminderMessageController {
 	@FXML
 	Label label1;

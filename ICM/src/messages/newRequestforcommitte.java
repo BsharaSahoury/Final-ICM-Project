@@ -7,7 +7,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * 
+ * Request recruited Notification to committee member 
+ *
+ */
 public class newRequestforcommitte {
 
 	@FXML
@@ -17,7 +21,11 @@ public class newRequestforcommitte {
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
 	public static SplitPane splitpane;
-
+ /**
+ * open Notification GUI
+ * @param splitpane GUI
+ * @param id
+ */
 	public void start(SplitPane splitpane, int id) {
 		primaryStage = LoginController.primaryStage;
 		try {

@@ -16,7 +16,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * 
+ * 
+ *Inspector write documentation for the exception that occurred 
+ */
 public class ExceptionDocumentController {
 	@FXML
 	private Label idLabel;
@@ -34,7 +38,13 @@ public class ExceptionDocumentController {
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
 	public  static SplitPane splitpane;
-
+/**
+ * open notification GUI 
+ * @param splitpane for FXMLLOADER
+ * @param id Request-Id
+ * @param phase Request-Phase
+ * @param repetion Request-Repetion
+ */
 	public void start(SplitPane splitpane, int id, String phase, int repetion) {
 		primaryStage=LoginController.primaryStage;
 		try{	
@@ -54,6 +64,10 @@ public class ExceptionDocumentController {
 		}	
 		
 	}
+	/**
+	 * save the documentation of the exception 
+	 * @param e
+	 */
 	public void saveDocument(ActionEvent e) {
 		if(ClientConsole.map.get(id).equals("frozen")) {
 			ClientConsole.displayFreezeError();

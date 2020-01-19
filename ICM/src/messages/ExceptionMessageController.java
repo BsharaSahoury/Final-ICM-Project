@@ -8,7 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * Exception Notification 
+ * 
+ *
+ */
 public class ExceptionMessageController {
 	@FXML
 	Label label1;
@@ -17,7 +21,12 @@ public class ExceptionMessageController {
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
 	public static SplitPane splitpane;
-
+/**
+ * Exception Notification GUI
+ * @param splitpane GUI for FXMLOADER
+ * @param id Request-Id
+ * @param phase Request-Phase
+ */
 	public void start(SplitPane splitpane, int id, String phase) {
 		primaryStage = LoginController.primaryStage;
 		try {
