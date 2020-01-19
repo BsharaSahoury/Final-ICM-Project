@@ -9,12 +9,19 @@ import DBconnection.mysqlConnection;
 import Entity.Employee;
 import Entity.Notification;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * This observer handle the message that send to the chairman
+ * after phase administrator approve finishing performance phase.
+ *
+ */
 public class ServerApprovePerformanceObserver implements Observer {
 	public ServerApprovePerformanceObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * This function change the state of the performance phase to over
+ * and send notification to the inspector in order to recruit a tester from the committee members
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

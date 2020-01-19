@@ -5,7 +5,10 @@ import java.util.Observable;
 import java.util.Observer;
 
 import Boundary.ReportController;
-
+/**
+ * in this observer we build the graph of the delay report with the details that we received from the DB
+ *
+ */
 public class ClientDelaysReportObserver implements Observer {
 	public ClientDelaysReportObserver(Observable client) {
 		client.addObserver(this);

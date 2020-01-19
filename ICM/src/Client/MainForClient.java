@@ -12,7 +12,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+/**
+ * in this observer we load the main client window to connect to the server.
+ *
+ */
 public class MainForClient extends Application {
 	public static Stage stage;
 	public static String[] args;

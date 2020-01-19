@@ -8,7 +8,12 @@ import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import ocsf.client.ObservableClient;
-
+/**
+ * in this observer we show the phase administrator that message send to the inspector
+ * in order to approve the duration that the phase administrator set
+ * and if the request frozen we show him message that the request is frozen
+ *
+ */
 public class ClientSetDuratinObserver implements Observer {
 	public ClientSetDuratinObserver(ObservableClient client) {
 		client.addObserver(this);

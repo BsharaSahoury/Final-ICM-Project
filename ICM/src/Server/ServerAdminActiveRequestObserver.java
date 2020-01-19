@@ -10,11 +10,19 @@ import Entity.Employee;
 import Entity.User;
 import ocsf.server.ConnectionToClient;
 
+/**
+ * This is the observer that handle the activation that the administrator did.
+ *
+ */
 public class ServerAdminActiveRequestObserver implements Observer {
 	public ServerAdminActiveRequestObserver(Observable server) {
 		server.addObserver(this);
 	}
 
+	/**
+	 * In this function we change the status of the request from 'frozen' to
+	 * 'active' and we save this update in the 'update' table in the database.
+	 */
 	@Override
 	public void update(Observable arg0, Object arg) {
 		// TODO Auto-generated method stub

@@ -13,12 +13,19 @@ import Entity.Notification;
 import Entity.Phase;
 import Entity.RequestPhase;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * in this observer we handle the situation when we want to  the inspector about the duration
+ * that has been set by the phase administrator in order to get the approve from the inspector.
+ *
+ */
 public class ServerSetDuratinObserver implements Observer {
 	public ServerSetDuratinObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * in this function we send notification to the inspector about the time that the phase administrator 
+ * set to the relevant phase with the request details in order to approve the duration.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

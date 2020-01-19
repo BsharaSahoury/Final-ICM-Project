@@ -6,7 +6,11 @@ import java.util.Observer;
 import Boundary.CommitteeEvaluationController;
 import Entity.EvaluationReport;
 import javafx.application.Platform;
-
+/**
+ * in this observer we put the evaluation report that we received from the DB
+ * in the evaluation report window at committee member user to allow them to see the evaluation report
+ *
+ */
 public class ClientGetEvaluationReportObserver implements Observer {
 	public ClientGetEvaluationReportObserver(Observable server) {
 		server.addObserver(this);

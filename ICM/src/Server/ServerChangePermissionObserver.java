@@ -8,12 +8,20 @@ import java.util.Observer;
 import DBconnection.mysqlConnection;
 import Entity.Employee;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * this observer handle the situation when the administrator decided to add permission
+ * or change permission for a specific employee
+ *
+ */
 public class ServerChangePermissionObserver implements Observer {
 	public ServerChangePermissionObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * this function add the permission that the administrator add 
+ * or replace to the relevant employee in DB.
+ * 
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

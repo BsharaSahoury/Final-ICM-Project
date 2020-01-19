@@ -9,7 +9,10 @@ import Boundary.RequestSubmissionController;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
+/**
+ * in this observer we show the initiator that his submission saved successfully in the DB
+ *
+ */
 public class ClientSubmissionObserver implements Observer {
 	public ClientSubmissionObserver(Observable client) {
 		client.addObserver(this);

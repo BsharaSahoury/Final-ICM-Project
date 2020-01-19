@@ -2,7 +2,10 @@ package Client;
 
 import java.util.Observable;
 import java.util.Observer;
-
+/**
+ * in this observer we print on the console that the client logged out
+ *
+ */
 public class ClientLogOutObserver implements Observer {
 	public ClientLogOutObserver(Observable client) {
 		client.addObserver(this);

@@ -2,7 +2,10 @@ package Server;
 
 import java.util.Observable;
 import java.util.Observer;
-
+/**
+ * this observer print all of the message from the server
+ *for example 'server established','server disconnected','server exception'...
+ */
 public class ServerObserver implements Observer {
 	public ServerObserver(Observable server) {
 		server.addObserver(this);

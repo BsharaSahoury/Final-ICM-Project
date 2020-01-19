@@ -6,7 +6,11 @@ import java.util.Observer;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
+/**
+ * in this observer we show message to the inspector that his update saved successfully in db
+ * and if he try to freeze  the requests again we show him that he already froze the request
+ *
+ */
 public class ClientInspectorfreazerequestObserver implements Observer {
 	public ClientInspectorfreazerequestObserver(Observable client) {
 		client.addObserver(this);

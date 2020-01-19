@@ -9,12 +9,18 @@ import DBconnection.mysqlConnection;
 import Entity.Employee;
 import Entity.Notification;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * this observer assign the assign the performer to the relevant request.
+ *
+ */
 public class ServerChoosedPerformerObserver implements Observer {
 	public ServerChoosedPerformerObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * This function search for the performer that had this full name and recruit him
+ * to lead the relevant request and notifies him about the recruit.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

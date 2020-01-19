@@ -15,7 +15,11 @@ import messages.CommitteeDecisionRejectController;
 import messages.ChooseTesterMessageController;
 import messages.DecisionCommitteeMemberMessageController;
 import messages.FailedTestMessageController;
-
+/**
+ * in this observer we fill the combo of the relevant employees that we received from the DB
+ * for the user that want to recruit an employee
+ *
+ */
 public class ClientGetEvaluatorsObserver implements Observer {
 	public ClientGetEvaluatorsObserver(Observable server) {
 		server.addObserver(this);

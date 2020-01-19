@@ -24,9 +24,14 @@ import javafx.scene.text.Text;
 import javafx.event.ActionEvent;
 
 import java.sql.Connection;
-
+/**
+ * this is the controller of the main server window.
+ *
+ */
 public class ServerController implements Initializable {
-
+/**
+ * here we annoys the parameters that we user in the server window.
+ */
 	private static String db_Password;
 	private static String db_Username;
 	private static String IP;
@@ -46,14 +51,18 @@ public class ServerController implements Initializable {
 	private Button connectBtn;
 	@FXML
 	Label wrong;
-
+/**
+ * In this function we call the editTextFields method.
+ */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		editTextFeilds();
 
 	}
-
+/**
+ * In this function we set the text fields in the server window with the relevant details.
+ */
 	public void editTextFeilds() {
 		try {
 			IP_txt.setText(InetAddress.getLocalHost().getHostAddress());// set the label of the IP in the window for the
@@ -67,25 +76,39 @@ public class ServerController implements Initializable {
 			dbSchema.setText("icm");
 			dbSchema.setEditable(false);
 			dbUsername.setText("root");
-			dbPassword.setText("hbk12345");
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * 
+ * @return the ip of the server
+ */
 	public static String getIp() {
 		return IP;
 	}
-
+/**
+ * 
+ * @return return db_password
+ */
 	public static String get_DB_Password() {
 		return db_Password;
 	}
-
+/**
+ * 
+ * @return return DB username
+ */
 	public static String get_DB_UserName() {
 		return db_Username;
 	}
-
+/**
+ * in this function we try to change the server to listening with the
+ * details that we have in the parameters at the server window
+ * and if we had a wrong parameter we display alert that contain the wrong field 
+ * of the server window details.
+ * @param event
+ */
 	@FXML
 	private void connecting(ActionEvent event) {
 		db_Password = dbPassword.getText();
@@ -168,7 +191,10 @@ public class ServerController implements Initializable {
 			// files...
 		}// uncaughtException
 	}// NewHandler
-
+	/**
+	 * here we shut down the server
+	 *
+	 */
 	@SuppressWarnings("deprecation")
 	public static void shutdown() throws IOException {
 		// cleanup code here...

@@ -13,12 +13,19 @@ import Entity.Employee;
 import Entity.Notification;
 import Entity.RequestPhase;
 import ocsf.server.ObservableServer;
-
+/**
+ * this is the exception observer that check always if there is exception in the requests
+ *
+ */
 public class ServerDetectorObserver implements Observer {
 	public ServerDetectorObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * This function check date of the phase of the requests and if there is a exception
+ * between the date for any request and today date 
+ * and if we found any exception we notifies the inspector and the administrator and the phase administrator.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		Connection con = mysqlConnection.makeAndReturnConnection();

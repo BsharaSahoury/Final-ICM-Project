@@ -9,12 +9,18 @@ import java.util.Observer;
 import DBconnection.mysqlConnection;
 import Entity.Notification;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * in this observer we handle the situation when we need to display the notification
+ * for a specific employee
+ *
+ */
 public class ServerNotificationsObserver implements Observer {
 	public ServerNotificationsObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we return the notification for the specific user from the DB 'notification' table
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

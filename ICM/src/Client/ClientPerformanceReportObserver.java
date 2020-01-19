@@ -6,7 +6,10 @@ import java.util.Observer;
 
 import Boundary.ReportController;
 import Entity.ExtensionDuration;
-
+/**
+ * in this observer we set the data for the period report in the relevant window
+ *
+ */
 public class ClientPerformanceReportObserver implements Observer {
 	public ClientPerformanceReportObserver(Observable client) {
 		client.addObserver(this);

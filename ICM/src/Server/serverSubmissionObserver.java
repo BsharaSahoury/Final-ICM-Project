@@ -1,5 +1,7 @@
 package Server;
-
+/**
+ * in this observer we handle the situation when any user when to submit a request
+ */
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
@@ -17,7 +19,11 @@ public class serverSubmissionObserver implements Observer {
 	public serverSubmissionObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * in this function we insert the details of the submission to the DB 
+ * and we recruit automatically evaluator to the request and we send notification to the inspector
+ * in order to approve or replace the automatic recruit
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

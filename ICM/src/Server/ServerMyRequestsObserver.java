@@ -11,12 +11,17 @@ import DBconnection.mysqlConnection;
 import Entity.Request;
 import Entity.User;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * In this observer we handle the situation when the initiator want to see his requests.
+ *
+ */
 public class ServerMyRequestsObserver implements Observer {
 	public ServerMyRequestsObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * in this function we return all the request that has been submitted by a specific employee.
+ */
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub

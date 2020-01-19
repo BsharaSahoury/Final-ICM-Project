@@ -30,7 +30,11 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
+/**
+ * in this observer we show message to the user that there is already anther user
+ * that now are connected to your account
+ *
+ */
 public class ClientLoginByAnotherClientObserver implements Observer {
 	private static InspectorHomeController inspector;
 	private Employee employee1;

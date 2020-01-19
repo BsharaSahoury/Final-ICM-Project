@@ -8,12 +8,20 @@ import DBconnection.mysqlConnection;
 import Entity.Notification;
 import Entity.User;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * In this observer we handle the situation when the inspector approved to close the
+ * request and wait for initiator approve
+ *
+ */
 public class ServerGetInitiatorObserver implements Observer {
 	public ServerGetInitiatorObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we found the initiator who submit the request with the id
+ * and we send him notification about the decision of the employees about his request
+ * in order to get his approve to close the request.
+ */
 	@Override
 	public void update(Observable arg0, Object arg) {
 		// TODO Auto-generated method stub

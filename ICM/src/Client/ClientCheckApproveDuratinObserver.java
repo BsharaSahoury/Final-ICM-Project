@@ -7,7 +7,10 @@ import Entity.Request;
 import Entity.RequestPhase;
 import messages.approveDuratinController;
 import ocsf.client.ObservableClient;
-
+/**
+ * in this observer we show the user that he already approved the duration.
+ *
+ */
 public class ClientCheckApproveDuratinObserver implements Observer {
 
 	public ClientCheckApproveDuratinObserver(ObservableClient client) {

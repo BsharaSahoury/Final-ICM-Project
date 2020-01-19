@@ -8,12 +8,17 @@ import java.util.Observer;
 import DBconnection.mysqlConnection;
 import Entity.RequestPhase;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * This observer handle the automatic recruit.
+ */
 public class ServerApproveEvaluatorObserver implements Observer {
 	public ServerApproveEvaluatorObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we search for the request in the DB 
+ * and send to the inspector for notification to approve or replace the automatic recruit.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

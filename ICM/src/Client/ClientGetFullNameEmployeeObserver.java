@@ -10,7 +10,11 @@ import messages.ChooseTesterMessageController;
 import messages.CommitteeDecisionApproveController;
 import messages.CommitteeDecisionAskForaddInfoController;
 import messages.FailedTestMessageController;
-
+/**
+ * in this observer we put the full name of the relevant employee in the request treatment window
+ * in to to able to the inspector to change the phase administrator
+ *
+ */
 public class ClientGetFullNameEmployeeObserver implements Observer {
 	public ClientGetFullNameEmployeeObserver(Observable server) {
 		server.addObserver(this);

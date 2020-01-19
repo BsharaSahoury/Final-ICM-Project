@@ -11,12 +11,17 @@ import DBconnection.mysqlConnection;
 import Entity.Employee;
 import Entity.Phase;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * In this observer we handle the situation when we need all the employees of specific job.
+ *
+ */
 public class ServerGetEvaluatorsObserver implements Observer {
 	public ServerGetEvaluatorsObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we return all the employees that have the relevant job to the client.
+ */
 	@Override
 	public void update(Observable o, Object arg) {
 		if (arg instanceof Object[]) {
