@@ -1320,20 +1320,17 @@ public class mysqlConnection {
 			stm2.setInt(1, er.getRequestID());
 			stm2.setInt(2, maxRepetion);
 			stm2.executeUpdate();
-			LocalDate date1 = LocalDate.now().plusDays(1);
-			LocalDate date2 = LocalDate.now().plusDays(8);
-
 			long millis = System.currentTimeMillis();
-			millis = millis + (int) (1000 * 60 * 60 * 24);
-
-			Date Startdate = Date.valueOf(date1);
+			Date Startdate = new java.sql.Date(millis);
+			long newmillis = Startdate.getTime() + (int) (1000 * 60 * 60 * 24);
+			Date newStartdate = new java.sql.Date(newmillis);
 			long week = Startdate.getTime() + (int) (1000 * 60 * 60 * 24 * 7);
-			Date dueDate = Date.valueOf(date2);
+			Date dueDate=new java.sql.Date(week);
 			PreparedStatement stm3 = con.prepareStatement("INSERT INTO icm.requestinphase  VALUES(?,?,?,?,?,?,?) ");
 			stm3.setInt(1, er.getRequestID());
 			stm3.setString(2, "decision");
 			stm3.setInt(3, maxRepetion);
-			stm3.setDate(4, Startdate);
+			stm3.setDate(4, newStartdate);
 			stm3.setDate(5, dueDate);
 			Employee chairman = mysqlConnection.getChairman(con);
 			stm3.setString(6, chairman.getUsername());
@@ -2379,7 +2376,7 @@ public class mysqlConnection {
 			for (int j = 0; j < Integer.min(max, 10); j++) {
 				arr.add((long) 0);
 			}
-			rs = stm.executeQuery("SELECT date,close_date FROM request;");
+			rs = stm.executeQuery("SELECT date,close_date,id FROM request;");
 			while (rs.next()) {
 				Date sd = rs.getDate(1);
 				Date cd = rs.getDate(2);
@@ -2391,10 +2388,14 @@ public class mysqlConnection {
 					sd = from;
 				period = (int) (cd.toLocalDate().toEpochDay() - sd.toLocalDate().toEpochDay());
 				k = period / N;
+				if(k==0)
+					k=1;
+				if(!cd.before(from)) {
 				if (period % N == 0 || period < N)
 					arr.set(k - 1, arr.get(k - 1) + 1);
 				else
 					arr.set(k, arr.get(k) + 1);
+				}
 			}
 			return arr;
 		} catch (Exception e) {
