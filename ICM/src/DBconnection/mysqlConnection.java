@@ -475,10 +475,8 @@ public class mysqlConnection {
 				count = rs.getInt(1) + 1;
 			} else
 				count = 0;
-			/*
-			 * long s=request.getDate().getTime()+(int) (1000 * 60 * 60 * 24 );
-			 * request.setDate(new java.sql.Date(s));
-			 */
+			long s=request.getDate().getTime()+(int) (1000 * 60 * 60 * 24 );
+		    request.setDate(new java.sql.Date(s));
 			stm = con.prepareStatement("INSERT INTO request VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?);");
 			stm.setString(1, request.getPrivilegedInfoSys());
 			stm.setString(2, request.getExistingSituation());
@@ -1016,13 +1014,15 @@ public class mysqlConnection {
 			stm.executeUpdate();
 			long millis = System.currentTimeMillis();
 			Date s = new java.sql.Date(millis);
-			long week = s.getTime() + (int) (1000 * 60 * 60 * 24 * 7);
+			long startlong=s.getTime()+(int) (1000 * 60 * 60 * 24);
+			Date start = new java.sql.Date(startlong);
+			long week = start.getTime() + (int) (1000 * 60 * 60 * 24 * 7);
 			Date d = new java.sql.Date(week);
 			stm = con.prepareStatement("INSERT INTO requestinphase VALUES(?,?,?,?,?,?,?);");
 			stm.setInt(1, id);
 			stm.setString(2, "testing");
 			stm.setInt(3, 0);
-			stm.setDate(4, s);
+			stm.setDate(4, start);
 			stm.setDate(5, d);
 			stm.setString(6, null);
 			stm.setString(7, "wait");
@@ -1383,7 +1383,7 @@ public class mysqlConnection {
 	public static void getToWork(Connection con, Date today) {
 		PreparedStatement stm = null;
 		try {
-			stm = con.prepareStatement("UPDATE requestinphase SET state='work' WHERE state='wait' AND start_date=?;");
+			stm = con.prepareStatement("UPDATE requestinphase SET state='work' WHERE state='wait' AND start_date<?;");
 			stm.setDate(1, Date.valueOf(today.toLocalDate().plusDays(1)));
 			stm.executeUpdate();
 		} catch (SQLException e) {

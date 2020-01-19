@@ -9,16 +9,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import sun.nio.ch.IOUtil;
 
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -62,7 +70,7 @@ public class MyRequestsController implements Initializable {
 	@FXML
 	private Button refresh;
 	@FXML
-	private Button question;
+	private Button instructions;
 	@FXML
 	private static SplitPane splitpane;
 	@FXML
@@ -323,8 +331,22 @@ public class MyRequestsController implements Initializable {
 	}
 
 	public void instructionsAction() {
-
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Instuctions");
+			Text headerText=new Text("Instuctions!");
+			headerText.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 20));
+			alert.setHeaderText("Instuctions!");
+			VBox dialogPaneContent = new VBox();
+			Label label1 = new Label("* This table contains your requests that you submitted!");
+			label1.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
+			Label label2 = new Label("- You can track a specific request from you requests by:");
+			Label label3 = new Label("1. Sellecting a specific request");
+			Label label4 = new Label("2. Clicking the 'Track' button !");
+			dialogPaneContent.getChildren().addAll(label1, label2,label3,label4);
+	 		alert.getDialogPane().setContent(dialogPaneContent);
+			alert.showAndWait();		  
 	}
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

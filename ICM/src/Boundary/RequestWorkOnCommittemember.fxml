@@ -61,7 +61,6 @@
          </font>
       </Button>
       <Label layoutX="21.0" layoutY="120.0" text="Plase click on a line below and then choose an option below -&gt;" />
-      <Label layoutX="13.0" layoutY="547.0" text="If you want to see the evaluation report click make a decision" />
       <Button fx:id="question" layoutX="683.0" layoutY="84.0" mnemonicParsing="false" onAction="#instructionsAction" style="-fx-background-insets: 8888888;">
          <graphic>
             <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
