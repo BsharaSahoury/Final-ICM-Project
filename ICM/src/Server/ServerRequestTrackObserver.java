@@ -25,15 +25,12 @@ public class ServerRequestTrackObserver implements Observer {
 				Object[] arg3 = (Object[]) arg2[1];
 				String keymessage = (String) arg3[0];
 				if (keymessage.equals("Track request")) {
-					int id = (int) arg3[1];				
-					Connection con = mysqlConnection.makeAndReturnConnection();			
+					int id = (int) arg3[1];
+					Connection con = mysqlConnection.makeAndReturnConnection();
 					RequestPhase rp1 = mysqlConnection.getRequestTrack(con, id);
 					Object[] send = new Object[2];
 					send[0] = "Track request";
 					send[1] = rp1;
-					System.out.println("xxx");
-					System.out.println(rp1.getCurrentPhase());
-					
 					try {
 						client.sendToClient(send);
 					} catch (IOException e) {
