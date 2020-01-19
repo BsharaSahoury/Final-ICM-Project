@@ -187,7 +187,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <AnchorPane blendMode="COLOR_DODGE" layoutX="1.0" layoutY="-15.0" prefHeight="612.0" prefWidth="40.0" style="-fx-background-color: #ffffff;">
+                  <AnchorPane blendMode="COLOR_DODGE" layoutX="-2.0" layoutY="-15.0" prefHeight="618.0" prefWidth="48.0" style="-fx-background-color: #ffffff;">
                      <effect>
                         <DropShadow height="43.2375" radius="22.971874999999997" width="50.65" />
                      </effect>
@@ -213,7 +213,7 @@
                         <Image url="@../Images/logo%20ICM.png" />
                      </image>
                   </ImageView>
-                  <Line endX="421.0" endY="-14.000007629394531" layoutX="301.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
+                  <Line endX="423.0" endY="-8.0" layoutX="301.0" layoutY="40.0" startX="-301.0" startY="-8.0" />
                   <Label layoutX="18.0" layoutY="6.0" text="ICM">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -245,7 +245,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <MenuButton fx:id="UserNameMenu" layoutX="779.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="153.0" style="-fx-background-color: #9d1b34;" text="UserName" textFill="WHITE">
+            <MenuButton fx:id="UserNameMenu" layoutX="782.0" layoutY="1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="153.0" style="-fx-background-color: #9d1b34;" text="UserName" textFill="WHITE">
                <items>
                   <MenuItem mnemonicParsing="false" text="Role : Administrator">
                      <graphic>

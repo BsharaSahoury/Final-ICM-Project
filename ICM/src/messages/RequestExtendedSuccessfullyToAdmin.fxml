@@ -17,7 +17,7 @@
                   <Image url="@../Images/apporoved2.jpg" />
                </image>
             </ImageView>
-            <Line endX="429.0" endY="-12.999996185302734" layoutX="299.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
+            <Line endX="429.0" endY="-12.999996185302734" layoutX="299.0" layoutY="43.0" startX="-299.0" startY="-13.0" />
             <Label layoutX="26.0" layoutY="6.0" text="ICM">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -89,7 +89,7 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <TextArea fx:id="ExtensionReasonLabel" layoutX="175.0" layoutY="231.0" prefHeight="90.0" prefWidth="507.0">
+            <TextArea fx:id="ExtensionReasonLabel" editable="false" layoutX="175.0" layoutY="231.0" prefHeight="90.0" prefWidth="507.0">
                <font>
                   <Font size="14.0" />
                </font>

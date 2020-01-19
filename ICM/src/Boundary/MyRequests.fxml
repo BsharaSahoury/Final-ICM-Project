@@ -12,16 +12,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="601.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.MyRequestsController">
+<AnchorPane prefHeight="601.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.MyRequestsController">
    <children>
       <Line endX="426.99993896484375" endY="-12.0" layoutX="299.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
-      <Label layoutX="26.0" layoutY="6.0" text="ICM">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="52.0" layoutY="6.0" text="-&gt;" />
-      <Label layoutX="65.0" layoutY="6.0" text="My Requests">
+      <Label layoutX="26.0" layoutY="6.0" text="ICM-&gt; My Requests" />
+      <Label layoutX="65.0" layoutY="6.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -45,7 +40,7 @@
       <Label layoutX="636.0" layoutY="52.0" prefHeight="17.0" prefWidth="40.0" text="Refresh" />
       <Label layoutX="626.0" layoutY="91.0" text="Instructions" />
       <ComboBox fx:id="Groupby" layoutX="25.0" layoutY="83.0" prefWidth="150.0" promptText="Status" />
-      <Button fx:id="TrackRequest" layoutX="466.0" layoutY="534.0" mnemonicParsing="false" onAction="#TrackRequestAction" prefHeight="43.0" prefWidth="100.0" style="-fx-background-color: #9d1b34;" text="Track" textFill="WHITE">
+      <Button fx:id="TrackRequest" layoutX="567.0" layoutY="533.0" mnemonicParsing="false" onAction="#TrackRequestAction" prefHeight="43.0" prefWidth="100.0" style="-fx-background-color: #9d1b34;" text="Track" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -65,7 +60,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="682.0" layoutY="82.0" mnemonicParsing="false" onAction="#instructionsAction" style="-fx-background-insets: 88888;">
+      <Button fx:id="instructions" layoutX="682.0" layoutY="82.0" mnemonicParsing="false" onAction="#instructionsAction" style="-fx-background-insets: 88888;">
          <graphic>
             <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>

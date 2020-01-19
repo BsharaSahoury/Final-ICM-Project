@@ -13,17 +13,7 @@
 <AnchorPane prefHeight="612.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Line endX="406.0" endY="-13.0" layoutX="299.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
-      <Label layoutX="19.0" layoutY="6.0" text="ICM">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="45.0" layoutY="6.0" text="-&gt;" />
-      <Label layoutX="59.0" layoutY="6.0" text="Profile Setting">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
+      <Label layoutX="19.0" layoutY="6.0" text="ICM -&gt; Profile Setting" />
       <ImageView fitHeight="67.0" fitWidth="73.0" layoutX="297.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/user2-setting-512.png" />
