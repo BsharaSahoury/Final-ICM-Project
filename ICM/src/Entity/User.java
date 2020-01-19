@@ -5,10 +5,16 @@ import java.util.ArrayList;
 
 
 /**
-  * The <code>Member</code> entity, represents a Member in the database.
-  *  User is an ICM-User in DataBase 
-  *  The User has private variables: username, password, firstname, lastname, email ,serialVersionID
-  *  and an ArrayList myRequests with 'Request' type that describes the requests the the user Submitted
+  *  The <code>Member</code> entity, represents a Member in the database.
+  *  User Class Extends from Serializable Class
+  *  User is an ICM-User in DataBase .
+  *  The User has private variables:
+  * @param username
+  * @param password
+  * @param firstname
+  * @param lastname
+  * @param email
+  * @param myRequests : ArrayList myRequests with 'Request' type that describes the requests the the user Submitted
  * @author Arkan Muhammad
  */
 public class User implements Serializable {

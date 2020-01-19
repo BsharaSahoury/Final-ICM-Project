@@ -1,12 +1,11 @@
 package Entity;
 
 import java.util.ArrayList;
-/**
- * /**
-  * The Student: represents a Student that he is a User in the database.
-  *  User is an ICM-User in DataBase that his Role is Student
+ /**
+  * The Student: represents a Student that he is a Student in the database.
+  *  Student is an ICM-User in DataBase that his Role is Student
   *  Class Student Extends from User Class
-  *  The User has private variables: id, department and the variables of User
+  *  The Student has private variables: id, department and the variables of User
   * @author Arkan Muhammad
   */
 public class Student extends User {

@@ -5,8 +5,22 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 /**
- * 
- * @author aimanouda
+ *  Request : represents a request in the database.
+ *  Class Request Extends from Serializable Class
+ *  The User has private variables:
+ * @param id
+ * @param initiatorName
+ * @param initiatorEmail
+ * @param initiatorRole
+ * @param status
+ * @param existingSituation
+ * @param explainRequest
+ * @param privilegedInfoSys
+ * @param reason
+ * @param comment
+ * @param date
+ * @param currentPhase
+ * @author Arkan Muhammad
  *
  */
 public class Request implements Serializable {
@@ -26,23 +40,6 @@ public class Request implements Serializable {
 	private User initiator;
 	private MyFile myfile;
 	private String filename;
-
-	/**
-	 * 
-	 * @param id
-	 * @param initiatorName
-	 * @param initiatorEmail
-	 * @param initiatorRole
-	 * @param status
-	 * @param existingSituation
-	 * @param explainRequest
-	 * @param privilegedInfoSys
-	 * @param reason
-	 * @param comment
-	 * @param date
-	 * @param currentPhase
-	 */
-
 	private Phase currentPhase;
 
 	public Request(int id) {
