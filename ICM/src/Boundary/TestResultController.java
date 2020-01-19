@@ -26,6 +26,12 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * for send test result to inspector if the test fail must send the failure with
+ * details
+ * 
+ *
+ */
 public class TestResultController implements Initializable {
 	@FXML
 	private RadioButton TestFaildRadioButton;
@@ -49,6 +55,12 @@ public class TestResultController implements Initializable {
 	private static Request r;
 	private static ClientConsole cc;
 
+	/**
+	 * to start the GUI
+	 * 
+	 * @param splitpane GUI
+	 * @param r         Request
+	 */
 	public void start(SplitPane splitpane, Request r) {
 		this.splitpane = splitpane;
 		primaryStage = LoginController.primaryStage;
@@ -65,6 +77,9 @@ public class TestResultController implements Initializable {
 		}
 	}
 
+	/**
+	 * send the successful test to inspector
+	 */
 	public void SuccessSendBtn() {
 
 		Alert alertWarning = new Alert(AlertType.CONFIRMATION);
@@ -88,6 +103,9 @@ public class TestResultController implements Initializable {
 		}
 	}
 
+	/**
+	 * send to inspector failure test result to inspector
+	 */
 	public void FaildSendBtn() {
 		String FaildDetails = FailureDetails.getText().trim();
 		if (!FaildDetails.equals("")) {
@@ -118,6 +136,11 @@ public class TestResultController implements Initializable {
 
 	}
 
+	/**
+	 * choose the decision of the tester
+	 * 
+	 * @param event ActionEvent ( clicking on the radioButton)
+	 */
 	public void radioselectFaild(ActionEvent event) {
 
 		try {
@@ -132,6 +155,11 @@ public class TestResultController implements Initializable {
 
 	}
 
+	/**
+	 * choose the decision of the tester
+	 * 
+	 * @param event ActionEvent ( clicking on the radioButton)
+	 */
 	public void radioselectSuccess(ActionEvent event) {
 
 		try {

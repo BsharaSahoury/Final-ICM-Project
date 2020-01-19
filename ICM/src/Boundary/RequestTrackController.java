@@ -18,7 +18,11 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * 
+ * Request Tracking , show information about the request work 
+ *
+ */
 public class RequestTrackController implements Initializable {
 	public static Stage primaryStage;
 	private static ClientConsole cc;
@@ -41,7 +45,12 @@ public class RequestTrackController implements Initializable {
 	private static String job;
 
 	public static RequestTrackController RequestTrack;
-
+/**
+ * start Request Track GUI
+ * @param splitpane GUI
+ * @param r Request
+ * @param job Role of Initiator
+ */
 	public void start(SplitPane splitpane, Request r, String job) {
 		this.job = job;
 		this.splitpane = splitpane;
@@ -67,7 +76,10 @@ public class RequestTrackController implements Initializable {
 		// TODO Auto-generated method stub
 
 	}
-
+/**
+ * Back to last stage
+ * @param e
+ */
 	public void BackBtnAction(ActionEvent e) {
 
 		if (job.equals("Inspector")) {
@@ -88,7 +100,10 @@ public class RequestTrackController implements Initializable {
 		}
 
 	}
-
+/**
+ * set Track Data on GUI
+ * @param rp Request Phase
+ */
 	public void SetTrack(RequestPhase rp) {
 		requeststatus.setText(rp.getR().getStatus());
 		requestPhase.setText(rp.getCurrentPhase().toString());

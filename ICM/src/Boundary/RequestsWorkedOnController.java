@@ -46,6 +46,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import messages.AutomaticRecruitMessageController;
 
+/**
+ * show the list request work on for each phase administrator
+ * 
+ *
+ */
 public class RequestsWorkedOnController implements Initializable {
 	public static Stage primaryStage;
 	private static ClientConsole cc;
@@ -94,12 +99,21 @@ public class RequestsWorkedOnController implements Initializable {
 	private static RequestPhase rp;
 	private static String newjob;
 
+	/**
+	 * start GUI
+	 * 
+	 * @param splitpane GUI
+	 * @param path      path of the gui
+	 * @param user      Username
+	 * @param job       job
+	 * @param phase     Request Phase
+	 */
 	public void start(SplitPane splitpane, String path, User user, String job, String phase) {
-		if(job.equals("Chairman")) {
-			this.newjob=job;
-			job="Comittee Member";
-		}
-		else this.newjob="???";
+		if (job.equals("Chairman")) {
+			this.newjob = job;
+			job = "Comittee Member";
+		} else
+			this.newjob = "???";
 		this.job = job;
 		this.user = user;
 		primaryStage = LoginController.primaryStage;
@@ -113,7 +127,7 @@ public class RequestsWorkedOnController implements Initializable {
 			this.splitpane = splitpane;
 			RequestWorkedON[0] = "Requests worked on";
 			if (job.equals("Comittee Member") && phase.equals("decision")) {
-				RequestWorkedON[1] = user.getUsername();	
+				RequestWorkedON[1] = user.getUsername();
 			} else if (job.equals("Engineer")) {
 				RequestWorkedON[0] = "engineer request work on";
 				RequestWorkedON[1] = user.getUsername();
@@ -128,6 +142,11 @@ public class RequestsWorkedOnController implements Initializable {
 		}
 	}
 
+	/**
+	 * set table data
+	 * 
+	 * @param arr1
+	 */
 	public void setTableRequests(ArrayList<RequestPhase> arr1) {
 		if (!arr1.equals(null)) {
 			list = FXCollections.observableArrayList(arr1);
@@ -135,6 +154,9 @@ public class RequestsWorkedOnController implements Initializable {
 		}
 	}
 
+	/**
+	 * search button will search on the table
+	 */
 	public void searchaction() {
 		if (!search_text.getText().equals("")) {
 			try {
@@ -168,11 +190,19 @@ public class RequestsWorkedOnController implements Initializable {
 		}
 	}
 
+	/**
+	 * fill the table list
+	 * 
+	 * @param arr1 list of table data
+	 */
 	public void fillTable(ArrayList<RequestPhase> arr1) {
 		arrofRequests = arr1;
 		loader.<RequestsWorkedOnController>getController().setTableRequests(arr1);
 	}
 
+	/**
+	 * group by button action will sort the table list * @param e
+	 */
 	public void GroupbyAction(ActionEvent e) {
 		chosengroupbytype = Groupby.getSelectionModel().getSelectedIndex();
 		String groupbystatus = null;
@@ -224,6 +254,10 @@ public class RequestsWorkedOnController implements Initializable {
 		}
 	}
 
+	/**
+	 * will open set duration GUI to set new duration or to show the request
+	 * duration
+	 */
 	public void SetDuration() {
 		chosen = tableRequests.getSelectionModel().getSelectedIndex();
 		if (chosen != -1) {
@@ -247,6 +281,11 @@ public class RequestsWorkedOnController implements Initializable {
 		}
 	}
 
+	/**
+	 * method for setDuration that return after return from server
+	 * 
+	 * @param s Request Phase
+	 */
 	public void SetDurationHelp(RequestPhase s) {
 		this.rp = s;
 		rp.setId(id);
@@ -255,12 +294,11 @@ public class RequestsWorkedOnController implements Initializable {
 			public void run() {
 				DurationController Duration = new DurationController();
 				SetDurationController setDuration = new SetDurationController();
-				if(newjob.equals("Chairman")) {
+				if (newjob.equals("Chairman")) {
 					runLater(() -> {
 						setDuration.start(splitpane, "/Boundary/DuratinForEvaluator.fxml", rp);
 					});
-				}
-				else if (job.equals("Comittee Member") || job.equals("Engineer")) {
+				} else if (job.equals("Comittee Member") || job.equals("Engineer")) {
 					runLater(() -> {
 						Duration.start(splitpane, "/Boundary/Duration.fxml", rp);
 					});
@@ -273,6 +311,9 @@ public class RequestsWorkedOnController implements Initializable {
 		});
 	}
 
+	/**
+	 * open request info GUI that contains info about the request
+	 */
 	public void RequestInfoAction() {
 		chosen = tableRequests.getSelectionModel().getSelectedIndex();
 		if (chosen != -1) {
@@ -290,6 +331,11 @@ public class RequestsWorkedOnController implements Initializable {
 		}
 	}
 
+	/**
+	 * performance approve for phase finish
+	 * 
+	 * @param e Action Event (Clicking on button)
+	 */
 	public void approveFinishAction(ActionEvent e) {
 		chosen = tableRequests.getSelectionModel().getSelectedIndex();
 		if (chosen != -1) {
@@ -320,6 +366,9 @@ public class RequestsWorkedOnController implements Initializable {
 		}
 	}
 
+	/**
+	 * Refresh button for refresh the table
+	 */
 	public void refresh() {
 		Employee employee = (Employee) user;
 		switch (job) {
@@ -411,226 +460,239 @@ public class RequestsWorkedOnController implements Initializable {
 		}
 	}
 
+	/**
+	 * instruction button to show instructions about buttons operations
+	 */
 	public void instructionsAction() {
-			Employee employee = (Employee) user;
-			Label label1,label2,label3,label4,label5,label6,label7,label8,label9,label10;
-			Label label11,label12,label13,label14;
-			Alert alert;
-			Text headerText;
-			VBox dialogPaneContent;
-			switch (job) {
-			case "Evaluator":
+		Employee employee = (Employee) user;
+		Label label1, label2, label3, label4, label5, label6, label7, label8, label9, label10;
+		Label label11, label12, label13, label14;
+		Alert alert;
+		Text headerText;
+		VBox dialogPaneContent;
+		switch (job) {
+		case "Evaluator":
+			alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Instuctions");
+			headerText = new Text("Instuctions!");
+			headerText.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 20));
+			alert.setHeaderText("Instuctions!");
+			dialogPaneContent = new VBox();
+			label1 = new Label("* This table contains the requests that you work on!");
+			label1.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label2 = new Label("");
+			label3 = new Label("- You can access to informaion of a specific request by:");
+			label3.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label4 = new Label("1. Sellecting a specific request");
+			label5 = new Label("2. Clicking the 'Request Info' button !");
+			label6 = new Label("3.You can choose displaying 'request Info' or 'Initiator Info'");
+			label7 = new Label("");
+			/////////////////////
+			label8 = new Label("- You can set duration of Evaluation phase for a specific request by:");
+			label8.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label9 = new Label("1. Sellecting a specific request");
+			label10 = new Label("2. Clicking the 'Duration' button !");
+			label11 = new Label("");
+			////////////////////////////////
+			label12 = new Label("- You can create an Evaluation Report of a specific request by:");
+			label12.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label13 = new Label("1. Sellecting a specific request");
+			label14 = new Label("2. Clicking the 'Create Evaluation Report' button !");
+
+			dialogPaneContent.getChildren().addAll(label1, label2, label3, label4, label5, label6, label7, label8,
+					label9, label10, label11, label12, label13, label14);
+			alert.getDialogPane().setContent(dialogPaneContent);
+			alert.showAndWait();
+			break;
+		case "Comittee Member":
+			if (ComitteeMemberHomeController.getFlag() == 0) {
 				alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Instuctions");
-				headerText=new Text("Instuctions!");
+				headerText = new Text("Instuctions!");
 				headerText.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 20));
 				alert.setHeaderText("Instuctions!");
 				dialogPaneContent = new VBox();
-				label1 = new Label("* This table contains the requests that you work on!");
-				label1.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-				label2 = new Label("");
-				label3 = new Label("- You can access to informaion of a specific request by:");
-				label3.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-				label4 = new Label("1. Sellecting a specific request");
-				label5 = new Label("2. Clicking the 'Request Info' button !");
-				label6 = new Label("3.You can choose displaying 'request Info' or 'Initiator Info'");
-				label7 = new Label("");
-				/////////////////////
-				label8 = new Label("- You can set duration of Evaluation phase for a specific request by:");
-				label8.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-				label9 = new Label("1. Sellecting a specific request");
-				label10 = new Label("2. Clicking the 'Duration' button !");
-				label11 = new Label("");
-				////////////////////////////////
-				label12 = new Label("- You can create an Evaluation Report of a specific request by:");
-				label12.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-				label13 = new Label("1. Sellecting a specific request");
-				label14 = new Label("2. Clicking the 'Create Evaluation Report' button !");
-				
-				dialogPaneContent.getChildren().addAll(label1, label2,label3,label4,label5,label6,label7,label8,label9,label10,label11,label12,label13,label14);
-		 		alert.getDialogPane().setContent(dialogPaneContent);
-				alert.showAndWait();
-				break;
-			case "Comittee Member":
-					if (ComitteeMemberHomeController.getFlag() == 0) {
-						alert = new Alert(AlertType.INFORMATION);
-						alert.setTitle("Instuctions");
-						headerText=new Text("Instuctions!");
-						headerText.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 20));
-						alert.setHeaderText("Instuctions!");
-						dialogPaneContent = new VBox();
-						label1 = new Label("* This table contains the Requests that you work on!");
-						label1.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-						label2 = new Label("");
-						label3 = new Label("- You can access to info of a specific of request by:");
-						label3.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-						label4 = new Label("1. Sellecting a specific request");
-						label5 = new Label("2. Clicking the 'Request Info' button !");
-						label6 = new Label("3.You can choose displaying 'request Info' or 'Initiator Info'");
-						label7 = new Label("");
-						label8 = new Label("- You can set Duration of this phase for a specific request by:");
-						label8.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-						label9 = new Label("1. Sellecting a specific request");
-						label10 = new Label("2. Clicking the 'Duration' button !");
-						label11 = new Label("");
-						label12 = new Label("- You can 'Make a decision' OR 'See the Evaluation Report' for a specific request by:");
-						label12.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-						label13 = new Label("1. Sellecting a specific request");
-						label14 = new Label("2. Clicking the 'Make a decision' button !");
-						
-						dialogPaneContent.getChildren().addAll(label1, label2,label3,label4,label5,label6,label7,label8,label9,label10,label11,label12,label13,label14);
-				 		alert.getDialogPane().setContent(dialogPaneContent);
-						alert.showAndWait();
-					
-						break;
-					}
-					else if (ComitteeMemberHomeController.getFlag() == 1) {//RequestsWorkOnTester
-	
-						
-						alert = new Alert(AlertType.INFORMATION);
-						alert.setTitle("Instuctions");
-						headerText=new Text("Instuctions!");
-						headerText.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 20));
-						alert.setHeaderText("Instuctions!");
-						dialogPaneContent = new VBox();
-						label1 = new Label("* This table contains the Requests For Testing!");
-						label1.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-						label2 = new Label("");
-						label3 = new Label("- You can access to info of a specific of request by:");
-						label3.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-						label4 = new Label("1. Sellecting a specific request");
-						label5 = new Label("2. Clicking the 'Request Info' button !");
-						label6 = new Label("3.You can choose displaying 'request Info' or 'Initiator Info'");
-						label7 = new Label("");
-						label8 = new Label("- You can set Duration of Testing phase for a specific request by:");
-						label8.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-						label9 = new Label("1. Sellecting a specific request");
-						label10 = new Label("2. Clicking the 'Duration' button !");
-						label11 = new Label("");
-						label12 = new Label("- You can Insert Test Result for a specific request by:");
-						label12.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-						label13 = new Label("1. Sellecting a specific request");
-						label14 = new Label("2. Clicking the 'Insert Test Result' button !");
-						
-						dialogPaneContent.getChildren().addAll(label1, label2,label3,label4,label5,label6,label7,label8,label9,label10,label11,label12,label13,label14);
-				 		alert.getDialogPane().setContent(dialogPaneContent);
-						alert.showAndWait();
-						break;
-					}
-			case "Chairman":
-				alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Instuctions");
-				headerText=new Text("Instuctions!");
-				headerText.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 20));
-				alert.setHeaderText("Instuctions!");
-				dialogPaneContent = new VBox();
-				label1 = new Label("* This table contains the Requests For Testing!");
-				label1.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
+				label1 = new Label("* This table contains the Requests that you work on!");
+				label1.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
 				label2 = new Label("");
 				label3 = new Label("- You can access to info of a specific of request by:");
-				label3.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
+				label3.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
 				label4 = new Label("1. Sellecting a specific request");
 				label5 = new Label("2. Clicking the 'Request Info' button !");
 				label6 = new Label("3.You can choose displaying 'request Info' or 'Initiator Info'");
 				label7 = new Label("");
 				label8 = new Label("- You can set Duration of this phase for a specific request by:");
-				label8.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
+				label8.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
 				label9 = new Label("1. Sellecting a specific request");
 				label10 = new Label("2. Clicking the 'Duration' button !");
 				label11 = new Label("");
-				label12 = new Label("- You can 'Make a decision' OR 'See the Evaluation Report' for a specific request by:");
-				label12.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
+				label12 = new Label(
+						"- You can 'Make a decision' OR 'See the Evaluation Report' for a specific request by:");
+				label12.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
 				label13 = new Label("1. Sellecting a specific request");
 				label14 = new Label("2. Clicking the 'Make a decision' button !");
-				
-				dialogPaneContent.getChildren().addAll(label1, label2,label3,label4,label5,label6,label7,label8,label9,label10,label11,label12,label13,label14);
-		 		alert.getDialogPane().setContent(dialogPaneContent);
+
+				dialogPaneContent.getChildren().addAll(label1, label2, label3, label4, label5, label6, label7, label8,
+						label9, label10, label11, label12, label13, label14);
+				alert.getDialogPane().setContent(dialogPaneContent);
 				alert.showAndWait();
+
 				break;
-			case "Performance Leader":
+			} else if (ComitteeMemberHomeController.getFlag() == 1) {// RequestsWorkOnTester
+
 				alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Instuctions");
-				headerText=new Text("Instuctions!");
-				headerText.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 20));
-				alert.setHeaderText("Instuctions!");
-				dialogPaneContent = new VBox();
-				label1 = new Label("* This table contains the Requests that you lead!");
-				label1.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-				label2 = new Label("");
-				label3 = new Label("- You can access to info of a specific of request by:");
-				label3.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-				label4 = new Label("1. Sellecting a specific request");
-				label5 = new Label("2. Clicking the 'Request Info' button !");
-				label6 = new Label("3.You can choose displaying 'request Info' or 'Initiator Info'");
-				label7 = new Label("");
-				label8 = new Label("- You can set Duration of Performance phase for a specific request by:");
-				label8.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-				label9 = new Label("1. Sellecting a specific request");
-				label10 = new Label("2. Clicking the 'Duration' button !");
-				label11 = new Label("");
-				label12 = new Label("- You can 'Approve finishing performance phase' for a specific request by:");
-				label12.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-				label13 = new Label("1. Sellecting a specific request");
-				label14 = new Label("2. Clicking the 'Approve finishing performance phase' button !");
-				
-				dialogPaneContent.getChildren().addAll(label1, label2,label3,label4,label5,label6,label7,label8,label9,label10,label11,label12,label13,label14);
-		 		alert.getDialogPane().setContent(dialogPaneContent);
-				alert.showAndWait();
-				break;
-			case "Engineer":
-				alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Instuctions");
-				headerText=new Text("Instuctions!");
-				headerText.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 20));
-				alert.setHeaderText("Instuctions!");
-				dialogPaneContent = new VBox();
-				label1 = new Label("* This table contains the Requests that you work on!");
-				label1.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-				label2 = new Label("");
-				label3 = new Label("- You can access to info of a specific of request by:");
-				label3.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-				label4 = new Label("1. Sellecting a specific request");
-				label5 = new Label("2. Clicking the 'Request Info' button !");
-				label6 = new Label("3.You can choose displaying 'request Info' or 'Initiator Info'");
-				label7 = new Label("");
-				label8 = new Label("- You can set Duration of phase for a specific request by:");
-				label8.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
-				label9 = new Label("1. Sellecting a specific request");
-				label10 = new Label("2. Clicking the 'Duration' button !");
-			
-				dialogPaneContent.getChildren().addAll(label1, label2,label3,label4,label5,label6,label7,label8,label9,label10);
-		 		alert.getDialogPane().setContent(dialogPaneContent);
-				alert.showAndWait();
-				break;
-			case "Administrator":
-				alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Instuctions");
-				headerText=new Text("Instuctions!");
+				headerText = new Text("Instuctions!");
 				headerText.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 20));
 				alert.setHeaderText("Instuctions!");
 				dialogPaneContent = new VBox();
 				label1 = new Label("* This table contains the Requests For Testing!");
-				label1.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
+				label1.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
 				label2 = new Label("");
 				label3 = new Label("- You can access to info of a specific of request by:");
-				label3.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
+				label3.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
 				label4 = new Label("1. Sellecting a specific request");
 				label5 = new Label("2. Clicking the 'Request Info' button !");
 				label6 = new Label("3.You can choose displaying 'request Info' or 'Initiator Info'");
 				label7 = new Label("");
-				label8 = new Label("- You can Change the status to 'Active' of a specific request by:");
-				label8.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
+				label8 = new Label("- You can set Duration of Testing phase for a specific request by:");
+				label8.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
 				label9 = new Label("1. Sellecting a specific request");
-				label10 = new Label("2. Clicking the 'Change Status' button !");
-			
-				dialogPaneContent.getChildren().addAll(label1, label2,label3,label4,label5,label6,label7,label8,label9,label10);
-		 		alert.getDialogPane().setContent(dialogPaneContent);
+				label10 = new Label("2. Clicking the 'Duration' button !");
+				label11 = new Label("");
+				label12 = new Label("- You can Insert Test Result for a specific request by:");
+				label12.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+				label13 = new Label("1. Sellecting a specific request");
+				label14 = new Label("2. Clicking the 'Insert Test Result' button !");
+
+				dialogPaneContent.getChildren().addAll(label1, label2, label3, label4, label5, label6, label7, label8,
+						label9, label10, label11, label12, label13, label14);
+				alert.getDialogPane().setContent(dialogPaneContent);
 				alert.showAndWait();
 				break;
 			}
-	
+		case "Chairman":
+			alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Instuctions");
+			headerText = new Text("Instuctions!");
+			headerText.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 20));
+			alert.setHeaderText("Instuctions!");
+			dialogPaneContent = new VBox();
+			label1 = new Label("* This table contains the Requests For Testing!");
+			label1.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label2 = new Label("");
+			label3 = new Label("- You can access to info of a specific of request by:");
+			label3.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label4 = new Label("1. Sellecting a specific request");
+			label5 = new Label("2. Clicking the 'Request Info' button !");
+			label6 = new Label("3.You can choose displaying 'request Info' or 'Initiator Info'");
+			label7 = new Label("");
+			label8 = new Label("- You can set Duration of this phase for a specific request by:");
+			label8.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label9 = new Label("1. Sellecting a specific request");
+			label10 = new Label("2. Clicking the 'Duration' button !");
+			label11 = new Label("");
+			label12 = new Label(
+					"- You can 'Make a decision' OR 'See the Evaluation Report' for a specific request by:");
+			label12.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label13 = new Label("1. Sellecting a specific request");
+			label14 = new Label("2. Clicking the 'Make a decision' button !");
+
+			dialogPaneContent.getChildren().addAll(label1, label2, label3, label4, label5, label6, label7, label8,
+					label9, label10, label11, label12, label13, label14);
+			alert.getDialogPane().setContent(dialogPaneContent);
+			alert.showAndWait();
+			break;
+		case "Performance Leader":
+			alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Instuctions");
+			headerText = new Text("Instuctions!");
+			headerText.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 20));
+			alert.setHeaderText("Instuctions!");
+			dialogPaneContent = new VBox();
+			label1 = new Label("* This table contains the Requests that you lead!");
+			label1.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label2 = new Label("");
+			label3 = new Label("- You can access to info of a specific of request by:");
+			label3.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label4 = new Label("1. Sellecting a specific request");
+			label5 = new Label("2. Clicking the 'Request Info' button !");
+			label6 = new Label("3.You can choose displaying 'request Info' or 'Initiator Info'");
+			label7 = new Label("");
+			label8 = new Label("- You can set Duration of Performance phase for a specific request by:");
+			label8.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label9 = new Label("1. Sellecting a specific request");
+			label10 = new Label("2. Clicking the 'Duration' button !");
+			label11 = new Label("");
+			label12 = new Label("- You can 'Approve finishing performance phase' for a specific request by:");
+			label12.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label13 = new Label("1. Sellecting a specific request");
+			label14 = new Label("2. Clicking the 'Approve finishing performance phase' button !");
+
+			dialogPaneContent.getChildren().addAll(label1, label2, label3, label4, label5, label6, label7, label8,
+					label9, label10, label11, label12, label13, label14);
+			alert.getDialogPane().setContent(dialogPaneContent);
+			alert.showAndWait();
+			break;
+		case "Engineer":
+			alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Instuctions");
+			headerText = new Text("Instuctions!");
+			headerText.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 20));
+			alert.setHeaderText("Instuctions!");
+			dialogPaneContent = new VBox();
+			label1 = new Label("* This table contains the Requests that you work on!");
+			label1.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label2 = new Label("");
+			label3 = new Label("- You can access to info of a specific of request by:");
+			label3.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label4 = new Label("1. Sellecting a specific request");
+			label5 = new Label("2. Clicking the 'Request Info' button !");
+			label6 = new Label("3.You can choose displaying 'request Info' or 'Initiator Info'");
+			label7 = new Label("");
+			label8 = new Label("- You can set Duration of phase for a specific request by:");
+			label8.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label9 = new Label("1. Sellecting a specific request");
+			label10 = new Label("2. Clicking the 'Duration' button !");
+
+			dialogPaneContent.getChildren().addAll(label1, label2, label3, label4, label5, label6, label7, label8,
+					label9, label10);
+			alert.getDialogPane().setContent(dialogPaneContent);
+			alert.showAndWait();
+			break;
+		case "Administrator":
+			alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Instuctions");
+			headerText = new Text("Instuctions!");
+			headerText.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 20));
+			alert.setHeaderText("Instuctions!");
+			dialogPaneContent = new VBox();
+			label1 = new Label("* This table contains the Requests For Testing!");
+			label1.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label2 = new Label("");
+			label3 = new Label("- You can access to info of a specific of request by:");
+			label3.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label4 = new Label("1. Sellecting a specific request");
+			label5 = new Label("2. Clicking the 'Request Info' button !");
+			label6 = new Label("3.You can choose displaying 'request Info' or 'Initiator Info'");
+			label7 = new Label("");
+			label8 = new Label("- You can Change the status to 'Active' of a specific request by:");
+			label8.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12));
+			label9 = new Label("1. Sellecting a specific request");
+			label10 = new Label("2. Clicking the 'Change Status' button !");
+
+			dialogPaneContent.getChildren().addAll(label1, label2, label3, label4, label5, label6, label7, label8,
+					label9, label10);
+			alert.getDialogPane().setContent(dialogPaneContent);
+			alert.showAndWait();
+			break;
+		}
+
 	}
 
+	/**
+	 * Insert Test Result button by tester ( committee member )
+	 */
 	public void InsertTestResultAction() {
 		chosen = tableRequests.getSelectionModel().getSelectedIndex();
 		if (chosen != -1) {
@@ -654,18 +716,34 @@ public class RequestsWorkedOnController implements Initializable {
 		}
 	}
 
+	/**
+	 * get selected index for chosen request
+	 */
 	public static int getselectedindex() {
 		return chosen;
 	}
 
+	/**
+	 * get request id
+	 * 
+	 * @return
+	 */
 	public static int getId() {
 		return id;
 	}
 
+	/**
+	 * get System
+	 * 
+	 * @return
+	 */
 	public static String getSystem() {
 		return system;
 	}
 
+	/**
+	 * make Decision button
+	 */
 	public void MakeDecisionAction() {
 		chosen = tableRequests.getSelectionModel().getSelectedIndex();
 		if (chosen == -1) {
@@ -689,6 +767,9 @@ public class RequestsWorkedOnController implements Initializable {
 		}
 	}
 
+	/**
+	 * to create evaluation report
+	 */
 	public void EvaluationReportAction() {
 		chosen = tableRequests.getSelectionModel().getSelectedIndex();
 		if (chosen != -1) {

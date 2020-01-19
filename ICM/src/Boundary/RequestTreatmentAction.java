@@ -36,7 +36,11 @@ import javafx.stage.Stage;
 import Entity.Request;
 import Entity.RequestPhase;
 import Entity.Phase;
-
+/**
+ * 
+ * on request treatment can change status of request and assign phase administrator for phase
+ *
+ */
 public class RequestTreatmentAction extends AllRequestsController implements Initializable, Serializable {
 	public static Stage primaryStage;
 	private static ClientConsole cc;
@@ -74,7 +78,9 @@ public class RequestTreatmentAction extends AllRequestsController implements Ini
 	ObservableList<String> engineerslist;
 	private ObservableList<String> list;
 	private ObservableList<String> selected;
-
+/**
+ * initialize choosen request from table list 
+ */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		chooseengineer.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -83,7 +89,10 @@ public class RequestTreatmentAction extends AllRequestsController implements Ini
 		statuslable.setText(chosenRequest.getStatus());
 
 	}
-
+/**
+ * pen Request Treatment GUI with suitable chosen request
+ * @param splitpane GUI
+ */
 	public void start(SplitPane splitpane) {
 		this.splitpane = splitpane;
 		primaryStage = LoginController.primaryStage;
@@ -136,7 +145,9 @@ public class RequestTreatmentAction extends AllRequestsController implements Ini
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * 
+ */
 	public void ApplyAction() {
 		String explain = null;
 		explain = Explaintxt.getText();
@@ -162,26 +173,37 @@ public class RequestTreatmentAction extends AllRequestsController implements Ini
 			}
 		}
 	}
-
+/**
+ * back to last stage
+ * @param e Action Event ( Clicking on button ) 
+ */
 	public void BackBtnAction(ActionEvent e) {
 		runLater(() -> {
 			InspectorHomeController.AllRequests.start(splitpane, "/Boundary/allRequests.fxml", "Inspector");
 		});
 	}
-
+/**
+ * Fill comboBox with current phase administrator 
+ * @param currentadmin
+ */
 	public void setcombotext(String currentadmin) {
 		if (currentadmin != null) {
 			ctrl.PhaseAdministrator.setPromptText(currentadmin);
 			ctrl.lastadmin = ctrl.PhaseAdministrator.getPromptText();
 		}
 	}
-
+/**
+ * fill ComboBox with phase Administator 
+ * @param names
+ */
 	public void fillCombo(ArrayList<String> names) {
 		list = FXCollections.observableArrayList(names);
 		ctrl.PhaseAdministrator.setItems(list);
 		ctrl.chooseengineer.setItems(list);
 	}
-
+/**
+ * update the request with the entered informations.
+ */
 	public void updateandsaveaction() {
 		if (ctrl.PhaseAdministrator.getSelectionModel().getSelectedItem() == null
 				&& ctrl.DatePickerFrom.getValue() == null && ctrl.DatePickerTo.getValue() == null) {

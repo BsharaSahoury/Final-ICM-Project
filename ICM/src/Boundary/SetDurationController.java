@@ -30,7 +30,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * set Duration to request must take approve from the inspector 
+ * 
+ *
+ */
 public class SetDurationController implements Initializable {
 	public static SetDurationController duratin;
 	public static Stage primaryStage;
@@ -63,7 +67,12 @@ public class SetDurationController implements Initializable {
 
 	private static RequestPhase rp;
 	private static Phase phase;
-
+/**
+ * Start set duration GUI
+ * @param splitpane GUI
+ * @param path path of the GUI
+ * @param rp Request-phase
+ */
 	public void start(SplitPane splitpane, String path, RequestPhase rp) {
 		this.splitpane = splitpane;
 		primaryStage = LoginController.primaryStage;
@@ -80,7 +89,9 @@ public class SetDurationController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * on the save button will send to inspector the duration of the request waiting for approve
+ */
 	public void saveBtn() {
 		LocalDate start = startDate.getValue();
 		LocalDate due = dueDate.getValue();
@@ -116,7 +127,10 @@ public class SetDurationController implements Initializable {
 			alertWarning.showAndWait();
 		}
 	}
-
+/**
+ * send extra time request to Inspector for the choosen request 
+ * @param e ActionEvent ( Clicking on button)
+ */
 	public void SendExtraTimeRequestBtn(ActionEvent e) {
 
 		boolean ExtensionReason = ExtensionReasonText.getText().equals("");
@@ -170,7 +184,9 @@ public class SetDurationController implements Initializable {
 			}
 		}
 	}
-
+/**
+ * Initialize  Request data from chosen request from table list
+ */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
