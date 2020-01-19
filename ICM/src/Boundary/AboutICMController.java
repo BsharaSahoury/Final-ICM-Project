@@ -10,7 +10,9 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 /**
- * AcountICMController 
+ * AcountICMController :A controller implementing and showing 
+ * the ABOUTICM described our ICM-System.
+ * ICM-Users can know AboutICM By this Data
  * @author Arkan Muhammad
  *
  */

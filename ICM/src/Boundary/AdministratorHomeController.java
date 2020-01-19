@@ -23,7 +23,12 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * AdministratorHomeController :A controller implementing and showing 
+ * the Adminstrator Home with all the permissions for them
+ * @author Arkan Muhammad
+ *
+ */
 public class AdministratorHomeController implements Initializable {
 	@FXML
 	private Button Homebtn;
@@ -43,10 +48,12 @@ public class AdministratorHomeController implements Initializable {
 	private AnchorPane lowerAnchorPane;
 	public static Stage primaryStage;
 	private static Employee Administrator;
-	public static MyRequestsController MyRequests;
+	public static MyRequestsController MyRequests; 
 	public static AllRequestsController AllRequests;
 	public static ProfileSettingController ProfileSetting;
-
+/**
+ * @param Administrator
+ */
 	public void start(Employee Administrator) {
 		this.Administrator = Administrator;
 		primaryStage = LoginController.primaryStage;
@@ -71,25 +78,37 @@ public class AdministratorHomeController implements Initializable {
 			}
 		});
 	}
-
+/**
+ * getPrimaryStage: method to return the primaryStage of AdminsitratorHomeController
+ * @return primaryStage
+ */
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
-
+/**
+ * Method for An action Event ,Clicking on Permissions Button
+ * @param e
+ */
 	public void PermissionsAction(ActionEvent e) {
 		PermissionsController pc = new PermissionsController();
 		runLater(() -> {
 			pc.start(splitpane);
 		});
 	}
-
+/**
+ * Method for An action Event ,Clicking on generateReport button 
+ * @param e
+ */
 	public void generateReportAction(ActionEvent e) {
 		ReportController rc = new ReportController();
 		runLater(() -> {
 			rc.start(splitpane);
 		});
 	}
-
+/**
+ * method to wait 5millisecond
+ * @param f
+ */
 	private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {
@@ -102,14 +121,23 @@ public class AdministratorHomeController implements Initializable {
 			}
 		});
 	}
-
+/**
+ * Method for An action Event ,Clicking on Home button 
+ * @param event
+ * @throws Exception
+ */
 	public void GoToHome(ActionEvent event) throws Exception {
 		HomeController home = new HomeController();
 		runLater(() -> {
 			home.start(splitpane);
 		});
 	}
-
+/**
+ * Method for An action Event ,Clicking on AllRequests button 
+ * to displaying all the requests in ICM-SYSTEM
+ * @param event
+ * @throws Exception
+ */
 	public void AllRequestsAction(ActionEvent event) throws Exception {
 		AllRequests = new AllRequestsController();
 		AllRequests.start(splitpane, "/Boundary/allRequests-for-Admin.fxml", "Administrator");
@@ -117,7 +145,12 @@ public class AdministratorHomeController implements Initializable {
 			AllRequests.start(splitpane, "/Boundary/allRequests-for-Admin.fxml", "Administrator");
 		});
 	}
-
+/**
+ * Method for An action Event ,Clicking on RequestSubmissionAction button 
+ * to submit a request 
+ * @param event
+ * @throws Exception
+ */
 	public void RequestSubmissionAction(ActionEvent event) throws Exception {
 		RequestSubmissionController Submit = new RequestSubmissionController();
 		Submit.start(splitpane, Administrator);
@@ -125,7 +158,12 @@ public class AdministratorHomeController implements Initializable {
 			Submit.start(splitpane, Administrator);
 		});
 	}
-
+/**
+ * Method for An action Event ,Clicking on ProfileSettingAction button 
+ * to display the profileSetting of Administrator
+ * @param event
+ * @throws Exception
+ */
 	public void ProfileSettingAction(ActionEvent event) throws Exception {
 
 		ProfileSetting = new ProfileSettingController();
@@ -135,7 +173,12 @@ public class AdministratorHomeController implements Initializable {
 		});
 
 	}
-
+/**
+ * Method for An action Event ,Clicking on MyRequestsAction button 
+ * to displaying the requests that Administrator submitted
+ * @param event
+ * @throws Exception
+ */
 	public void MyRequestsAction(ActionEvent event) throws Exception {
 		MyRequests = new MyRequestsController();
 		MyRequests.start(splitpane, Administrator, "Administrator");
@@ -143,7 +186,12 @@ public class AdministratorHomeController implements Initializable {
 			MyRequests.start(splitpane, Administrator, "Administrator");
 		});
 	}
-
+/**
+ * Method for An action Event ,Clicking on AboutICMAction button 
+ * to displaying data of ICM-System
+ *  * @param event
+ * @throws Exception
+ */
 	public void AboutICMAction(ActionEvent event) throws Exception {
 		AboutICMController about = new AboutICMController();
 		about.start(splitpane);
@@ -151,7 +199,12 @@ public class AdministratorHomeController implements Initializable {
 			about.start(splitpane);
 		});
 	}
-
+/**
+ * Method for An action Event ,Clicking on LogOutAction button 
+ * to Logout from the ICM-System
+ *  * @param event
+ * @throws Exception
+ */
 	public void LogOutAction(ActionEvent event) throws Exception {
 		LogOutController logOut = new LogOutController();
 		primaryStage.close();
@@ -164,7 +217,12 @@ public class AdministratorHomeController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		UserNameMenu.setText(Administrator.getFirstName() + " " + Administrator.getLastName());
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on clickNotifications button 
+	 * to display your notification that you received
+	 *  * @param event
+	 * @throws Exception
+	 */
 	public void clickNotifications(ActionEvent event) throws Exception {
 		NotificationsController notific = new NotificationsController();
 		notific.start(splitpane, Administrator);
@@ -172,7 +230,10 @@ public class AdministratorHomeController implements Initializable {
 			notific.start(splitpane, Administrator);
 		});
 	}
-
+/**
+ * Method that returns the User Administrator
+ * @return Administrator
+ */
 	public static Employee getAdministrator() {
 		return Administrator;
 	}
