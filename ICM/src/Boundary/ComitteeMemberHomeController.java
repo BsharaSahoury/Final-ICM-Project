@@ -1,6 +1,6 @@
 package Boundary;
 
-import java.io.IOException; 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -27,7 +27,7 @@ public class ComitteeMemberHomeController implements Initializable {
 	@FXML
 	private Button Homebtn;
 	@FXML
-	private Button RequestWorkedOnbtn; 
+	private Button RequestWorkedOnbtn;
 	@FXML
 	private Button RequestSubmissionbtn;
 	@FXML
@@ -48,14 +48,14 @@ public class ComitteeMemberHomeController implements Initializable {
 	private static Employee comitteeMember;
 	public static MyRequestsController MyRequests;
 	public static ProfileSettingController ProfileSetting;
-
 	public static RequestsWorkedOnController RequestWorkON;
-    public static Employee employee;
-    public static Employee Chairman;
-    private static int flag=0;
+	public static Employee employee;
+	public static Employee Chairman;
+	private static int flag = 0;
+
 	public void start(Employee employee) {
 		this.comitteeMember = employee;
-		this.employee=employee;
+		this.employee = employee;
 		primaryStage = LoginController.primaryStage;
 		Platform.runLater(new Runnable() {
 			@Override
@@ -70,7 +70,7 @@ public class ComitteeMemberHomeController implements Initializable {
 					primaryStage.setOnCloseRequest(event -> {
 						System.out.println("EXIT ICM");
 						LogOutController logOut = new LogOutController();
-						logOut.exit(primaryStage,comitteeMember);
+						logOut.exit(primaryStage, comitteeMember);
 					});
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -78,68 +78,71 @@ public class ComitteeMemberHomeController implements Initializable {
 			}
 		});
 	}
- public static void setChairman(Employee user) {
-	 employee=user;
- }
+
+	public static void setChairman(Employee user) {
+		employee = user;
+	}
+
 	public Stage getPrimaryStage() {
 		return primaryStage;
-	} 
+	}
 
 	public void GoToHome(ActionEvent event) throws Exception {
 		HomeController home = new HomeController();
 		runLater(() -> {
 			home.start(splitpane);
-		});			
-	}
-     	
-	public void RequestForTestOnAction(ActionEvent event) throws Exception {
-		flag=1;
-		RequestWorkON = new RequestsWorkedOnController();
-		runLater(() -> {
-			RequestWorkON.start(splitpane, "/Boundary/RequestsWorkOnTester.fxml",comitteeMember,"Comittee Member","testing");
-		});			
-		}
-	public void RequestWorkedOnAction(ActionEvent event) throws Exception {
-		flag=0;
-		RequestWorkON = new RequestsWorkedOnController();
-		runLater(() -> {
-			RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnCommittemember.fxml",comitteeMember,"Comittee Member","decision");
 		});
 	}
+
+	public void RequestForTestOnAction(ActionEvent event) throws Exception {
+		flag = 1;
+		RequestWorkON = new RequestsWorkedOnController();
+		runLater(() -> {
+			RequestWorkON.start(splitpane, "/Boundary/RequestsWorkOnTester.fxml", comitteeMember, "Comittee Member",
+					"testing");
+		});
+	}
+
+	public void RequestWorkedOnAction(ActionEvent event) throws Exception {
+		flag = 0;
+		RequestWorkON = new RequestsWorkedOnController();
+		runLater(() -> {
+			RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnCommittemember.fxml", comitteeMember,
+					"Comittee Member", "decision");
+		});
+	}
+
 	public static int getFlag() {
 		return flag;
 	}
-    
+
 	public static Employee getcomitteeMember() {
 		return comitteeMember;
 	}
-	
-	
+
 	public void RequestSubmissionAction(ActionEvent event) throws Exception {
 		RequestSubmissionController Submit = new RequestSubmissionController();
 		runLater(() -> {
-			Submit.start(splitpane,comitteeMember);
+			Submit.start(splitpane, comitteeMember);
 		});
 	}
 
 	public void ProfileSettingAction(ActionEvent event) throws Exception {
 		ProfileSetting = new ProfileSettingController();
-		if(comitteeMember.getJob().equals("comittee member"))
-		runLater(() -> {
-				ProfileSetting.start(splitpane,comitteeMember,"Committee member");
-		});
+		if (comitteeMember.getJob().equals("comittee member"))
+			runLater(() -> {
+				ProfileSetting.start(splitpane, comitteeMember, "Committee member");
+			});
 		else
 			runLater(() -> {
-					ProfileSetting.start(splitpane,employee,"Chairman");
+				ProfileSetting.start(splitpane, employee, "Chairman");
 			});
-
-
 	}
 
 	public void MyRequestsAction(ActionEvent event) throws Exception {
 		MyRequests = new MyRequestsController();
 		runLater(() -> {
-			MyRequests.start(splitpane, comitteeMember,"Comittee Member");
+			MyRequests.start(splitpane, comitteeMember, "Comittee Member");
 		});
 	}
 
@@ -154,15 +157,15 @@ public class ComitteeMemberHomeController implements Initializable {
 		LogOutController logOut = new LogOutController();
 		primaryStage.close();
 		runLater(() -> {
-			logOut.start(primaryStage,comitteeMember);
+			logOut.start(primaryStage, comitteeMember);
 		});
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		UserNameMenu.setText(comitteeMember.getFirstName()+" "+comitteeMember.getLastName());
-		role.setText("Role : "+comitteeMember.getJob());
-		String msg="get ChairMan";
+		UserNameMenu.setText(comitteeMember.getFirstName() + " " + comitteeMember.getLastName());
+		role.setText("Role : " + comitteeMember.getJob());
+		String msg = "get ChairMan";
 		try {
 			LoginController.cc.getClient().sendToServer(msg);
 		} catch (IOException e) {
@@ -170,27 +173,26 @@ public class ComitteeMemberHomeController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void clickNotifications(ActionEvent event) throws Exception {
-		NotificationsController notific=new NotificationsController();
+		NotificationsController notific = new NotificationsController();
 		runLater(() -> {
-			notific.start(splitpane,comitteeMember);
+			notific.start(splitpane, comitteeMember);
 		});
 	}
-	
+
 	private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {
 			try {
-				Thread.sleep(5);
+				Thread.sleep(1);
 				f.call();
 
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 		});
 	}
-	
-}
 
+}

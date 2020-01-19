@@ -154,7 +154,7 @@ public class EngineerHomeController implements Initializable {
 		f.call();
 		Platform.runLater(() -> {
 			try {
-				Thread.sleep(5);
+				Thread.sleep(1);
 				f.call();
 
 			} catch (InterruptedException e) {

@@ -25,7 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class CommitteeEvaluationController{
+public class CommitteeEvaluationController {
 	@FXML
 	private Label requestID;
 	@FXML
@@ -43,36 +43,37 @@ public class CommitteeEvaluationController{
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
 	private static ClientConsole cc;
-    private FXMLLoader loader;;
+	private FXMLLoader loader;;
 	@FXML
 	private static SplitPane splitpane;
-    private RequestPhase selected;
-    public static CommitteeEvaluationController ctrl1;
-    public static int flag=-1;
-	public void start(SplitPane splitpane,RequestPhase selected,User user) {
-		
+	private RequestPhase selected;
+	public static CommitteeEvaluationController ctrl1;
+	public static int flag = -1;
+
+	public void start(SplitPane splitpane, RequestPhase selected, User user) {
+
 		try {
 			loader = new FXMLLoader(getClass().getResource("/Boundary/CommitteeMember-EvaluationReport.fxml"));
-			lowerAnchorPane = loader.load();		
-			ctrl1=loader.getController();
+			lowerAnchorPane = loader.load();
+			ctrl1 = loader.getController();
 			splitpane.getItems().set(1, lowerAnchorPane);
 			ctrl1.primaryStage = LoginController.primaryStage;
-			ctrl1.selected=selected;
+			ctrl1.selected = selected;
 			ctrl1.cc = LoginController.cc;
 			ctrl1.splitpane = splitpane;
-			Object[] Message=new Object[2];
-			Message[0]="get evaluation report";
-			Message[1]=ctrl1.selected.getR().getId();
+			Object[] Message = new Object[2];
+			Message[0] = "get evaluation report";
+			Message[1] = ctrl1.selected.getR().getId();
 			try {
 				cc.getClient().sendToServer(Message);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 	public void setlabels(EvaluationReport report) {
 		ctrl1.requestID.setText(Integer.toString(report.getRequestID()));
 		ctrl1.requestID.setTextFill(Color.web("#9d1b34"));
