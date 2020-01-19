@@ -12,24 +12,13 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.PermissionsController">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="728.0">
          <children>
             <Line endX="429.0" endY="-12.999996185302734" layoutX="299.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
-            <Label layoutX="26.0" layoutY="6.0" text="ICM">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="52.0" layoutY="6.0" text="-&gt;" />
-            <Label layoutX="64.0" layoutY="6.0" text="Permissions">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
+            <Label layoutX="26.0" layoutY="6.0" text="ICM -&gt; Permissions" />
             <TabPane layoutX="66.0" layoutY="29.0" prefHeight="571.0" prefWidth="730.0" stylesheets="@tabs.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0">
               <tabs>
                 <Tab text="Manage Inspector &amp; Comittee Members">
@@ -70,7 +59,7 @@
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <Label layoutX="40.0" layoutY="25.0" prefHeight="30.0" prefWidth="634.0" text="Please choose an employee from the table and specific System below and then click 'Set evaluator'-&gt;" AnchorPane.bottomAnchor="471.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="56.0" AnchorPane.topAnchor="25.0" />
-                              <TableView fx:id="table2" layoutX="32.0" layoutY="74.0" prefHeight="195.0" prefWidth="470.0" stylesheets="@css2.css" AnchorPane.bottomAnchor="275.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="71.0">
+                              <TableView fx:id="table2" layoutX="32.0" layoutY="74.0" prefHeight="195.0" prefWidth="470.0" stylesheets="@css4.css" AnchorPane.bottomAnchor="275.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="71.0">
                                 <columns>
                                   <TableColumn fx:id="idCol2" prefWidth="75.0" text="ID" />
                                   <TableColumn fx:id="fullNameCol2" prefWidth="311.19995880126953" text="Full Name" />

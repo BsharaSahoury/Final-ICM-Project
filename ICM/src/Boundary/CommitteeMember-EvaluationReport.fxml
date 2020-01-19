@@ -27,16 +27,11 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="37.0" layoutY="6.0" text="ICM -&gt; All Requests -&gt;Decision for request -&gt;Evaluation report" />
+            <Label layoutX="35.0" layoutY="6.0" text="ICM -&gt; All Requests -&gt;Decision for request -&gt;Evaluation report" />
             <Label layoutX="53.0" layoutY="209.0" text="Description of change:">
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <ImageView fitHeight="18.0" fitWidth="22.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/back-arrow.png" />
-               </image>
-            </ImageView>
             <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="15.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/request-id.jfif" />

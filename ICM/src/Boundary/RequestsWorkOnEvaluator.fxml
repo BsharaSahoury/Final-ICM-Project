@@ -12,14 +12,14 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="601.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.RequestsWorkedOnController">
+<AnchorPane prefHeight="601.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.RequestsWorkedOnController">
    <children>
       <TableView fx:id="tableRequests" layoutX="7.0" layoutY="142.0" prefHeight="367.0" prefWidth="719.0" stylesheets="@css1.css">
          <columns>
-            <TableColumn fx:id="colID" prefWidth="113.0" text="ID" />
-            <TableColumn fx:id="colName" prefWidth="119.0" text="Initiator Name" />
-            <TableColumn fx:id="colStatus" prefWidth="82.0" text="Status" />
-            <TableColumn fx:id="colPriflig" prefWidth="194.0" text="Prifileged Information System" />
+            <TableColumn fx:id="colID" prefWidth="83.0" text="ID" />
+            <TableColumn fx:id="colName" prefWidth="149.0" text="Initiator Name" />
+            <TableColumn fx:id="colStatus" prefWidth="54.0" text="Status" />
+            <TableColumn fx:id="colPriflig" prefWidth="222.0" text="Prifileged Information System" />
             <TableColumn fx:id="colSubDate" prefWidth="112.0" text="SubmissionDate" />
             <TableColumn fx:id="colState" prefWidth="98.0" text="State" />
          </columns>
@@ -45,12 +45,8 @@
          </font>
       </Button>
       <Label layoutX="21.0" layoutY="120.0" text="Plase click on a line below and then choose an option below -&gt;" />
-      <Label layoutX="25.0" layoutY="9.0" text="ICM -&gt; Requests that I work on">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Line endX="464.0" layoutX="264.0" layoutY="24.0" startX="-264.0" />
+      <Label layoutX="24.0" layoutY="7.0" text="ICM -&gt; Requests that I work on" />
+      <Line endX="464.0" layoutX="264.0" layoutY="30.0" startX="-264.0" />
       <Button fx:id="RequestInfo1" layoutX="382.0" layoutY="531.0" mnemonicParsing="false" onAction="#SetDuration" prefHeight="43.0" prefWidth="100.0" style="-fx-background-color: #9d1b34;" text="Duration" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
