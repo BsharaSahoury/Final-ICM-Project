@@ -16,11 +16,11 @@
    <children>
       <TableView fx:id="tableRequests" layoutX="7.0" layoutY="142.0" prefHeight="367.0" prefWidth="719.0" stylesheets="@css1.css">
          <columns>
-            <TableColumn fx:id="colID" prefWidth="161.0" text="ID" />
-            <TableColumn fx:id="colName" prefWidth="115.0" text="InitiatorName" />
-            <TableColumn fx:id="colStatus" prefWidth="109.0" text="Status" />
-            <TableColumn fx:id="colPriflig" prefWidth="206.0" text="Prifileged Information System" />
-            <TableColumn fx:id="colSubDate" prefWidth="125.0" text="SubmissionDate" />
+            <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="colName" prefWidth="152.0" text="InitiatorName" />
+            <TableColumn fx:id="colStatus" prefWidth="117.0" text="Status" />
+            <TableColumn fx:id="colPriflig" prefWidth="221.0" text="Prifileged Information System" />
+            <TableColumn fx:id="colSubDate" prefWidth="151.0" text="SubmissionDate" />
          </columns>
       </TableView>
       <Label layoutX="121.0" layoutY="206.0" />
@@ -59,9 +59,9 @@
          </image>
       </ImageView>
       <Label layoutX="21.0" layoutY="120.0" text="Plase click on a line below and then choose an option below -&gt;" />
-      <Label layoutX="25.0" layoutY="9.0" text="ICM -&gt; AllEmployees">
+      <Label layoutX="40.0" layoutY="6.0" text="ICM -&gt; AllEmployees">
          <font>
-            <Font name="System Bold" size="10.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <Line endX="464.0" layoutX="264.0" layoutY="24.0" startX="-264.0" />

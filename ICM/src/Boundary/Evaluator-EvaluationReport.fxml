@@ -124,16 +124,6 @@
             <TextArea fx:id="Location" layoutX="212.0" layoutY="104.0" prefHeight="60.0" prefWidth="448.0" />
             <Label layoutX="316.0" layoutY="511.0" text="Days" />
             <TextField fx:id="duration" layoutX="267.0" layoutY="507.0" prefHeight="25.0" prefWidth="42.0" />
-            <Text layoutX="217.0" layoutY="571.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Extension will only be possible once per stage">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Text>
-            <Label layoutX="186.0" layoutY="548.0" text="*" textFill="RED">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
             <Label layoutX="9.0" layoutY="117.0" text="*" textFill="RED">
                <font>
                   <Font size="24.0" />
@@ -164,6 +154,11 @@
                   <Font size="24.0" />
                </font>
             </Label>
+            <Text fill="#9d1b34" layoutX="12.0" layoutY="572.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*) Required Fields">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
          </children></AnchorPane>
    </children>
 </AnchorPane>
