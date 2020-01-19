@@ -296,7 +296,6 @@ public class NotificationsController implements Initializable {
 				numberOnly = content.replaceAll("[^0-9]", "");
 				id = Integer.valueOf(numberOnly);
 				b = content.split(": ");
-				System.out.println(b[1]);
 				b = b[1].split("!");
 				phase = b[0];
 				ReminderMessageController rmc8 = new ReminderMessageController();
