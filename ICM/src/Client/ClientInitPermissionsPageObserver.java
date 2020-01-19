@@ -15,18 +15,18 @@ public class ClientInitPermissionsPageObserver implements Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		if(arg1 instanceof Object[]) {
-			Object[] arg2=(Object[])arg1;
-			if(arg2[0] instanceof String) {
-				String keymessage=(String)arg2[0];
-				if(keymessage.equals("employees&permissions")) {
-					ArrayList<Employee> engineers=(ArrayList<Employee>)arg2[1];
+		if (arg1 instanceof Object[]) {
+			Object[] arg2 = (Object[]) arg1;
+			if (arg2[0] instanceof String) {
+				String keymessage = (String) arg2[0];
+				if (keymessage.equals("employees&permissions")) {
+					ArrayList<Employee> engineers = (ArrayList<Employee>) arg2[1];
 					PermissionsController.ctrl.recieveData(engineers);
-					
+
 				}
 			}
 		}
-		
+
 	}
 
 }

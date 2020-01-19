@@ -92,8 +92,14 @@ public class RequestsWorkedOnController implements Initializable {
 	public static FXMLLoader loader;
 	private static User user;
 	private static RequestPhase rp;
+	private static String newjob;
 
 	public void start(SplitPane splitpane, String path, User user, String job, String phase) {
+		if(job.equals("Chairman")) {
+			this.newjob=job;
+			job="Comittee Member";
+		}
+		else this.newjob="???";
 		this.job = job;
 		this.user = user;
 		primaryStage = LoginController.primaryStage;
@@ -107,8 +113,7 @@ public class RequestsWorkedOnController implements Initializable {
 			this.splitpane = splitpane;
 			RequestWorkedON[0] = "Requests worked on";
 			if (job.equals("Comittee Member") && phase.equals("decision")) {
-				RequestWorkedON[1] = user.getUsername();// ComitteeMemberHomeController.Chairman.getUsername();
-				// System.out.println(ComitteeMemberHomeController.Chairman.getUsername());
+				RequestWorkedON[1] = user.getUsername();	
 			} else if (job.equals("Engineer")) {
 				RequestWorkedON[0] = "engineer request work on";
 				RequestWorkedON[1] = user.getUsername();
@@ -218,6 +223,7 @@ public class RequestsWorkedOnController implements Initializable {
 			}
 		}
 	}
+
 	public void SetDuration() {
 		chosen = tableRequests.getSelectionModel().getSelectedIndex();
 		if (chosen != -1) {
@@ -247,15 +253,20 @@ public class RequestsWorkedOnController implements Initializable {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				if (job.equals("Comittee Member") || job.equals("Engineer")) {
-					DurationController Duration = new DurationController();
+				DurationController Duration = new DurationController();
+				SetDurationController setDuration = new SetDurationController();
+				if(newjob.equals("Chairman")) {
 					runLater(() -> {
-					Duration.start(splitpane, "/Boundary/Duration.fxml", rp);
+						setDuration.start(splitpane, "/Boundary/DuratinForEvaluator.fxml", rp);
+					});
+				}
+				else if (job.equals("Comittee Member") || job.equals("Engineer")) {
+					runLater(() -> {
+						Duration.start(splitpane, "/Boundary/Duration.fxml", rp);
 					});
 				} else {
-					SetDurationController setDuration = new SetDurationController();
 					runLater(() -> {
-					setDuration.start(splitpane, "/Boundary/DuratinForEvaluator.fxml", rp);
+						setDuration.start(splitpane, "/Boundary/DuratinForEvaluator.fxml", rp);
 					});
 				}
 			}
@@ -268,7 +279,7 @@ public class RequestsWorkedOnController implements Initializable {
 			Request s = tableRequests.getSelectionModel().getSelectedItem();
 			RequestInfoController requestifo = new RequestInfoController();
 			runLater(() -> {
-			requestifo.start(splitpane, s, job);
+				requestifo.start(splitpane, s, job);
 			});
 		} else {
 			Alert alertWarning = new Alert(AlertType.WARNING);
@@ -315,7 +326,7 @@ public class RequestsWorkedOnController implements Initializable {
 		case "Inspector":
 			try {
 				runLater(() -> {
-				InspectorHomeController.AllRequests.start(splitpane, "/Boundary/allRequests.fxml", "Inspector");
+					InspectorHomeController.AllRequests.start(splitpane, "/Boundary/allRequests.fxml", "Inspector");
 				});
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -325,8 +336,9 @@ public class RequestsWorkedOnController implements Initializable {
 		case "Evaluator":
 			try {
 				runLater(() -> {
-				EvaluatorHomeController.RequestWorkON.start(splitpane, "/Boundary/RequestsWorkOnEvaluator.fxml",
-						employee, "Evaluator", "evaluation");});
+					EvaluatorHomeController.RequestWorkON.start(splitpane, "/Boundary/RequestsWorkOnEvaluator.fxml",
+							employee, "Evaluator", "evaluation");
+				});
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -338,13 +350,15 @@ public class RequestsWorkedOnController implements Initializable {
 			try {
 				if (ComitteeMemberHomeController.getFlag() == 0) {
 					runLater(() -> {
-					ComitteeMemberHomeController.RequestWorkON.start(splitpane,
-							"/Boundary/RequestWorkOnCommittemember.fxml", employee, "Comittee Member", "decision");});
+						ComitteeMemberHomeController.RequestWorkON.start(splitpane,
+								"/Boundary/RequestWorkOnCommittemember.fxml", employee, "Comittee Member", "decision");
+					});
 				}
 				if (ComitteeMemberHomeController.getFlag() == 1) {
 					runLater(() -> {
-					ComitteeMemberHomeController.RequestWorkON.start(splitpane, "/Boundary/RequestsWorkOnTester.fxml",
-							employee, "Comittee Member", "testing");});
+						ComitteeMemberHomeController.RequestWorkON.start(splitpane,
+								"/Boundary/RequestsWorkOnTester.fxml", employee, "Comittee Member", "testing");
+					});
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -354,8 +368,9 @@ public class RequestsWorkedOnController implements Initializable {
 		case "Chairman":
 			try {
 				runLater(() -> {
-				ChairmanHomeController.RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnChairman.fxml", employee,
-						"Chairman", "decision");});
+					ChairmanHomeController.RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnChairman.fxml",
+							employee, "Chairman", "decision");
+				});
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -364,8 +379,9 @@ public class RequestsWorkedOnController implements Initializable {
 		case "Performance Leader":
 			try {
 				runLater(() -> {
-				PerformanceLeaderHomeController.RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnPerformer.fxml",
-						employee, "Performance Leader", "performance");});
+					PerformanceLeaderHomeController.RequestWorkON.start(splitpane,
+							"/Boundary/RequestWorkOnPerformer.fxml", employee, "Performance Leader", "performance");
+				});
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -373,8 +389,9 @@ public class RequestsWorkedOnController implements Initializable {
 		case "Engineer":
 			try {
 				runLater(() -> {
-				PerformanceLeaderHomeController.RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnPerformer.fxml",
-						employee, "Performance Leader", "performance");});
+					PerformanceLeaderHomeController.RequestWorkON.start(splitpane,
+							"/Boundary/RequestWorkOnPerformer.fxml", employee, "Performance Leader", "performance");
+				});
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -383,7 +400,8 @@ public class RequestsWorkedOnController implements Initializable {
 		case "Administrator":
 			try {
 				runLater(() -> {
-				AdministratorHomeController.AllRequests.start(splitpane, "/Boundary/allRequests.fxml", "Administrator");
+					AdministratorHomeController.AllRequests.start(splitpane, "/Boundary/allRequests.fxml",
+							"Administrator");
 				});
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -620,7 +638,7 @@ public class RequestsWorkedOnController implements Initializable {
 			if (s.getState().equals(State.work)) {
 				TestResultController setTestResult = new TestResultController();
 				runLater(() -> {
-				setTestResult.start(splitpane, s);
+					setTestResult.start(splitpane, s);
 				});
 			} else {
 				Alert alertWarning = new Alert(AlertType.ERROR);
@@ -635,13 +653,6 @@ public class RequestsWorkedOnController implements Initializable {
 			alertWarning.showAndWait();
 		}
 	}
-
-			
-   
-
-	
-	
-	
 
 	public static int getselectedindex() {
 		return chosen;
@@ -673,7 +684,7 @@ public class RequestsWorkedOnController implements Initializable {
 			RequestPhase selected = tableRequests.getSelectionModel().getSelectedItem();
 			decision = new MakeDicisionController();
 			runLater(() -> {
-			decision.start(splitpane, selected, user);
+				decision.start(splitpane, selected, user);
 			});
 		}
 	}
@@ -685,7 +696,7 @@ public class RequestsWorkedOnController implements Initializable {
 			if (s.getState().toString().equals(State.work.toString())) {
 				CreateEvaluationReportController requestifo = new CreateEvaluationReportController();
 				runLater(() -> {
-				requestifo.start(splitpane, s.getId());
+					requestifo.start(splitpane, s.getId());
 				});
 			} else {
 				Alert alertWarning = new Alert(AlertType.WARNING);

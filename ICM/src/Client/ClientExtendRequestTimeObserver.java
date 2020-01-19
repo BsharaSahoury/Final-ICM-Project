@@ -19,7 +19,6 @@ public class ClientExtendRequestTimeObserver implements Observer {
 			Object[] arg2 = (Object[]) arg1;
 			if (arg2[0] instanceof String) {
 				String keymessage = (String) arg2[0];
-				System.out.println(keymessage);
 				if (keymessage.equals("its ok")) {
 					Platform.runLater(new Runnable() {
 
@@ -34,8 +33,7 @@ public class ClientExtendRequestTimeObserver implements Observer {
 
 					});
 
-				}
-				else if(keymessage.equals("Extension possible once per stage !")) {
+				} else if (keymessage.equals("Extension possible once per stage !")) {
 					Platform.runLater(new Runnable() {
 
 						@Override

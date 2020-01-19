@@ -49,12 +49,8 @@
          </font>
       </Button>
       <Label layoutX="21.0" layoutY="120.0" text="Plase click on a line below and then choose an option below -&gt;" />
-      <Label layoutX="25.0" layoutY="9.0" text="ICM -&gt; Requests On Work">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Line endX="464.0" layoutX="264.0" layoutY="24.0" startX="-264.0" />
+      <Label layoutX="25.0" layoutY="7.0" text="ICM -&gt;All Requests" />
+      <Line endX="459.5" endY="7.0" layoutX="264.0" layoutY="24.0" startX="-264.0" startY="7.0" />
       <TextField fx:id="search_text" layoutX="25.0" layoutY="47.0" onAction="#searchaction" promptText="Search ID" style="-fx-background-color: #EBE8F9; -fx-border-radius: 2em; -fx-border-color: #000000;" />
       <Button layoutX="679.0" layoutY="46.0" mnemonicParsing="false" onAction="#refresh" style="-fx-background-insets: 8888;">
          <graphic>

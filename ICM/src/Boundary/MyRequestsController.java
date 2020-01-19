@@ -356,11 +356,6 @@ public class MyRequestsController implements Initializable {
 		colStatus.setCellValueFactory(new PropertyValueFactory<Request, String>("status"));
 		colPriflig.setCellValueFactory(new PropertyValueFactory<Request, String>("privilegedInfoSys"));
 		colSubDate.setCellValueFactory(new PropertyValueFactory<Request, Date>("date"));
-		// this.tabl=tableRequests;
-		// ObservableList<Request> aa=FXCollections.observableArrayList();
-		// aa.add(new Request(1,"sss","xxx","Qqqq",LocalDate.of(1915, Month.SEPTEMBER,
-		// 1)));
-		// tableRequests.setItems(aa);
 	}
 
 	private void runLater(Func f) {

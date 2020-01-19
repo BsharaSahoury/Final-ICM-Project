@@ -14,27 +14,27 @@ public class ClientChangePermissionsObserver implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		if(arg instanceof Object[]) {
-			Object[] arg1=(Object[])arg;
-			if(arg1[0] instanceof String) {
-				String keymessage=(String)arg1[0];
-				if(keymessage.equals("permissions tab1")) {
+		if (arg instanceof Object[]) {
+			Object[] arg1 = (Object[]) arg;
+			if (arg1[0] instanceof String) {
+				String keymessage = (String) arg1[0];
+				if (keymessage.equals("permissions tab1")) {
 					Platform.runLater(new Runnable() {
 
 						@Override
 						public void run() {
 							Alert alert = new Alert(AlertType.INFORMATION);
-					        alert.setTitle("TEST");
-					        alert.setHeaderText("success");
-					        alert.setContentText("The permissions set successfully!");
-					        alert.showAndWait();
+							alert.setTitle("TEST");
+							alert.setHeaderText("success");
+							alert.setContentText("The permissions set successfully!");
+							alert.showAndWait();
 						}
-						
+
 					});
 				}
 			}
 		}
-		
+
 	}
 
 }

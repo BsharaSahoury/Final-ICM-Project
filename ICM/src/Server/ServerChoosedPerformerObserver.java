@@ -17,7 +17,6 @@ public class ServerChoosedPerformerObserver implements Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-	//	System.out.println("ServerChoosedPerformerObserver-logged-Successfully");
 		if (arg1 instanceof Object[]) {
 			Object[] arg2 = (Object[]) arg1;
 			ConnectionToClient client = (ConnectionToClient) arg2[0];
@@ -39,7 +38,6 @@ public class ServerChoosedPerformerObserver implements Observer {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-							System.out.println("ServerChoosedPerformerObserver-Cheaked");
 							long millis = System.currentTimeMillis();
 							Notification n1 = new Notification("You've been recruited to perform request#" + id,
 									new java.sql.Date(millis), "recruitNotificationForPerformance");

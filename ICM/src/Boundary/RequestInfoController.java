@@ -109,9 +109,7 @@ public class RequestInfoController implements Initializable {
 
 				@Override
 				public void run() {
-					// LfileName.setVisible(false);
 					LfileName.setText(r.getFilename());
-					// LfileName.setVisible(true);
 				}
 
 			});

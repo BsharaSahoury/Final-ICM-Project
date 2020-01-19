@@ -18,7 +18,7 @@ import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
-public class ClientMessageSentToInitiatorObserver implements Observer{
+public class ClientMessageSentToInitiatorObserver implements Observer {
 	public ClientMessageSentToInitiatorObserver(Observable client) {
 		client.addObserver(this);
 	}
@@ -26,18 +26,19 @@ public class ClientMessageSentToInitiatorObserver implements Observer{
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
-		if(arg1 instanceof String) {
-			String arg=(String)arg1;
-			if(arg.equals("Message send to initiator to approve the decision")) {
+		if (arg1 instanceof String) {
+			String arg = (String) arg1;
+			if (arg.equals("Message send to initiator to approve the decision")) {
 				Platform.runLater(new Runnable() {
-				@Override
-				public void run() {
-				 Alert alertSuccess = new Alert(AlertType.INFORMATION);
-				 alertSuccess.setTitle("Success");
-				 alertSuccess.setHeaderText("Success");
-				 alertSuccess.setContentText("Your approve saved and notification and email and SMS\n sent to initiator to approve the decision");
-				 alertSuccess.showAndWait();
-					}		
+					@Override
+					public void run() {
+						Alert alertSuccess = new Alert(AlertType.INFORMATION);
+						alertSuccess.setTitle("Success");
+						alertSuccess.setHeaderText("Success");
+						alertSuccess.setContentText(
+								"Your approve saved and notification and email and SMS\n sent to initiator to approve the decision");
+						alertSuccess.showAndWait();
+					}
 				});
 			}
 		}

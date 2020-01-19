@@ -36,21 +36,21 @@ public class serverSubmissionObserver implements Observer {
 							Object[] message = { keymessage };
 							try {
 								client.sendToClient(message);
-								} catch (IOException e) {
+							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 
-							Employee evaluator=mysqlConnection.getAutomaticRecruit(con,newRequest.getPrivilegedInfoSys());
-							System.out.println(evaluator==null);
-							String content="automatic recruit employee: "+evaluator.getFirstName()+" "+evaluator.getLastName()+" for request#"+newRequest.getId();
-							Date date=newRequest.getDate();
-							String type="recruitForInspector";
-							
-							Notification n1=new Notification(content,date,type);
-							n1=mysqlConnection.insertNotificationToDB(con, n1);
-							mysqlConnection.insertRecruitNotificationForInspectorToDB(con,n1);
-		
+							Employee evaluator = mysqlConnection.getAutomaticRecruit(con,
+									newRequest.getPrivilegedInfoSys());
+							String content = "automatic recruit employee: " + evaluator.getFirstName() + " "
+									+ evaluator.getLastName() + " for request#" + newRequest.getId();
+							Date date = newRequest.getDate();
+							String type = "recruitForInspector";
+
+							Notification n1 = new Notification(content, date, type);
+							n1 = mysqlConnection.insertNotificationToDB(con, n1);
+							mysqlConnection.insertRecruitNotificationForInspectorToDB(con, n1);
 
 						}
 					}

@@ -47,6 +47,7 @@ public class ChairmanHomeController implements Initializable {
 	public static MyRequestsController MyRequests;
 	public static RequestsWorkedOnController RequestWorkON;
 	public static ProfileSettingController ProfileSetting;
+
 	public void start(Employee chairman) {
 		this.chairman = chairman;
 		primaryStage = LoginController.primaryStage;
@@ -63,7 +64,7 @@ public class ChairmanHomeController implements Initializable {
 					primaryStage.setOnCloseRequest(event -> {
 						System.out.println("EXIT ICM");
 						LogOutController logOut = new LogOutController();
-						logOut.exit(primaryStage,chairman);
+						logOut.exit(primaryStage, chairman);
 					});
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -79,13 +80,8 @@ public class ChairmanHomeController implements Initializable {
 	public static Employee getchairman() {
 		return chairman;
 	}
-	
-	
-	
-	
-	
-	
-	private void runLater(Func f) { 
+
+	private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {
 			try {
@@ -100,23 +96,20 @@ public class ChairmanHomeController implements Initializable {
 	}
 
 	public void GoToHome(ActionEvent event) throws Exception {
-			HomeController home = new HomeController();
-			runLater(() -> {
-				home.start(splitpane);
-			}); 
-	} 
-         
-	
-	
-	
-	
+		HomeController home = new HomeController();
+		runLater(() -> {
+			home.start(splitpane);
+		});
+	}
+
 	public void RequestWorkedOnAction(ActionEvent event) throws Exception {
 		RequestWorkON = new RequestsWorkedOnController();
 		runLater(() -> {
-			RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnChairman.fxml", chairman, "Chairman","decision");
-		});		
+			System.out.println("its OKKKKKKKKKKKKKKKKK");
+			RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnChairman.fxml", chairman, "Chairman", "decision");
+		});
 	}
- 
+
 	public void RequestSubmissionAction(ActionEvent event) throws Exception {
 		RequestSubmissionController Submit = new RequestSubmissionController();
 		runLater(() -> {
@@ -127,7 +120,7 @@ public class ChairmanHomeController implements Initializable {
 	public void ProfileSettingAction(ActionEvent event) throws Exception {
 		ProfileSetting = new ProfileSettingController();
 		runLater(() -> {
-			ProfileSetting.start(splitpane, chairman,"Chairman");
+			ProfileSetting.start(splitpane, chairman, "Chairman");
 		});
 	}
 
@@ -136,32 +129,32 @@ public class ChairmanHomeController implements Initializable {
 		runLater(() -> {
 			MyRequests.start(splitpane, chairman, "Chairman");
 		});
-	
+
 	}
 
 	public void AboutICMAction(ActionEvent event) throws Exception {
 		AboutICMController about = new AboutICMController();
 		runLater(() -> {
 			about.start(splitpane);
-		});	
+		});
 	}
 
 	public void LogOutAction(ActionEvent event) throws Exception {
 		LogOutController logOut = new LogOutController();
 		primaryStage.close();
-		logOut.start(primaryStage,chairman);
+		logOut.start(primaryStage, chairman);
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		UserNameMenu.setText(chairman.getFirstName() +" "+ chairman.getLastName());
-	} 
+		UserNameMenu.setText(chairman.getFirstName() + " " + chairman.getLastName());
+	}
 
 	public void clickNotifications(ActionEvent event) throws Exception {
 		NotificationsController notific = new NotificationsController();
 		runLater(() -> {
 			notific.start(splitpane, chairman);
-		});			
+		});
 	}
 }

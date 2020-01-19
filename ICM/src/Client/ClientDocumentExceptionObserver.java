@@ -14,28 +14,28 @@ public class ClientDocumentExceptionObserver implements Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		if(arg1 instanceof Object[]) {
-			Object[] arg2=(Object[])arg1;
-			if(arg2[0] instanceof String) {
-				String keymessage=(String)arg2[0];
-				if(keymessage.equals("document")) {
+		if (arg1 instanceof Object[]) {
+			Object[] arg2 = (Object[]) arg1;
+			if (arg2[0] instanceof String) {
+				String keymessage = (String) arg2[0];
+				if (keymessage.equals("document")) {
 					Platform.runLater(new Runnable() {
 
 						@Override
 						public void run() {
 							Alert alert = new Alert(AlertType.INFORMATION);
-					        alert.setTitle("Alert Title");
-					        alert.setHeaderText("success");
-					        alert.setContentText("The exception is documented successfully");
-					        alert.showAndWait();
-							
+							alert.setTitle("Alert Title");
+							alert.setHeaderText("success");
+							alert.setContentText("The exception is documented successfully");
+							alert.showAndWait();
+
 						}
-						
+
 					});
 				}
 			}
 		}
-		
+
 	}
 
 }

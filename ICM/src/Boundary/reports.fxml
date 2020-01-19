@@ -33,7 +33,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <TabPane layoutX="66.0" layoutY="29.0" prefHeight="571.0" prefWidth="730.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0">
+            <TabPane layoutX="66.0" layoutY="29.0" prefHeight="571.0" prefWidth="730.0" stylesheets="@tabs.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0">
               <tabs>
                 <Tab text="Periodric Reports">
                   <content>
@@ -89,7 +89,7 @@
                                     <Font name="Calisto MT" size="18.0" />
                                  </font>
                               </Label>
-                              <TableView fx:id="tableE" layoutX="65.0" layoutY="176.0" prefHeight="317.0" prefWidth="306.0">
+                              <TableView fx:id="tableE" layoutX="65.0" layoutY="176.0" prefHeight="317.0" prefWidth="306.0" stylesheets="@css4.css">
                                 <columns>
                                   <TableColumn fx:id="idCol" prefWidth="160.79998779296875" text="request_id" />
                                   <TableColumn fx:id="durCol" prefWidth="144.79998779296875" text="col2" />

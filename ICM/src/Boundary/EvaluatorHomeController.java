@@ -21,7 +21,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class EvaluatorHomeController implements Initializable {
-	
+
 	@FXML
 	private Button notification;
 	@FXML
@@ -35,11 +35,11 @@ public class EvaluatorHomeController implements Initializable {
 	@FXML
 	private Button AboutICMbtn;
 	@FXML
-	private ComboBox Usercombobtn;	
+	private ComboBox Usercombobtn;
 	@FXML
-	private SplitPane splitpane ;
+	private SplitPane splitpane;
 	@FXML
-    private AnchorPane lowerAnchorPane;
+	private AnchorPane lowerAnchorPane;
 	@FXML
 	private MenuButton UserNameMenu;
 	public static Stage primaryStage;
@@ -50,105 +50,110 @@ public class EvaluatorHomeController implements Initializable {
 	private static Employee evaluator;
 
 	public void start(Employee evaluator) {
-		this.evaluator=evaluator;
-		primaryStage=LoginController.primaryStage;
+		this.evaluator = evaluator;
+		primaryStage = LoginController.primaryStage;
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-		try{
-			Parent root = FXMLLoader.load(getClass().getResource("/Boundary/Evaluator-Home.fxml"));			
-			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
-			primaryStage.setResizable(false);
-			primaryStage.setTitle("ICM-Home");			
-			primaryStage.show();
-			primaryStage.setOnCloseRequest( event ->
-		    {
-				System.out.println("EXIT ICM");
-				LogOutController logOut = new LogOutController();
-				logOut.exit(primaryStage,evaluator);
-		    });			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}		
-	}
+				try {
+					Parent root = FXMLLoader.load(getClass().getResource("/Boundary/Evaluator-Home.fxml"));
+					Scene scene = new Scene(root);
+					primaryStage.setScene(scene);
+					primaryStage.setResizable(false);
+					primaryStage.setTitle("ICM-Home");
+					primaryStage.show();
+					primaryStage.setOnCloseRequest(event -> {
+						System.out.println("EXIT ICM");
+						LogOutController logOut = new LogOutController();
+						logOut.exit(primaryStage, evaluator);
+					});
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		});
 	}
-	
-public Stage getPrimaryStage() {
+
+	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
 
-public void GoToHome(ActionEvent event) throws Exception {
-	HomeController home = new HomeController();
-	runLater(() -> {
-		home.start(splitpane);
-	}); 
-}
+	public void GoToHome(ActionEvent event) throws Exception {
+		HomeController home = new HomeController();
+		runLater(() -> {
+			home.start(splitpane);
+		});
+	}
 
-public void RequestWorkedOnAction(ActionEvent event) throws Exception {
-	RequestWorkON = new RequestsWorkedOnController();
-	runLater(() -> {
-		RequestWorkON.start(splitpane, "/Boundary/RequestsWorkOnEvaluator.fxml",evaluator,"Evaluator","evaluation");
-	});	
-}
+	public void RequestWorkedOnAction(ActionEvent event) throws Exception {
+		RequestWorkON = new RequestsWorkedOnController();
+		runLater(() -> {
+			RequestWorkON.start(splitpane, "/Boundary/RequestsWorkOnEvaluator.fxml", evaluator, "Evaluator",
+					"evaluation");
+		});
+	}
 
-public void RequestSubmissionAction(ActionEvent event) throws Exception {
-	RequestSubmissionController Submit=new RequestSubmissionController();
-	runLater(() -> {
-		Submit.start(splitpane,evaluator);
-	});
-}
-public void MyRequestsAction() throws Exception {
-	MyRequests = new MyRequestsController();
-	runLater(() -> {
-		MyRequests.start(splitpane,evaluator,"Evaluator");
-	});
-}
+	public void RequestSubmissionAction(ActionEvent event) throws Exception {
+		RequestSubmissionController Submit = new RequestSubmissionController();
+		runLater(() -> {
+			Submit.start(splitpane, evaluator);
+		});
+	}
 
-public void ProfileSettingAction(ActionEvent event) throws Exception {
-	ProfileSetting = new ProfileSettingController();
-	runLater(() -> {
-		ProfileSetting.start(splitpane,evaluator,"Evaluator");
-	});
-}
+	public void MyRequestsAction() throws Exception {
+		MyRequests = new MyRequestsController();
+		runLater(() -> {
+			MyRequests.start(splitpane, evaluator, "Evaluator");
+		});
+	}
 
-public void AboutICMAction(ActionEvent event) throws Exception {
-	AboutICMController about=new AboutICMController();
-	runLater(() -> {
-		about.start(splitpane);
-	});
-}
-public void clickNotifications(ActionEvent event) throws Exception {
-	NotificationsController notific=new NotificationsController();
-	runLater(() -> {
-		notific.start(splitpane,evaluator);
-	});
-}
-public void LogOutAction(ActionEvent event) throws Exception {
-	LogOutController logOut = new LogOutController();
-	primaryStage.close();
-	runLater(() -> {
-		logOut.start(primaryStage,evaluator);
-	});
-	
-}
-@Override
-public void initialize(URL location, ResourceBundle resources) {
-	// TODO Auto-generated method stub
-	UserNameMenu.setText(evaluator.getFirstName()+" "+evaluator.getLastName());
-}
-private void runLater(Func f) {
-	f.call();
-	Platform.runLater(() -> {
-		try {
-			Thread.sleep(5);
-			f.call();
+	public void ProfileSettingAction(ActionEvent event) throws Exception {
+		ProfileSetting = new ProfileSettingController();
+		runLater(() -> {
+			ProfileSetting.start(splitpane, evaluator, "Evaluator");
+		});
+	}
 
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	});
-}
+	public void AboutICMAction(ActionEvent event) throws Exception {
+		AboutICMController about = new AboutICMController();
+		runLater(() -> {
+			about.start(splitpane);
+		});
+	}
+
+	public void clickNotifications(ActionEvent event) throws Exception {
+		NotificationsController notific = new NotificationsController();
+		runLater(() -> {
+			notific.start(splitpane, evaluator);
+		});
+	}
+
+	public void LogOutAction(ActionEvent event) throws Exception {
+		LogOutController logOut = new LogOutController();
+		primaryStage.close();
+		runLater(() -> {
+			logOut.start(primaryStage, evaluator);
+		});
+
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		UserNameMenu.setText(evaluator.getFirstName() + " " + evaluator.getLastName());
+	}
+
+	private void runLater(Func f) {
+		f.call();
+		Platform.runLater(() -> {
+			try {
+				Thread.sleep(5);
+				f.call();
+
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+	}
 }

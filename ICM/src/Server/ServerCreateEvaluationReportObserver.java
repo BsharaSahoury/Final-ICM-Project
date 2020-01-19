@@ -40,14 +40,16 @@ public class ServerCreateEvaluationReportObserver implements Observer {
 						e.printStackTrace();
 					}
 					Employee chairman = mysqlConnection.getChairman(con);
-					ArrayList<Employee> committeMember =mysqlConnection.getEmployees(con, "comittee member");
-					long millis=System.currentTimeMillis();
-					String notifcation="you have new Request: request with id "+" "+er.getRequestID()+" start work";
-					Notification not=new Notification(notifcation,new java.sql.Date(millis),"new request for committe");
-					not=mysqlConnection.insertNotificationToDB(con,not);
-					mysqlConnection.insertNotificationForUserToDB(con,not,chairman);
-					mysqlConnection.insertNotificationForUserToDB(con,not,committeMember.get(0));
-					mysqlConnection.insertNotificationForUserToDB(con,not,committeMember.get(1));
+					ArrayList<Employee> committeMember = mysqlConnection.getEmployees(con, "comittee member");
+					long millis = System.currentTimeMillis();
+					String notifcation = "you have new Request: request with id " + " " + er.getRequestID()
+							+ " start work";
+					Notification not = new Notification(notifcation, new java.sql.Date(millis),
+							"new request for committe");
+					not = mysqlConnection.insertNotificationToDB(con, not);
+					mysqlConnection.insertNotificationForUserToDB(con, not, chairman);
+					mysqlConnection.insertNotificationForUserToDB(con, not, committeMember.get(0));
+					mysqlConnection.insertNotificationForUserToDB(con, not, committeMember.get(1));
 
 				}
 			}

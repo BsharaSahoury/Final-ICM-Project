@@ -74,7 +74,7 @@ public class FailedTestMessageController implements Initializable {
 	}
 
 	public void RecruitAction(ActionEvent e) {
-		if(ClientConsole.map.get(requestID).equals("frozen")) {
+		if (ClientConsole.map.get(requestID).equals("frozen")) {
 			ClientConsole.displayFreezeError();
 			return;
 		}

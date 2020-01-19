@@ -19,25 +19,25 @@ public class ClientGetFullNameEmployeeObserver implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		if(arg instanceof Object[]) {
-			Object[] arg1=(Object[])arg;
-			if(arg1[0] instanceof String) {
-				String keymessage=(String)arg1[0];
-				if(keymessage.equals("getFullNameOfEmployee")) {
-					String classname=(String)arg1[1];
+		if (arg instanceof Object[]) {
+			Object[] arg1 = (Object[]) arg;
+			if (arg1[0] instanceof String) {
+				String keymessage = (String) arg1[0];
+				if (keymessage.equals("getFullNameOfEmployee")) {
+					String classname = (String) arg1[1];
 					Platform.runLater(new Runnable() {
 						@Override
-						public void run() {	
-						switch(classname) {
-						case "Boundary.RequestTreatmentAction":
-							String fullname=(String)arg1[2];
-							RequestTreatmentAction.ctrl.setcombotext(fullname);
-							break;
+						public void run() {
+							switch (classname) {
+							case "Boundary.RequestTreatmentAction":
+								String fullname = (String) arg1[2];
+								RequestTreatmentAction.ctrl.setcombotext(fullname);
+								break;
+							}
 						}
-						}
-						});
+					});
 				}
-	}
-}
+			}
+		}
 	}
 }

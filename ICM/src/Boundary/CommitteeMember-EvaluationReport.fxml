@@ -12,12 +12,6 @@
       <AnchorPane layoutX="-6.0" prefHeight="600.0" prefWidth="728.0">
          <children>
             <Line endX="428.0" endY="-13.0" layoutX="298.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
-            <Label layoutX="34.0" layoutY="6.0" text="ICM">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="62.0" layoutY="5.0" text="-&gt;" />
             <Label layoutX="35.0" layoutY="30.0" prefHeight="51.0" prefWidth="425.0" text="Evaluation Report">
                <font>
                   <Font name="System Bold" size="35.0" />
@@ -33,16 +27,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="77.0" layoutY="7.0" text="All Requests -&gt;Decision for request -&gt;Evaluation report">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
+            <Label layoutX="37.0" layoutY="6.0" text="ICM -&gt; All Requests -&gt;Decision for request -&gt;Evaluation report" />
             <Label layoutX="53.0" layoutY="209.0" text="Description of change:">
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <ImageView fitHeight="18.0" fitWidth="22.0" layoutX="8.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="18.0" fitWidth="22.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/back-arrow.png" />
                </image>
@@ -72,7 +62,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="242.0" fitWidth="228.0" layoutX="486.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="211.0" fitWidth="205.0" layoutX="509.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/evaluation-report.png" />
                </image>
@@ -110,9 +100,9 @@
             <Label fx:id="requestID" layoutX="157.0" layoutY="98.0" text="Request if" />
             <Label fx:id="LocOfChange" layoutX="225.0" layoutY="153.0" text="Location of change" />
             <Label fx:id="DesOfChange" layoutX="238.0" layoutY="197.0" prefHeight="51.0" prefWidth="434.0" text="Description of change" />
-            <Label fx:id="ExcpResult" layoutX="185.0" layoutY="268.0" prefHeight="51.0" prefWidth="434.0" text="Expected result" />
-            <Label fx:id="Constraint" layoutX="157.0" layoutY="341.0" prefHeight="51.0" prefWidth="434.0" text="Constraints" />
-            <Label fx:id="Risk" layoutX="120.0" layoutY="418.0" prefHeight="51.0" prefWidth="434.0" text="Risks" />
+            <Label fx:id="ExcpResult" layoutX="185.0" layoutY="268.0" prefHeight="51.0" prefWidth="532.0" text="Expected result" />
+            <Label fx:id="Constraint" layoutX="157.0" layoutY="341.0" prefHeight="51.0" prefWidth="556.0" text="Constraints" />
+            <Label fx:id="Risk" layoutX="120.0" layoutY="418.0" prefHeight="51.0" prefWidth="595.0" text="Risks" />
             <Label fx:id="Duration" layoutX="323.0" layoutY="512.0" prefHeight="23.0" prefWidth="178.0" text="Estimated performance duration" />
          </children></AnchorPane>
    </children>

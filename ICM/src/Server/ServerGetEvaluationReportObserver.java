@@ -17,21 +17,21 @@ public class ServerGetEvaluationReportObserver implements Observer {
 	@Override
 	public void update(Observable arg0, Object arg) {
 		// TODO Auto-generated method stub
-		if(arg instanceof Object[]) {
-			Object[] arg1=(Object[])arg;
-			ConnectionToClient client=(ConnectionToClient)arg1[0];
-			if(arg1[1] instanceof Object[]) {
-				Object[] arg2=(Object[])arg1[1];
-				if(arg2[0] instanceof String) {
-					String keymessage=(String)arg2[0];
-					if(keymessage.equals("get evaluation report")) {
-						int id=(int)arg2[1];
-						Connection con=mysqlConnection.makeAndReturnConnection();
-						EvaluationReport report=mysqlConnection.getevaluationreport(con,id);
+		if (arg instanceof Object[]) {
+			Object[] arg1 = (Object[]) arg;
+			ConnectionToClient client = (ConnectionToClient) arg1[0];
+			if (arg1[1] instanceof Object[]) {
+				Object[] arg2 = (Object[]) arg1[1];
+				if (arg2[0] instanceof String) {
+					String keymessage = (String) arg2[0];
+					if (keymessage.equals("get evaluation report")) {
+						int id = (int) arg2[1];
+						Connection con = mysqlConnection.makeAndReturnConnection();
+						EvaluationReport report = mysqlConnection.getevaluationreport(con, id);
 						try {
-							Object[] send=new Object[2];
-							send[0]=keymessage;
-							send[1]=report;
+							Object[] send = new Object[2];
+							send[0] = keymessage;
+							send[1] = report;
 							client.sendToClient(send);
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
@@ -40,6 +40,6 @@ public class ServerGetEvaluationReportObserver implements Observer {
 					}
 				}
 			}
+		}
 	}
-}
 }

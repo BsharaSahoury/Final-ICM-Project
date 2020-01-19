@@ -117,8 +117,8 @@ public class ExtensionConfirmationMessage implements Initializable {
 				formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 				localDate = LocalDate.parse(date, formatter);
 				String keymessage = "send Request extension approve to Admin";
-				Object[] message = { keymessage, requestID, phase, localDate,
-						ExtensionReasonLabel.getText().toString(),phaseAdministratorLabel.getText().toString()};
+				Object[] message = { keymessage, requestID, phase, localDate, ExtensionReasonLabel.getText().toString(),
+						phaseAdministratorLabel.getText().toString() };
 				LoginController.cc.getClient().sendToServer(message);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
@@ -150,13 +150,13 @@ public class ExtensionConfirmationMessage implements Initializable {
 			ApproveBtn.setDisable(true);
 			RejectBtn.setDisable(true);
 			try {
-			String keymessage = "send Request extension reject to Admin";
-			Object[] message = { keymessage, requestID, phaseAdministratorLabel.getText().toString()};
-			LoginController.cc.getClient().sendToServer(message);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+				String keymessage = "send Request extension reject to Admin";
+				Object[] message = { keymessage, requestID, phaseAdministratorLabel.getText().toString() };
+				LoginController.cc.getClient().sendToServer(message);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 
 	}

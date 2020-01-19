@@ -101,7 +101,7 @@ public class InspectorHomeController implements Initializable {
 		runLater(() -> {
 			home.start(splitpane);
 		});
-		
+
 	}
 
 	public void AllRequestsAction(ActionEvent event) throws Exception {

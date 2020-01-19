@@ -1,6 +1,7 @@
 package Boundary;
 
 import java.io.IOException;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -53,7 +54,6 @@ public class AdministratorHomeController implements Initializable {
 
 			@Override
 			public void run() {
-// TODO Auto-generated method stub
 				try {
 					Parent root = FXMLLoader.load(getClass().getResource("/Boundary/newAdHome.fxml"));
 					Scene scene = new Scene(root);
@@ -98,7 +98,6 @@ public class AdministratorHomeController implements Initializable {
 				f.call();
 
 			} catch (InterruptedException e) {
-// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		});

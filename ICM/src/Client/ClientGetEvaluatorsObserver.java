@@ -16,7 +16,6 @@ import messages.ChooseTesterMessageController;
 import messages.DecisionCommitteeMemberMessageController;
 import messages.FailedTestMessageController;
 
-
 public class ClientGetEvaluatorsObserver implements Observer {
 	public ClientGetEvaluatorsObserver(Observable server) {
 		server.addObserver(this);
@@ -24,75 +23,69 @@ public class ClientGetEvaluatorsObserver implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		if(arg instanceof Object[]) {
-			Object[] arg1=(Object[])arg;
-			if(arg1[0] instanceof String) {
-				String keymessage=(String)arg1[0];
-				if(keymessage.equals("employees")) {
-					String classname=(String)arg1[2];
-					if(arg1[1] instanceof ArrayList<?>) {
-						ArrayList<Employee> Elist=(ArrayList<Employee>)arg1[1];
-						ArrayList<String> names=new ArrayList<>();
-						for(Employee f1 : Elist) {
-							names.add(f1.getFirstName()+" "+f1.getLastName());
+		if (arg instanceof Object[]) {
+			Object[] arg1 = (Object[]) arg;
+			if (arg1[0] instanceof String) {
+				String keymessage = (String) arg1[0];
+				if (keymessage.equals("employees")) {
+					String classname = (String) arg1[2];
+					if (arg1[1] instanceof ArrayList<?>) {
+						ArrayList<Employee> Elist = (ArrayList<Employee>) arg1[1];
+						ArrayList<String> names = new ArrayList<>();
+						for (Employee f1 : Elist) {
+							names.add(f1.getFirstName() + " " + f1.getLastName());
 						}
 						Platform.runLater(new Runnable() {
-						@Override
-						public void run() {	
-						switch(classname) {
-						case "messages.AutomaticRecruitMessageController":
-							AutomaticRecruitMessageController.ctrl.fillCombo(names);
-							break;									
-						case "messages.CommitteeDecisionAskForaddInfoController":
-							CommitteeDecisionAskForaddInfoController.ctrl.fillCombo(names);
-							break;
-						case "messages.ChooseTesterMessageController":
-							ChooseTesterMessageController.ctrl.fillCombo(names);
-							break;
-						case "messages.FailedTestMessageController":
-							FailedTestMessageController.ctrl.fillCombo(names);
-							break;
-						case "Boundary.RequestTreatmentAction":
-							RequestTreatmentAction.ctrl.fillCombo(names);
-							break;
-						}
-						}
+							@Override
+							public void run() {
+								switch (classname) {
+								case "messages.AutomaticRecruitMessageController":
+									AutomaticRecruitMessageController.ctrl.fillCombo(names);
+									break;
+								case "messages.CommitteeDecisionAskForaddInfoController":
+									CommitteeDecisionAskForaddInfoController.ctrl.fillCombo(names);
+									break;
+								case "messages.ChooseTesterMessageController":
+									ChooseTesterMessageController.ctrl.fillCombo(names);
+									break;
+								case "messages.FailedTestMessageController":
+									FailedTestMessageController.ctrl.fillCombo(names);
+									break;
+								case "Boundary.RequestTreatmentAction":
+									RequestTreatmentAction.ctrl.fillCombo(names);
+									break;
+								}
+							}
 						});
-					}				
-				/*else if(keymessage.equals("Performance leaders")) {
-					if(arg1[1] instanceof ArrayList<?>) {
-						ArrayList<Employee> Elist=(ArrayList<Employee>)arg1[1];
-						ArrayList<String> names=new ArrayList<>();
-						for(Employee f1 : Elist) {
-							names.add(f1.getFirstName()+" "+f1.getLastName());
+					}
+					/*
+					 * else if(keymessage.equals("Performance leaders")) { if(arg1[1] instanceof
+					 * ArrayList<?>) { ArrayList<Employee> Elist=(ArrayList<Employee>)arg1[1];
+					 * ArrayList<String> names=new ArrayList<>(); for(Employee f1 : Elist) {
+					 * names.add(f1.getFirstName()+" "+f1.getLastName()); } Platform.runLater(new
+					 * Runnable() {
+					 * 
+					 * @Override public void run() {
+					 * CommitteeDecisionApproveController.ctrl.fillCombo(names); } }); } }
+					 */
+				} else if (keymessage.equals("evaluatorsagain")) {
+					if (arg1[1] instanceof ArrayList<?>) {
+						ArrayList<Employee> Elist = (ArrayList<Employee>) arg1[1];
+						ArrayList<String> names = new ArrayList<>();
+						for (Employee f1 : Elist) {
+							names.add(f1.getFirstName() + " " + f1.getLastName());
 						}
 						Platform.runLater(new Runnable() {
 
 							@Override
 							public void run() {
-						CommitteeDecisionApproveController.ctrl.fillCombo(names);
+								CommitteeDecisionAskForaddInfoController.ctrl.fillCombo(names);
 							}
 						});
 					}
-				}*/
-				}else if(keymessage.equals("evaluatorsagain")) {
-					if(arg1[1] instanceof ArrayList<?>) {
-						ArrayList<Employee> Elist=(ArrayList<Employee>)arg1[1];
-						ArrayList<String> names=new ArrayList<>();
-						for(Employee f1 : Elist) {
-							names.add(f1.getFirstName()+" "+f1.getLastName());
-						}
-						Platform.runLater(new Runnable() {
+				}
+			}
 
-							@Override
-							public void run() {
-						CommitteeDecisionAskForaddInfoController.ctrl.fillCombo(names);
-							}
-						});
-					}
-				}		
 		}
-	
-	}
 	}
 }

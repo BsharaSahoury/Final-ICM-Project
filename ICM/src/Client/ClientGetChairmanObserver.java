@@ -16,21 +16,19 @@ public class ClientGetChairmanObserver implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		
-		if(arg instanceof Object[]) {
-			Object[] arg1=(Object[])arg;
-			if(arg1[0] instanceof String) {
-				String keymessage=(String)arg1[0];
-				if(keymessage.equals("get ChairMan")) {
-					if(arg1[1] instanceof Employee) {
-						Employee chairman=(Employee)arg1[1];
+
+		if (arg instanceof Object[]) {
+			Object[] arg1 = (Object[]) arg;
+			if (arg1[0] instanceof String) {
+				String keymessage = (String) arg1[0];
+				if (keymessage.equals("get ChairMan")) {
+					if (arg1[1] instanceof Employee) {
+						Employee chairman = (Employee) arg1[1];
 						ComitteeMemberHomeController.setChairman(chairman);
 					}
 				}
 			}
 		}
-		
-	}		
+
 	}
-
-
+}

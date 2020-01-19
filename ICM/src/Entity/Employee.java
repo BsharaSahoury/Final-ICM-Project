@@ -7,6 +7,7 @@ public class Employee extends User {
 	private int id;
 	private Belong belong;
 	private String job;
+
 	public String getFullname() {
 		return fullname;
 	}
@@ -16,7 +17,7 @@ public class Employee extends User {
 	}
 
 	public String getSupportSystem() {
-		return supportSystem; 
+		return supportSystem;
 	}
 
 	public void setSupportSystem(String supportSystem) {
@@ -34,51 +35,49 @@ public class Employee extends User {
 	private String fullname;
 	private String supportSystem;
 	private ArrayList<Role> roles = new ArrayList<Role>();
-	
-	
-	public Employee(String fullname,int id,String job) {
-		this.fullname=fullname;
-		this.id=id;
-		this.job=job;
-	}
-	
-	public Employee(String fullname,int id,String job, String supportSystem) {
-		this.fullname=fullname;
-		this.id=id;
-		this.job=job;
-		this.supportSystem=supportSystem;
-	}
-	
-	public Employee(String username,String firstName, String lastName, String job) {
-		super(username,firstName,lastName);
-		this.job=job;
-	}
-	public Employee(String username,String password,String firstName, String lastName, String job) {
-		super(username,password,firstName,lastName);
-		this.job=job;
-	}
-	
 
-	public Employee(int id, Belong belong, ArrayList<Role> roles,String email, String password, String username, String firstName, String lastName,String job) {
-		super( email, password, username, firstName, lastName);
+	public Employee(String fullname, int id, String job) {
+		this.fullname = fullname;
+		this.id = id;
+		this.job = job;
+	}
+
+	public Employee(String fullname, int id, String job, String supportSystem) {
+		this.fullname = fullname;
+		this.id = id;
+		this.job = job;
+		this.supportSystem = supportSystem;
+	}
+
+	public Employee(String username, String firstName, String lastName, String job) {
+		super(username, firstName, lastName);
+		this.job = job;
+	}
+
+	public Employee(String username, String password, String firstName, String lastName, String job) {
+		super(username, password, firstName, lastName);
+		this.job = job;
+	}
+
+	public Employee(int id, Belong belong, ArrayList<Role> roles, String email, String password, String username,
+			String firstName, String lastName, String job) {
+		super(email, password, username, firstName, lastName);
 		this.id = id;
 		this.belong = belong;
-		this.job=job;
+		this.job = job;
 	}
 
-	public Employee(int id, Belong belong, ArrayList<Role> roles,String email, String password, String username, String firstName, String lastName,
-			ArrayList<Request> myRequests) {
-		super( email, password, username, firstName, lastName,myRequests);
+	public Employee(int id, Belong belong, ArrayList<Role> roles, String email, String password, String username,
+			String firstName, String lastName, ArrayList<Request> myRequests) {
+		super(email, password, username, firstName, lastName, myRequests);
 		this.id = id;
 		this.belong = belong;
 		this.roles = roles;
 	}
 
-	public Employee(String username,String firstName,String lastName) {
-		super(username,null,null);
+	public Employee(String username, String firstName, String lastName) {
+		super(username, null, null);
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -95,6 +94,7 @@ public class Employee extends User {
 	public void setBelong(Belong belong) {
 		this.belong = belong;
 	}
+
 	public ArrayList<Role> getRoles() {
 		return roles;
 	}
@@ -102,8 +102,9 @@ public class Employee extends User {
 	public void setRoles(ArrayList<Role> roles) {
 		this.roles = roles;
 	}
-	public enum Belong{
-		Lecturer,AdminEmployee, Manager;
+
+	public enum Belong {
+		Lecturer, AdminEmployee, Manager;
 	}
 
 	public Boolean addRole(Role role) {
