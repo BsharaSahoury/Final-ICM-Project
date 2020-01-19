@@ -828,9 +828,10 @@ public class mysqlConnection {
 				stm2 = con.prepareStatement("SELECT E.* FROM icm.employee E WHERE username=?;");
 				stm2.setString(1, username);
 				ResultSet rs2 = stm2.executeQuery();
-				if (rs2.next())
+				if (rs2.next()) {
 					Initiatorname = rs2.getString(2) + " " + rs2.getString(3);
 				role = rs2.getString(4);
+				}
 				if (Initiatorname == null) {
 					stm2 = con.prepareStatement("SELECT E.* FROM icm.student E WHERE username=?;");
 					stm2.setString(1, rs.getString(9));
