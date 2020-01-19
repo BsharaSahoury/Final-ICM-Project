@@ -107,7 +107,7 @@ public class TestResultController implements Initializable {
 		} else {
 			Alert alertWarning = new Alert(AlertType.WARNING);
 			alertWarning.setHeaderText("Warning!");
-			alertWarning.setContentText("Please check the dates correctly");
+			alertWarning.setContentText("Please Fill Failure Details");
 			alertWarning.showAndWait();
 		}
 	}
