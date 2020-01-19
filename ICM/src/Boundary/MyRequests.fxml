@@ -65,7 +65,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="682.0" layoutY="82.0" mnemonicParsing="false" onAction="#instructionsAction" style="-fx-background-insets: 88888;">
+      <Button fx:id="instructions" layoutX="682.0" layoutY="82.0" mnemonicParsing="false" onAction="#instructionsAction" style="-fx-background-insets: 88888;">
          <graphic>
             <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>

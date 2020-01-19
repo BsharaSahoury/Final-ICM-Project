@@ -21,6 +21,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -35,6 +36,11 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import Client.ClientConsole;
 import Client.Func;
 import Entity.Phase;
@@ -275,7 +281,69 @@ public class AllRequestsController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	public void instructionsAction() {
+		if(job.equals("Inspector"))
+		{
+	Label label1,label2,label3,label4,label5,label6,label7,label8,label9,label10;
+	Alert alert;
+	Text headerText;
+	VBox dialogPaneContent;		
+	alert = new Alert(AlertType.INFORMATION);
+	alert.setTitle("Instuctions");
+	headerText=new Text("Instuctions!");
+	headerText.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 20));
+	alert.setHeaderText("Instuctions!");
+	dialogPaneContent = new VBox();
+	label1 = new Label("* This table contains the Requests For Testing!");
+	label1.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
+	label2 = new Label("");
+	label3 = new Label("- You can access to info of a specific of request by:");
+	label3.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
+	label4 = new Label("1. Sellecting a specific request");
+	label5 = new Label("2. Clicking the 'Request Info' button !");
+	label6 = new Label("3.You can choose displaying 'request Info' or 'Initiator Info'");
+	label7 = new Label("");
+	label8 = new Label("- You can Manage phases and Change the status to 'Frozen' of a specific request by:");
+	label8.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
+	label9 = new Label("1. Sellecting a specific request");
+	label10 = new Label("2. Clicking the 'Request Treatment' button !");
 
+	dialogPaneContent.getChildren().addAll(label1, label2,label3,label4,label5,label6,label7,label8,label9,label10);
+		alert.getDialogPane().setContent(dialogPaneContent);
+	alert.showAndWait();
+		}
+		else
+			if(job.equals("Administrator"))
+			{
+				Label label1,label2,label3,label4,label5,label6,label7,label8,label9,label10;
+				Alert alert;
+				Text headerText;
+				VBox dialogPaneContent;		
+				alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Instuctions");
+				headerText=new Text("Instuctions!");
+				headerText.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 20));
+				alert.setHeaderText("Instuctions!");
+				dialogPaneContent = new VBox();
+				label1 = new Label("* This table contains the Requests For Testing!");
+				label1.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
+				label2 = new Label("");
+				label3 = new Label("- You can access to info of a specific of request by:");
+				label3.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
+				label4 = new Label("1. Sellecting a specific request");
+				label5 = new Label("2. Clicking the 'Request Info' button !");
+				label6 = new Label("3.You can choose displaying 'request Info' or 'Initiator Info'");
+				label7 = new Label("");
+				label8 = new Label("- You can Change the status to 'Active' of a specific request by:");
+				label8.setFont(Font.font("System", FontWeight.BOLD, FontPosture.REGULAR, 12)); 
+				label9 = new Label("1. Sellecting a specific request");
+				label10 = new Label("2. Clicking the 'Change Status' button !");
+
+				dialogPaneContent.getChildren().addAll(label1, label2,label3,label4,label5,label6,label7,label8,label9,label10);
+					alert.getDialogPane().setContent(dialogPaneContent);
+				alert.showAndWait();
+					}
+	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		Groupby.setItems(statuslist);

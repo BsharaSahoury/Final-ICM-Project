@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="601.0" prefWidth="728.0" style="-fx-background-insets: 8888888888888;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.RequestsWorkedOnController">
+<AnchorPane prefHeight="601.0" prefWidth="728.0" style="-fx-background-insets: 8888888888888;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.RequestsWorkedOnController">
    <children>
       <Line endX="426.99993896484375" endY="-12.0" layoutX="299.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
       <Label layoutX="26.0" layoutY="6.0" text="ICM">
@@ -66,7 +66,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="question" layoutX="683.0" layoutY="84.0" mnemonicParsing="false" style="-fx-background-insets: 8888888;">
+      <Button fx:id="question" layoutX="683.0" layoutY="84.0" mnemonicParsing="false" onAction="#instructionsAction" style="-fx-background-insets: 8888888;">
          <graphic>
             <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
