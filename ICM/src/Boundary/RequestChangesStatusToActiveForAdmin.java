@@ -76,6 +76,11 @@ public class RequestChangesStatusToActiveForAdmin extends AllRequestsController 
 		send[1] = chosen.getR().getId();
 		send[2] = AdministratorHomeController.getAdministrator();
 		send[3] = explain;
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Status Activated successfully!");
+		alert.setHeaderText("Success!");
+		alert.setContentText("The request status is Active!");
+		alert.showAndWait();
 		try {
 			LoginController.cc.getClient().sendToServer(send);
 		} catch (IOException e1) {
@@ -86,9 +91,10 @@ public class RequestChangesStatusToActiveForAdmin extends AllRequestsController 
 
 	public void BackBtnAction(ActionEvent e) {
 		runLater(() -> {
-		InspectorHomeController.AllRequests.start(splitpane, "/Boundary/allRequests.fxml", "Inspector");
+			InspectorHomeController.AllRequests.start(splitpane, "/Boundary/allRequests.fxml", "Inspector");
 		});
 	}
+
 	private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {
