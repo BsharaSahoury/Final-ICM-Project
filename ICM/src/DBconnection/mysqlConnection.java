@@ -1323,20 +1323,17 @@ public class mysqlConnection {
 			stm2.setInt(1, er.getRequestID());
 			stm2.setInt(2, maxRepetion);
 			stm2.executeUpdate();
-			LocalDate date1=LocalDate.now().plusDays(1);
-			LocalDate date2=LocalDate.now().plusDays(8);
-			
 			long millis = System.currentTimeMillis();
-			millis=millis+(int) (1000 * 60 * 60 * 24);
-		
-			Date Startdate = Date.valueOf(date1);
+			Date Startdate = new java.sql.Date(millis);
+			long newmillis=Startdate.getTime()+(int) (1000 * 60 * 60 * 24);
+			Date newStartdate = new java.sql.Date(newmillis);
 			long week = Startdate.getTime() + (int) (1000 * 60 * 60 * 24 * 7);
-			Date dueDate = Date.valueOf(date2);
+			Date dueDate = new java.sql.Date(week);
 			PreparedStatement stm3 = con.prepareStatement("INSERT INTO icm.requestinphase  VALUES(?,?,?,?,?,?,?) ");
 			stm3.setInt(1, er.getRequestID());
 			stm3.setString(2, "decision");
 			stm3.setInt(3, maxRepetion);
-			stm3.setDate(4, Startdate);
+			stm3.setDate(4, newStartdate);
 			stm3.setDate(5, dueDate);
 			Employee chairman = mysqlConnection.getChairman(con);
 			stm3.setString(6, chairman.getUsername());

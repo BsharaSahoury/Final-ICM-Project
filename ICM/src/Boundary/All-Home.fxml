@@ -14,18 +14,8 @@
             <Image url="@../Images/logo%20ICM.png" />
          </image>
       </ImageView>
-      <Line endX="421.0" endY="-14.000007629394531" layoutX="301.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
-      <Label layoutX="18.0" layoutY="6.0" text="ICM">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="44.0" layoutY="6.0" text="-&gt;" />
-      <Label layoutX="58.0" layoutY="6.0" text="Home">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
+      <Line endX="427.0" endY="-13.0" layoutX="301.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
+      <Label layoutX="25.0" layoutY="6.0" text="ICM -&gt; Home" />
       <Label layoutX="25.0" layoutY="172.0" text="Welcome to" textFill="#9d1b34">
          <font>
             <Font name="Comic Sans MS Bold" size="36.0" />
