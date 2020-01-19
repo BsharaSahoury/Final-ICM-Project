@@ -9,12 +9,18 @@ import java.util.Observer;
 import DBconnection.mysqlConnection;
 import ocsf.server.ConnectionToClient;
 import Entity.Request;
-
+/**
+ * in this observer we handle the message when the user need to see the information of the relevant request
+ *
+ */
 public class ServerRequestInfoObserver implements Observer {
 	public ServerRequestInfoObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we return the details of the relevant request to the client
+ * in order to display them on the request info window.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

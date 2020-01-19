@@ -9,12 +9,19 @@ import java.util.Observer;
 
 import DBconnection.mysqlConnection;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * in this observer we handle the situation when we need to see the profile setting of the the specific user
+ * 
+ *
+ */
 public class ServerProfileSettingObserver implements Observer {
 	public ServerProfileSettingObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we return all of the details of the relevant user in order to display
+ * them on the profile setting window.
+ */
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub

@@ -20,7 +20,11 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
-
+/**
+ * in this observer we put the request of the initiator in the table
+ * to allow him to see his requests
+ *
+ */
 public class ClientMyRequestsObserver implements Observer {
 	public ClientMyRequestsObserver(Observable client) {
 		client.addObserver(this);

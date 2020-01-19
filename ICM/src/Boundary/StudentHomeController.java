@@ -19,7 +19,12 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * StudentHomeController :A controller implementing and showing 
+ * the Home with all the permissions for them
+ * @author Arkan Muhammad
+ *
+ */
 public class StudentHomeController implements Initializable {
 	@FXML
 	private Button notifications;
@@ -73,11 +78,18 @@ public class StudentHomeController implements Initializable {
 			}
 		});
 	}
-
+	/**
+	 * getPrimaryStage: method to return the primaryStage of StudentHomeController
+	 * @return primaryStage
+	 */
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on Home button 
+	 * @param event
+	 * @throws Exception
+	 */
 	public void GoToHome(ActionEvent event) throws Exception {
 		HomeController home = new HomeController();
 		runLater(() -> {
@@ -85,27 +97,48 @@ public class StudentHomeController implements Initializable {
 		});
 	}
 
+	/**
+	 * Method for An action Event ,Clicking on RequestSubmissionAction button 
+	 * to submit a request 
+	 * @param event
+	 * @throws Exception
+	 */
 	public void RequestSubmissionAction(ActionEvent event) throws Exception {
 		RequestSubmissionController Submit = new RequestSubmissionController();
 		runLater(() -> {
 			Submit.start(splitpane, student);
 		});
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on ProfileSettingAction button 
+	 * to display the profileSetting of user
+	 * @param event
+	 * @throws Exception
+	 */
 	public void ProfileSettingAction(ActionEvent event) throws Exception {
 		ProfileSetting = new ProfileSettingController();
 		runLater(() -> {
 			ProfileSetting.start(splitpane, student, "Student");
 		});
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on MyRequestsAction button 
+	 * to displaying the requests that user submitted
+	 * @param event
+	 * @throws Exception
+	 */
 	public void MyRequestsAction(ActionEvent event) throws Exception {
 		MyRequests = new MyRequestsController();
 		runLater(() -> {
 			MyRequests.start(splitpane, student, "Student");
 		});
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on AboutICMAction button 
+	 * to displaying data of ICM-System
+	 *  * @param event
+	 * @throws Exception
+	 */
 	public void AboutICMAction(ActionEvent event) throws Exception {
 		AboutICMController about = new AboutICMController();
 		runLater(() -> {
@@ -113,6 +146,12 @@ public class StudentHomeController implements Initializable {
 		});
 	}
 
+	/**
+	 * Method for An action Event ,Clicking on LogOutAction button 
+	 * to Logout from the ICM-System
+	 *  * @param event
+	 * @throws Exception
+	 */
 	public void LogOutAction(ActionEvent event) throws Exception {
 		LogOutController logOut = new LogOutController();
 		primaryStage.close();
@@ -120,7 +159,12 @@ public class StudentHomeController implements Initializable {
 			logOut.start(primaryStage, student);
 		});
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on clickNotifications button 
+	 * to display your notification that you received
+	 *  * @param event
+	 * @throws Exception
+	 */
 	public void clickNotifications(ActionEvent event) throws Exception {
 		NotificationsController notific = new NotificationsController();
 		runLater(() -> {
@@ -134,7 +178,10 @@ public class StudentHomeController implements Initializable {
 		// TODO Auto-generated method stub
 		UserNameMenu.setText(student.getFirstName() + " " + student.getLastName());
 	}
-
+	/**
+	 * method to wait 5millisecond
+	 * @param f
+	 */
 	private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {

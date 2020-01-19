@@ -8,7 +8,11 @@ import Boundary.RequestsWorkedOnController;
 import Entity.Request;
 import Entity.RequestPhase;
 import ocsf.client.ObservableClient;
-
+/**
+ * in this observer we put the duration that we received from the DB for the 
+ * relevant request in the duration window
+ *
+ */
 public class ClientGetDurationObserver implements Observer {
 	public ClientGetDurationObserver(ObservableClient client) {
 		client.addObserver(this);

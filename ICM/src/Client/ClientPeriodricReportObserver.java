@@ -6,7 +6,10 @@ import java.util.Observable;
 import java.util.Observer;
 
 import Boundary.ReportController;
-
+/**
+ * in this observer we create the graph of the period report with the details that we received from the DB
+ *
+ */
 public class ClientPeriodricReportObserver implements Observer {
 	public ClientPeriodricReportObserver(Observable client) {
 		client.addObserver(this);

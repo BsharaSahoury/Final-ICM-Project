@@ -9,12 +9,18 @@ import DBconnection.mysqlConnection;
 import Entity.Phase;
 import Entity.RequestPhase;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * in this observer we handle the situation of ask for the extension details from DB
+ *
+ */
 public class SeverGetExtensionDataObsaerver implements Observer {
 	public SeverGetExtensionDataObsaerver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * in this function we return the the details of the extension for the relevant request 
+ * in order to display them to the inspector and the administrator
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

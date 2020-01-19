@@ -20,7 +20,12 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * ComitteeMemberHomeController :A controller implementing and showing 
+ * the ComitteeMember Home with all the permissions for them
+ * @author Arkan Muhammad
+ *
+ */
 public class ComitteeMemberHomeController implements Initializable {
 	@FXML
 	private Button notifications;
@@ -51,9 +56,16 @@ public class ComitteeMemberHomeController implements Initializable {
 	public static RequestsWorkedOnController RequestWorkON;
 	public static Employee employee;
 	public static Employee Chairman;
+	/**
+	 * @param flag => if flag =1 : requests that I lead
+	 * else requests that i work on
+	 */
 	private static int flag = 0;
 	private static String myjob;
-
+/**
+ * 
+ * @param employee
+ */
 	public void start(Employee employee) {
 		this.comitteeMember = employee;
 		this.employee = employee;
@@ -80,22 +92,37 @@ public class ComitteeMemberHomeController implements Initializable {
 			}
 		});
 	}
-
+/**
+ * Method to Sets the user that logged-in
+ * @param user
+ */
 	public static void setChairman(Employee user) {
 		employee = user;
 	}
-
+	/**
+	 * getPrimaryStage: method to return the primaryStage of ComitteeMemberHomeController
+	 * @return primaryStage
+	 */
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on Home button 
+	 * @param event
+	 * @throws Exception
+	 */
 	public void GoToHome(ActionEvent event) throws Exception {
 		HomeController home = new HomeController();
 		runLater(() -> {
 			home.start(splitpane);
 		});
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on RequestForTestOnAction button 
+	 * to displaying all the requests that in the Test phase in ICM-SYSTEM
+	 * @param event
+	 * @throws Exception
+	 */
 	public void RequestForTestOnAction(ActionEvent event) throws Exception {
 		flag = 1;
 		RequestWorkON = new RequestsWorkedOnController();
@@ -104,7 +131,12 @@ public class ComitteeMemberHomeController implements Initializable {
 					"testing");
 		});
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on RequestWorkedOnAction button 
+	 * to displaying all the requests that the user work on
+	 * @param event
+	 * @throws Exception
+	 */
 	public void RequestWorkedOnAction(ActionEvent event) throws Exception {
 		flag = 0;
 		RequestWorkON = new RequestsWorkedOnController();
@@ -121,22 +153,38 @@ public class ComitteeMemberHomeController implements Initializable {
 		}
 
 	}
-
+/**
+ * getFlag:Method returning a flag,
+ * @return
+ */
 	public static int getFlag() {
 		return flag;
 	}
-
+	/**
+	 * Method to gets the committeeMember
+	 * @param comitteeMember
+	 */
 	public static Employee getcomitteeMember() {
 		return comitteeMember;
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on RequestSubmissionAction button 
+	 * to submit a request 
+	 * @param event
+	 * @throws Exception
+	 */
 	public void RequestSubmissionAction(ActionEvent event) throws Exception {
 		RequestSubmissionController Submit = new RequestSubmissionController();
 		runLater(() -> {
 			Submit.start(splitpane, comitteeMember);
 		});
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on ProfileSettingAction button 
+	 * to display the profileSetting of user
+	 * @param event
+	 * @throws Exception
+	 */
 	public void ProfileSettingAction(ActionEvent event) throws Exception {
 		ProfileSetting = new ProfileSettingController();
 		if (comitteeMember.getJob().equals("comittee member"))
@@ -148,21 +196,36 @@ public class ComitteeMemberHomeController implements Initializable {
 				ProfileSetting.start(splitpane, employee, "Chairman");
 			});
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on MyRequestsAction button 
+	 * to displaying the requests that user submitted
+	 * @param event
+	 * @throws Exception
+	 */
 	public void MyRequestsAction(ActionEvent event) throws Exception {
 		MyRequests = new MyRequestsController();
 		runLater(() -> {
 			MyRequests.start(splitpane, comitteeMember, "Comittee Member");
 		});
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on AboutICMAction button 
+	 * to displaying data of ICM-System
+	 *  * @param event
+	 * @throws Exception
+	 */
 	public void AboutICMAction(ActionEvent event) throws Exception {
 		AboutICMController about = new AboutICMController();
 		runLater(() -> {
 			about.start(splitpane);
 		});
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on LogOutAction button 
+	 * to Logout from the ICM-System
+	 *  * @param event
+	 * @throws Exception
+	 */
 	public void LogOutAction(ActionEvent event) throws Exception {
 		LogOutController logOut = new LogOutController();
 		primaryStage.close();
@@ -183,14 +246,22 @@ public class ComitteeMemberHomeController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on clickNotifications button 
+	 * to display your notification that you received
+	 *  * @param event
+	 * @throws Exception
+	 */
 	public void clickNotifications(ActionEvent event) throws Exception {
 		NotificationsController notific = new NotificationsController();
 		runLater(() -> {
 			notific.start(splitpane, comitteeMember);
 		});
 	}
-
+	/**
+	 * method to wait 5millisecond
+	 * @param f
+	 */
 	private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {

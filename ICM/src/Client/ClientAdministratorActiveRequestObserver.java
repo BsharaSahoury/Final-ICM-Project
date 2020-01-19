@@ -6,12 +6,17 @@ import java.util.Observer;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
+/**
+ * in this observer we handle the situation when we want to save the administrator update in DB
+ *
+ */
 public class ClientAdministratorActiveRequestObserver implements Observer {
 	public ClientAdministratorActiveRequestObserver(Observable client) {
 		client.addObserver(this);
 	}
-
+/**
+ * in this function we notifies the administrator that his update has been saved or already saved in DB
+ */
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub

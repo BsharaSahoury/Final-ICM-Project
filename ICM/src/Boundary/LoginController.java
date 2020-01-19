@@ -38,7 +38,8 @@ import javafx.stage.Stage;
 import ocsf.client.ObservableClient;
 
 /**
- * 
+ * LoginController :A controller for logging in 
+ * User-Log-In
  * @author Ayman Odeh
  *
  */
@@ -59,7 +60,11 @@ public class LoginController {
 
 	public static ClientConsole cc;
 	public static Stage primaryStage;
-
+/**
+ * 
+ * @param primaryStage
+ * @param cc
+ */
 	public void start(Stage primaryStage, ClientConsole cc) {
 		this.cc = cc;
 		this.primaryStage = primaryStage;
@@ -81,8 +86,8 @@ public class LoginController {
 	}
 
 	/**
-	 * 
-	 * @param event if the user clicked on loging button
+	 * method to sending to server username,password to check legally
+	 * @param event if the user clicked on logging button
 	 * @throws Exception
 	 */
 	public void LoginAction(ActionEvent event) throws Exception {
@@ -107,7 +112,10 @@ public class LoginController {
 		// open new window to get the password by enter the email address and then send
 		// link to reset the password
 	}
-
+	/**
+	 * getPrimaryStage: method to return the primaryStage of of current Controller
+	 * @return primaryStage
+	 */
 	public Stage getStage() {
 		return primaryStage;
 	}

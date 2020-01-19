@@ -133,6 +133,7 @@ public class FailedTestMessageController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		notificationID = NotificationsController.getidnotification();
 		requestID = NotificationsController.getidofrequestforDecision();
+		FailureDetails.setEditable(false);
 		Object[] msg = { "Performance leaders", getClass().getName() };
 		try {
 			LoginController.cc.getClient().sendToServer(msg);

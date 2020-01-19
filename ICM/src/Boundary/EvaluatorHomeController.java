@@ -19,7 +19,12 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+/**
+ * EvaluatorHomeController :A controller implementing and showing 
+ * the Home with all the permissions for them
+ * @author Arkan Muhammad
+ *
+ */
 public class EvaluatorHomeController implements Initializable {
 
 	@FXML
@@ -48,7 +53,10 @@ public class EvaluatorHomeController implements Initializable {
 	public static RequestsWorkedOnController RequestWorkON;
 	public static EvaluatorHomeController e;
 	private static Employee evaluator;
-
+/**
+ * 
+ * @param evaluator
+ */
 	public void start(Employee evaluator) {
 		this.evaluator = evaluator;
 		primaryStage = LoginController.primaryStage;
@@ -73,18 +81,30 @@ public class EvaluatorHomeController implements Initializable {
 			}
 		});
 	}
-
+	/**
+	 * getPrimaryStage: method to return the primaryStage of EvaluatorHomeController
+	 * @return primaryStage
+	 */
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on Home button 
+	 * @param event
+	 * @throws Exception
+	 */
 	public void GoToHome(ActionEvent event) throws Exception {
 		HomeController home = new HomeController();
 		runLater(() -> {
 			home.start(splitpane);
 		});
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on RequestWorkedOnAction button 
+	 * to displaying all the requests that the user work on
+	 * @param event
+	 * @throws Exception
+	 */
 	public void RequestWorkedOnAction(ActionEvent event) throws Exception {
 		RequestWorkON = new RequestsWorkedOnController();
 		runLater(() -> {
@@ -92,42 +112,72 @@ public class EvaluatorHomeController implements Initializable {
 					"evaluation");
 		});
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on RequestSubmissionAction button 
+	 * to submit a request 
+	 * @param event
+	 * @throws Exception
+	 */
 	public void RequestSubmissionAction(ActionEvent event) throws Exception {
 		RequestSubmissionController Submit = new RequestSubmissionController();
 		runLater(() -> {
 			Submit.start(splitpane, evaluator);
 		});
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on MyRequestsAction button 
+	 * to displaying the requests that user submitted
+	 * @param event
+	 * @throws Exception
+	 */
 	public void MyRequestsAction() throws Exception {
 		MyRequests = new MyRequestsController();
 		runLater(() -> {
 			MyRequests.start(splitpane, evaluator, "Evaluator");
 		});
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on ProfileSettingAction button 
+	 * to display the profileSetting of user
+	 * @param event
+	 * @throws Exception
+	 */
 	public void ProfileSettingAction(ActionEvent event) throws Exception {
 		ProfileSetting = new ProfileSettingController();
 		runLater(() -> {
 			ProfileSetting.start(splitpane, evaluator, "Evaluator");
 		});
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on AboutICMAction button 
+	 * to displaying data of ICM-System
+	 *  * @param event
+	 * @throws Exception
+	 */
 	public void AboutICMAction(ActionEvent event) throws Exception {
 		AboutICMController about = new AboutICMController();
 		runLater(() -> {
 			about.start(splitpane);
 		});
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on clickNotifications button 
+	 * to display your notification that you received
+	 *  * @param event
+	 * @throws Exception
+	 */
 	public void clickNotifications(ActionEvent event) throws Exception {
 		NotificationsController notific = new NotificationsController();
 		runLater(() -> {
 			notific.start(splitpane, evaluator);
 		});
 	}
-
+	/**
+	 * Method for An action Event ,Clicking on LogOutAction button 
+	 * to Logout from the ICM-System
+	 *  * @param event
+	 * @throws Exception
+	 */
 	public void LogOutAction(ActionEvent event) throws Exception {
 		LogOutController logOut = new LogOutController();
 		primaryStage.close();
@@ -142,7 +192,10 @@ public class EvaluatorHomeController implements Initializable {
 		// TODO Auto-generated method stub
 		UserNameMenu.setText(evaluator.getFirstName() + " " + evaluator.getLastName());
 	}
-
+	/**
+	 * method to wait 5millisecond
+	 * @param f
+	 */
 	private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {

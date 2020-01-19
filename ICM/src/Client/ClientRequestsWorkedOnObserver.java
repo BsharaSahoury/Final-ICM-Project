@@ -26,7 +26,10 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-
+/**
+ * in this observer we show the request that the user work on depends on his job
+ *
+ */
 public class ClientRequestsWorkedOnObserver implements Observer {
 	public ClientRequestsWorkedOnObserver(Observable client) {
 		client.addObserver(this);

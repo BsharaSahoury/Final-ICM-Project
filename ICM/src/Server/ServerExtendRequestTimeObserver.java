@@ -14,12 +14,18 @@ import Entity.Notification;
 import Entity.Phase;
 import Entity.RequestPhase;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * In this observer we handle a situation of ask for extension by the phase administrator
+ *
+ */
 public class ServerExtendRequestTimeObserver implements Observer {
 	public ServerExtendRequestTimeObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we add a extension request in the DB 
+ * and we send notification for the inspector in order to approve the extension.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

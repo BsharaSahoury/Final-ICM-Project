@@ -12,7 +12,10 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import ocsf.server.OriginatorMessage;
-
+/**
+ * in this observer we show a disconnect message to the user from the server
+ *
+ */
 public class ClientServerDisconnectedObserver implements Observer {
 	public ClientServerDisconnectedObserver(Observable client) {
 		client.addObserver(this);

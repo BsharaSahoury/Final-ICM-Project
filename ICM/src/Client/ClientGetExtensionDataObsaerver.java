@@ -6,7 +6,10 @@ import java.util.Observer;
 import javafx.application.Platform;
 import messages.ExtensionConfirmationMessage;
 import messages.massageToAdmenToApproveExtension;
-
+/**
+ * in this observer we return the extension data for the user that ask to see them.
+ *
+ */
 public class ClientGetExtensionDataObsaerver implements Observer {
 	public ClientGetExtensionDataObsaerver(Observable server) {
 		server.addObserver(this);

@@ -6,7 +6,10 @@ import java.util.Observer;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
+/**
+ * in this observer we show the inspector that his documentation for the exception saved successfully
+ *
+ */
 public class ClientDocumentExceptionObserver implements Observer {
 	public ClientDocumentExceptionObserver(Observable client) {
 		client.addObserver(this);

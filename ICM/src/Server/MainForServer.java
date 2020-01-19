@@ -14,6 +14,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ocsf.server.ObservableServer;
 
+/**
+ * This is the main class of the server here we the server program.
+ *
+ */
 public class MainForServer extends Application {
 	public static Connection con;
 	private static Stage ServerStage;
@@ -23,18 +27,35 @@ public class MainForServer extends Application {
 		launch(args);
 	}
 
+	/**
+	 * 
+	 * @return the Server observer.
+	 */
 	public static ObservableServer get_ObservableServer() {
 		return sv;
 	}
 
+	/**
+	 * @return the connection of the server.
+	 */
 	public static Connection get_Connection() {
 		return con;
 	}
 
+	/**
+	 * set the connection of the server to con1.
+	 * 
+	 * @param con1
+	 */
 	public static void set_Connection(Connection con1) {
 		con = con1;
 	}
 
+	/**
+	 * In this function we start all the observers of the server that we have in the
+	 * 'Server' package and each observer wait for a message from the client in
+	 * order start his work.
+	 */
 	public static void ConnectAfterDBPassword() {
 		int port = 0; // Port to listen ons
 		try {
@@ -99,14 +120,15 @@ public class MainForServer extends Application {
 		} // Start listening for connections
 	}
 
+	/**
+	 * In the start function we load our fxml for the main window of the server in
+	 * order to write the details of our sql program and make the server listening.
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Server/Server_Configure.fxml"));
-
-			// Parent root =
-			// FXMLLoader.load(getClass().getResource("/Server/Server_Configure.fxml"));
 			Parent root = loader.load();
 			ServerController controller = loader.getController();
 			Scene scene = new Scene(root);

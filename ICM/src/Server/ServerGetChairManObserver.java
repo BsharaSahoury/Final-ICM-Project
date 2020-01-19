@@ -10,12 +10,17 @@ import java.util.Observer;
 import DBconnection.mysqlConnection;
 import Entity.Employee;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * In this observer we handle situation when we need the chairman
+ *
+ */
 public class ServerGetChairManObserver implements Observer {
 	public ServerGetChairManObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * This function return to the client the chairman employee
+ */
 	@Override
 	public void update(Observable arg0, Object arg) {
 		if (arg instanceof Object[]) {

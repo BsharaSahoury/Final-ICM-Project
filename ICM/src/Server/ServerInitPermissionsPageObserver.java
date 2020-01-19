@@ -10,12 +10,18 @@ import DBconnection.mysqlConnection;
 import Entity.Employee;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * this observer handle the situation of ask for details about employees in the permission page.
+ *
+ */
 public class ServerInitPermissionsPageObserver implements Observer {
 	public ServerInitPermissionsPageObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * this function return all the details about the all of the engineers,committee members,
+ * chairman and current inspector,and send it to the administrator permission page.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

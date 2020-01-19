@@ -100,17 +100,27 @@ public class AllRequestsController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * method to sets the requests on the table of requests 
+ * this method recieved the requests and the setItems fill the data
+ * @param arr1 
+ */
 	public void setTableRequests(ArrayList<RequestPhase> arr1) {
 		list = FXCollections.observableArrayList(arr1);
 		tableRequests.setItems(list);
 	}
-
+/**
+ * method to fill table by the requests 
+ * @param arr1 : arrayList of Request in phase
+ */
 	public void fillTable(ArrayList<RequestPhase> arr1) {
 		arrofRequests = arr1;
 		loader.<AllRequestsController>getController().setTableRequests(arr1);
 	}
-
+/**
+ * method : searching a request by Id and Display it
+ * into the table of requests
+ */
 	public void searchaction() {
 		if (!search_text.getText().equals("")) {
 			try {
@@ -143,7 +153,10 @@ public class AllRequestsController implements Initializable {
 			alert.showAndWait();
 		}
 	}
-
+	/**
+	 * method : searching a requests by their Phase Status and Display them
+	 * into the table of request
+	 */
 	public void GroupbyAction(ActionEvent e) {
 		chosengroupbytype = Groupby.getSelectionModel().getSelectedIndex();
 		String groupbystatus = null;
@@ -179,7 +192,10 @@ public class AllRequestsController implements Initializable {
 			}
 		}
 	}
-
+	/**
+	 * method to wait 5millisecond
+	 * @param f
+	 */
 	private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {
@@ -192,7 +208,10 @@ public class AllRequestsController implements Initializable {
 			}
 		});
 	}
-
+/**
+ * Method to display the data of a specific request
+ * @param e
+ */
 	public void RequestInfoAction(ActionEvent e) {
 		chosenRequest = tableRequests.getSelectionModel().getSelectedIndex();
 		if (chosenRequest != -1) {
@@ -215,19 +234,32 @@ public class AllRequestsController implements Initializable {
 			alertWarning.showAndWait();
 		}
 	}
-
+/**
+ * Method : return the chosenRequest from the  requests table
+ * @return
+ */
 	public static int getselectedindex() {
 		return chosenRequest;
 	}
-
+/**
+ * Method: returns ObservableList of REquest phase
+ * @return
+ */
 	public static ObservableList<RequestPhase> getList() {
 		return list;
 	}
-
+/**
+ * Method : gets the choosenRequest from the requests table
+ * @return
+ */
 	public static RequestPhase getselectedRequest() {
 		return chosenR;
 	}
-
+/**
+* Method for An action Event ,Clicking on RequestTreatmentAction button 
+ *you can change the request status to frozen
+ * @param e
+ */
 	public void RequestTreatmentAction(ActionEvent e) {
 
 		chosenRequest = tableRequests.getSelectionModel().getSelectedIndex();
@@ -249,7 +281,10 @@ public class AllRequestsController implements Initializable {
 			alertWarning.showAndWait();
 		}
 	}
-
+/** Method for An action Event ,Clicking on ChangeStatusAction button 
+ *you can change the request status 
+ * @param e
+ */
 	public void ChangeStatusAction(ActionEvent e) {
 		chosenRequest = tableRequests.getSelectionModel().getSelectedIndex();
 		if (chosenRequest != -1) {
@@ -266,7 +301,10 @@ public class AllRequestsController implements Initializable {
 			alertWarning.showAndWait();
 		}
 	}
-
+/**
+ * MEthod refresh: if you click on refresh button your 
+ * requests will fill again
+ */
 	public void refresh() {
 		try {
 			InspectorHomeController.AllRequests.start(splitpane, "/Boundary/allRequests.fxml", "Inspector");
@@ -274,6 +312,10 @@ public class AllRequestsController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Method Instruction displaying the permissions in the current stage
+	 * will display them as a alert
+	 */
 	public void instructionsAction() {
 		if(job.equals("Inspector"))
 		{

@@ -8,12 +8,18 @@ import java.util.Observer;
 import DBconnection.mysqlConnection;
 import Entity.Employee;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * This observer handle the situation when the inspector decided to replace the evaluator.
+ *
+ */
 public class ServerChangeEvaluatorObserver implements Observer {
 	public ServerChangeEvaluatorObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * This function change the last evaluator and recruit the new evaluator that the inspector
+ * chose to recruit for the relevant request.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {

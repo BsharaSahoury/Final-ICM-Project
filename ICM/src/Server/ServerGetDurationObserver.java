@@ -11,12 +11,17 @@ import Entity.Phase;
 import Entity.RequestPhase;
 import Entity.State;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * In this observer we handle the situation when we need to see the duration of request in relevant phase.
+ *
+ */
 public class ServerGetDurationObserver implements Observer {
 	public ServerGetDurationObserver(Observable server) {
 		server.addObserver(this);
 	}
-
+/**
+ * In this function we return the request in the relevant phase with the duration of the phase.
+ */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		if (arg1 instanceof Object[]) {
