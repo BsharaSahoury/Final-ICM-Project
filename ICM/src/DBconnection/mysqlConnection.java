@@ -2377,7 +2377,15 @@ public class mysqlConnection {
 		}
 		return false;
 	}
-
+/**
+ * here we search for the frozen request in the frozen table if we didn't found any frozen request in this times we return true 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param date this is the date from that we want to see the frozen request
+ * @param int1
+ * @param sd
+ * @param cd
+ * @return return false if not found frozen in frozen table and true if found
+ */
 	private static boolean isActive(Connection con, Date date, int int1, Date sd, Date cd) {
 		PreparedStatement stm = null;
 		if (date.before(sd))
@@ -2403,7 +2411,14 @@ public class mysqlConnection {
 		}
 		return false;
 	}
-
+/**
+ * here we recieve the data of the fourth report
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param keymessage this is the key message of the fourth report
+ * @param from this is the time that we want to see the fourths from
+ * @param to until this time we want the data
+ * @return return the data that we need for the fourth report
+ */
 	public static ArrayList<Long> getFourthReportData(Connection con, String keymessage, Date from, Date to) {
 		Statement stm = null;
 		ArrayList<Long> arr = new ArrayList<>();
@@ -2466,7 +2481,12 @@ public class mysqlConnection {
 		}
 		return null;
 	}
-
+/**
+ * here we return the performance report data to the administrator
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param keymessage this is the keymessage of the performance report
+ * @return data of the extension duration for the performance report
+ */
 	public static ArrayList<ExtensionDuration> getPerformanceReport(Connection con, String keymessage) {
 		Statement stm = null;
 		ArrayList<ExtensionDuration> arr = new ArrayList<>();
@@ -2489,7 +2509,12 @@ public class mysqlConnection {
 		}
 		return null;
 	}
-
+/**
+ * here we create the get the data of the delay report
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param keymessage this is the keymessage for the report
+ * @return data of delay report
+ */
 	public static ArrayList<Long> getDelaysReportData(Connection con, String keymessage) {
 		PreparedStatement stm = null;
 		ResultSet rs = null;
@@ -2539,7 +2564,16 @@ public class mysqlConnection {
 		return arr;
 
 	}
-
+/**
+ * here we assign employee as phase administrator for the request with this params
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param username this is the new employee that we want to assign
+ * @param repetion this is the repetion for the request that we want to assign the employee as phase administrator on
+ * @param id this is the id of the request
+ * @param phase this is the phase of the request
+ * @param start this is the start date of the phase
+ * @param due this is the due date of the request
+ */
 	public static void assignorChangeEmployee(Connection con, String username, int repetion, int id, String phase,
 			LocalDate start, LocalDate due) {
 		PreparedStatement stm = null;
@@ -2584,7 +2618,13 @@ public class mysqlConnection {
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * here we set the request for the engineer in the engineer request table in DB
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param fullname this is the full name of the engineer that work on request with id='id' and repetion='repetion'
+ * @param repetionthis is the repetion that we want to save in the engineer request
+ * @param id this is the id of the request that we want to save on engineer request table
+ */
 	public static void EnterrequestonengineerrequestDB(Connection con, ArrayList<String> fullname, int repetion,
 			int id) {
 		PreparedStatement stmt4 = null;
@@ -2613,7 +2653,13 @@ public class mysqlConnection {
 		}
 
 	}
-
+/**
+ * here we insert the extension with the newdate into the DB
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param rp this is the request pahse
+ * @param newDue this is the new due date of the extension
+ * @return
+ */
 	public static boolean extendTime(Connection con, RequestPhase rp, LocalDate newDue) {
 		PreparedStatement stm1 = null;
 		PreparedStatement stm2 = null;
@@ -2650,7 +2696,13 @@ public class mysqlConnection {
 		}
 		return true;
 	}
-
+/**
+ * here we take all the extension from the DB with this id and phase
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param id this is the id of the request
+ * @param phase this is the phase of the request
+ * @return we return the extension that has been requested for this id and phase
+ */
 	public static String[] getExtension(Connection con, int id, String phase) {
 		PreparedStatement stm1 = null;
 		PreparedStatement stm2 = null;
@@ -2683,7 +2735,13 @@ public class mysqlConnection {
 		return data;
 
 	}
-
+/**
+ * we set the due date of the relevant request
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param id this is the id of the request
+ * @param phase this is the phase of the request
+ * @param dueDate this is the duedate that we want to inert into the request with the same id and the pahse
+ */
 	public static void updateDuedate(Connection con, int id, String phase, LocalDate dueDate) {
 		PreparedStatement stm1 = null;
 		PreparedStatement stm2 = null;
@@ -2711,7 +2769,12 @@ public class mysqlConnection {
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * this function return the employee that have this username
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param username username  of the employee
+ * @return the employee with this username
+ */
 	public static Employee getMyEmployee(Connection con, String username) {
 		Employee employee = null;
 		PreparedStatement st = null;
@@ -2728,7 +2791,12 @@ public class mysqlConnection {
 		}
 		return employee;
 	}
-
+/**
+ * here we change the status of the relevant request to 'waitForApprove'
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param id this is the request id
+ * @param repetion this is the repletion of the id in the decision phase
+ */
 	public static void changestatewaitforapproveDecision(Connection con, int id, int repetion) {
 		PreparedStatement st = null;
 		try {
