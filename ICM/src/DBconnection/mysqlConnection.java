@@ -654,7 +654,14 @@ public class mysqlConnection {
 		return null;
 
 	}
-
+/**
+ * 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param id request id 
+ * @param employee Employee employee
+ * @param phase  the phase of the request
+ * the method get id of the request and the Employee that work in the same request and the phase that the employee work on it  ,and assign the employee to work on the request in this phase.
+ */
 	public static void newassignEmployee(Connection con, int id, Employee employee, String phase) {
 		PreparedStatement stm = null;
 		PreparedStatement stm1 = null;
@@ -810,7 +817,12 @@ public class mysqlConnection {
 		}
 
 	}
-
+/**
+ * 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param id the id of the request
+ * @return Request (the information about the request)
+ */
 	public static Request getRequestInfo(Connection con, int id) {
 		PreparedStatement stm1 = null;
 		PreparedStatement stm2 = null;
@@ -862,7 +874,13 @@ public class mysqlConnection {
 		return r;
 
 	}
-
+/**
+ * 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param id the id of the request
+ * @return RequestPhase the current information about the request  
+ * The method returns all the information required to enable the initiator to track his request
+ */
 	public static RequestPhase getRequestTrack(Connection con, int id) {
 		PreparedStatement stmRP = null;
 		PreparedStatement stmR = null;
@@ -907,13 +925,17 @@ public class mysqlConnection {
 		}
 		return rp;
 	}
-
+/**
+ * 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param id the request id
+ * @param d Array that contain the duration of the request (start date and due date)
+ * @param p the phase of the request
+ * @return boolean true success else false
+ * the method get array LocalDate that contain the start date and due date that i want to insert into specific request with id and phase certaines
+ */
 	public static boolean insertDate(Connection con, int id, LocalDate[] d, Phase p) {
 
-		/*
-		 * d[0] = d[0].replaceAll("(\\r|\\n)", ""); d[1] = d[1].replaceAll("(\\r|\\n)",
-		 * "");
-		 */
 		PreparedStatement stm = null;
 		Statement st = null;
 		int maxRepetion = 0;
@@ -1100,7 +1122,13 @@ public class mysqlConnection {
 		}
 
 	}
-
+/**
+ * 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param n Notification that contain the requested data
+ * the method send a Notification with requested data to admin
+ * 
+ */
 	public static void sendExtensionConfiramtionToAdmin(Connection con, Notification n) {
 		Statement st = null;
 		Employee Admin = null;
@@ -1286,7 +1314,13 @@ public class mysqlConnection {
 		}
 		return null;
 	}
-
+/**
+ * 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param er EvaluationReport: Evaluation Report that contain the details of the report
+ * The method get Evaluation Report that contain the details of the report and save in database and move the phase to decision phase 
+ * 
+ */
 	public static void insertReport(Connection con, EvaluationReport er) {
 		PreparedStatement stm1 = null;
 		Statement st = null;
@@ -1345,7 +1379,14 @@ public class mysqlConnection {
 		}
 
 	}
-
+/**
+ * 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param id the id of the request
+ * @param phase the phase of the request 
+ * @return RequestPhase with specific id and phase 
+ * the method get specific id and phase and return the suitable request. 
+ */
 	public static RequestPhase getRequestPhase(Connection con, int id, String phase) {
 		RequestPhase rp = null;
 		PreparedStatement stm1 = null;
@@ -1571,7 +1612,13 @@ public class mysqlConnection {
 		return null;
 
 	}
-
+/**
+ * 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param id the id of the request
+ * @return String contain the status of the request
+ * the method get specific id and return the status of the request.
+ */
 	public static String getStatus(Connection con, int id) {
 		PreparedStatement st = null;
 		String s = null;
@@ -1587,7 +1634,14 @@ public class mysqlConnection {
 		}
 		return s;
 	}
-
+/**
+ * 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param id the id of the request
+ * @param newstatus the new status that i chose
+ * @return Boolean true success else false
+ * the method update the status to specific status
+ */
 	public static Boolean changestatus(Connection con, int id, String newstatus) {
 		PreparedStatement stm = null;
 		PreparedStatement stmt1 = null;
@@ -1817,7 +1871,14 @@ public class mysqlConnection {
 		}
 		return initiator;
 	}
-
+/**
+ * 
+ * @param con A connection (session) with a specificdatabase. SQL statements are executed and results are returnedwithin the context of a connection. 
+ * @param id the id of the request
+ * @param phase the phase of the request
+ * @param state the new state that i chose
+ * the method update state to new state that i chose
+ */
 	public static void changeState(Connection con, int id, Phase phase, State state) {
 		RequestPhase rp = null;
 		PreparedStatement stm1 = null;
