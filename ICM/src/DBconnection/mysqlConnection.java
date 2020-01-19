@@ -559,6 +559,7 @@ public class mysqlConnection {
 			stm.setString(1, username);
 			ResultSet rs = stm.executeQuery();
 			while (rs.next()) {
+				System.out.println(rs.getDate(3));
 				Notification n = new Notification(rs.getString(2), rs.getDate(3), rs.getString(4));
 				n.setId(rs.getInt(1));
 				Nlist.add(n);
