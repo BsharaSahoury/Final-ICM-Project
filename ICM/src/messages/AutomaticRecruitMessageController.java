@@ -47,41 +47,44 @@ public class AutomaticRecruitMessageController implements Initializable {
 	ComboBox<String> combo;
 	@FXML
 	Label Label;
-	
+
 	public static AutomaticRecruitMessageController ctrl;
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
-	public  static SplitPane splitpane;
+	public static SplitPane splitpane;
 	private int requestID;
 	private String fullname;
 	private ObservableList<String> list;
-	public void start(SplitPane splitpane,int id, String fullname) {
-		primaryStage=LoginController.primaryStage;
-		try{	
+
+	public void start(SplitPane splitpane, int id, String fullname) {
+		primaryStage = LoginController.primaryStage;
+		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/messages/automaticRecruit-message.fxml"));
 			lowerAnchorPane = loader.load();
-			ctrl=loader.getController();
+			ctrl = loader.getController();
 			splitpane.getItems().set(1, lowerAnchorPane);
-			this.splitpane=splitpane;
+			this.splitpane = splitpane;
 			ctrl.requestLabel.setVisible(false);
-			ctrl.requestLabel.setText("New request with id #"+id+" has been submitted recently,");
+			ctrl.requestLabel.setText("New request with id #" + id + " has been submitted recently,");
 			ctrl.requestLabel.setVisible(true);
 			ctrl.evaluatorLabel.setVisible(false);
-			ctrl.evaluatorLabel.setText("Evaluator "+fullname+" will be recruited automatically to evaluate the request.would you like to approve?");
+			ctrl.evaluatorLabel.setText("Evaluator " + fullname
+					+ " will be recruited automatically to evaluate the request.would you like to approve?");
 			ctrl.evaluatorLabel.setVisible(true);
-			ctrl.requestID=id;
-			this.fullname=fullname;
-			
-		} catch(Exception e) {
+			ctrl.requestID = id;
+			this.fullname = fullname;
+
+		} catch (Exception e) {
 			e.printStackTrace();
-		}			
+		}
 	}
+
 	public void approveAction(ActionEvent e) {
-		if(ClientConsole.map.get(requestID).equals("frozen")) {
+		if (ClientConsole.map.get(requestID).equals("frozen")) {
 			ClientConsole.displayFreezeError();
 			return;
 		}
-		Object[] message= {"automatic",requestID};
+		Object[] message = { "automatic", requestID };
 		try {
 			LoginController.cc.getClient().sendToServer(message);
 			ctrl.approve.setDisable(true);
@@ -89,19 +92,20 @@ public class AutomaticRecruitMessageController implements Initializable {
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}	
-	}
-	public void chooseOtherAction(ActionEvent e) {
-		String fullname=combo.getSelectionModel().getSelectedItem();
-		if(fullname==null) {
-			Alert alert = new Alert(AlertType.INFORMATION);
-	        alert.setTitle("TEST");
-	        alert.setHeaderText("ERROR");
-	        alert.setContentText("please choose an evaluator");
-	        alert.showAndWait();
-	        return;
 		}
-		Object[] msg= {"manualEvaluator",fullname,requestID};
+	}
+
+	public void chooseOtherAction(ActionEvent e) {
+		String fullname = combo.getSelectionModel().getSelectedItem();
+		if (fullname == null) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("TEST");
+			alert.setHeaderText("ERROR");
+			alert.setContentText("please choose an evaluator");
+			alert.showAndWait();
+			return;
+		}
+		Object[] msg = { "manualEvaluator", fullname, requestID };
 		try {
 			LoginController.cc.getClient().sendToServer(msg);
 			other.setDisable(true);
@@ -110,36 +114,27 @@ public class AutomaticRecruitMessageController implements Initializable {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		
-		
+
 	}
-	
-	
-	
-	
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		Object[] msg= {"evaluators",getClass().getName()};
+		Object[] msg = { "evaluators", getClass().getName() };
 		try {
 			LoginController.cc.getClient().sendToServer(msg);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
+		}
 	}
-	
-	
-	
+
 	public void fillCombo(ArrayList<String> names) {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
 				list = FXCollections.observableArrayList(names);
 				combo.setItems(list);
-				System.out.println(NotificationsController.getId());
-				Object[] msg = { "evaluatorapproves", NotificationsController.getId(),"evaluation" };
+				Object[] msg = { "evaluatorapproves", NotificationsController.getId(), "evaluation" };
 				try {
 					LoginController.cc.getClient().sendToServer(msg);
 				} catch (IOException e) {
@@ -149,9 +144,9 @@ public class AutomaticRecruitMessageController implements Initializable {
 			}
 		});
 	}
-			
+
 	public void checkEvaluator(RequestPhase request) {
-		if(request.getEmployee()!=null) {
+		if (request.getEmployee() != null) {
 			approve.setDisable(true);
 			other.setDisable(true);
 			Label.setVisible(false);
@@ -159,8 +154,5 @@ public class AutomaticRecruitMessageController implements Initializable {
 			Label.setVisible(true);
 		}
 	}
-	
-	
 
 }
-

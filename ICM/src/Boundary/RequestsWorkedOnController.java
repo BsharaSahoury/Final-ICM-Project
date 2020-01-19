@@ -85,8 +85,14 @@ public class RequestsWorkedOnController implements Initializable {
 	public static FXMLLoader loader;
 	private static User user;
 	private static RequestPhase rp;
+	private static String newjob;
 
 	public void start(SplitPane splitpane, String path, User user, String job, String phase) {
+		if(job.equals("Chairman")) {
+			this.newjob=job;
+			job="Comittee Member";
+		}
+		else this.newjob="???";
 		this.job = job;
 		this.user = user;
 		primaryStage = LoginController.primaryStage;
@@ -240,13 +246,18 @@ public class RequestsWorkedOnController implements Initializable {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				if (job.equals("Comittee Member") || job.equals("Engineer")) {
-					DurationController Duration = new DurationController();
+				DurationController Duration = new DurationController();
+				SetDurationController setDuration = new SetDurationController();
+				if(newjob.equals("Chairman")) {
+					runLater(() -> {
+						setDuration.start(splitpane, "/Boundary/DuratinForEvaluator.fxml", rp);
+					});
+				}
+				else if (job.equals("Comittee Member") || job.equals("Engineer")) {
 					runLater(() -> {
 						Duration.start(splitpane, "/Boundary/Duration.fxml", rp);
 					});
 				} else {
-					SetDurationController setDuration = new SetDurationController();
 					runLater(() -> {
 						setDuration.start(splitpane, "/Boundary/DuratinForEvaluator.fxml", rp);
 					});

@@ -19,56 +19,53 @@ public class ServerGetEvaluatorsObserver implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		if(arg instanceof Object[]) {
-			Object[] arg1=(Object[])arg;
-			ConnectionToClient client=(ConnectionToClient)arg1[0];
-			if(arg1[1] instanceof Object[]) {
-				Object[] arg2=(Object[])arg1[1];
-				if(arg2[0] instanceof String) {
-					String keymessage=(String)arg2[0];
-					if(keymessage.equals("evaluators")) {
-						String classname=(String)arg2[1];
-						Connection con=mysqlConnection.makeAndReturnConnection();
-						ArrayList<Employee> evaluators=mysqlConnection.getEmployees(con,"evaluator");
-						
-						Object[] msg= {"employees",evaluators,classname};
+		if (arg instanceof Object[]) {
+			Object[] arg1 = (Object[]) arg;
+			ConnectionToClient client = (ConnectionToClient) arg1[0];
+			if (arg1[1] instanceof Object[]) {
+				Object[] arg2 = (Object[]) arg1[1];
+				if (arg2[0] instanceof String) {
+					String keymessage = (String) arg2[0];
+					if (keymessage.equals("evaluators")) {
+						String classname = (String) arg2[1];
+						Connection con = mysqlConnection.makeAndReturnConnection();
+						ArrayList<Employee> evaluators = mysqlConnection.getEmployees(con, "evaluator");
+
+						Object[] msg = { "employees", evaluators, classname };
 						try {
 							client.sendToClient(msg);
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-					}
-					else if(keymessage.equals("Performance leaders")) {
-						String classname=(String)arg2[1];
-						Connection con=mysqlConnection.makeAndReturnConnection();
-						ArrayList<Employee> performers=mysqlConnection.getEmployees(con,"engineer");
-						Object[] msg= {"employees",performers,classname};
+					} else if (keymessage.equals("Performance leaders")) {
+						String classname = (String) arg2[1];
+						Connection con = mysqlConnection.makeAndReturnConnection();
+						ArrayList<Employee> performers = mysqlConnection.getEmployees(con, "engineer");
+						Object[] msg = { "employees", performers, classname };
 						try {
 							client.sendToClient(msg);
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-					}
-					else if(keymessage.equals("comittee members")) {
-						String classname=(String)arg2[1];
-						Connection con=mysqlConnection.makeAndReturnConnection();
-						ArrayList<Employee> comitteMembers=mysqlConnection.getEmployees(con, "comittee member");
-						Employee chairman=mysqlConnection.getChairman(con);
+					} else if (keymessage.equals("comittee members")) {
+						String classname = (String) arg2[1];
+						Connection con = mysqlConnection.makeAndReturnConnection();
+						ArrayList<Employee> comitteMembers = mysqlConnection.getEmployees(con, "comittee member");
+						Employee chairman = mysqlConnection.getChairman(con);
 						comitteMembers.add(chairman);
-						Object[] msg= {"employees",comitteMembers,classname};
+						Object[] msg = { "employees", comitteMembers, classname };
 						try {
 							client.sendToClient(msg);
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-					}
-					else if(keymessage.equals(("evaluatorsagain"))){
-						Connection con=mysqlConnection.makeAndReturnConnection();
-						ArrayList<Employee> evaluators=mysqlConnection.getEmployees(con,"evaluator");
-						Object[] msg= {keymessage,evaluators};
+					} else if (keymessage.equals(("evaluatorsagain"))) {
+						Connection con = mysqlConnection.makeAndReturnConnection();
+						ArrayList<Employee> evaluators = mysqlConnection.getEmployees(con, "evaluator");
+						Object[] msg = { keymessage, evaluators };
 						try {
 							client.sendToClient(msg);
 						} catch (IOException e) {
@@ -79,7 +76,7 @@ public class ServerGetEvaluatorsObserver implements Observer {
 				}
 			}
 		}
-		
+
 	}
 
 }

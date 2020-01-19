@@ -105,6 +105,7 @@ public class ChairmanHomeController implements Initializable {
 	public void RequestWorkedOnAction(ActionEvent event) throws Exception {
 		RequestWorkON = new RequestsWorkedOnController();
 		runLater(() -> {
+			System.out.println("its OKKKKKKKKKKKKKKKKK");
 			RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnChairman.fxml", chairman, "Chairman", "decision");
 		});
 	}

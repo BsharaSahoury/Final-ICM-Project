@@ -830,7 +830,7 @@ public class mysqlConnection {
 				ResultSet rs2 = stm2.executeQuery();
 				if (rs2.next()) {
 					Initiatorname = rs2.getString(2) + " " + rs2.getString(3);
-					role = rs2.getString(4);
+				role = rs2.getString(4);
 				}
 				if (Initiatorname == null) {
 					stm2 = con.prepareStatement("SELECT E.* FROM icm.student E WHERE username=?;");
@@ -842,7 +842,7 @@ public class mysqlConnection {
 				}
 				if (Initiatorname != null) {
 					if (rs.getBytes(10) == null) {
-						r = new Request(rs.getInt(7), Initiatorname, role, rs2.getString(8), rs.getString(8),
+						r = new Request(rs.getInt(7), Initiatorname, rs2.getString(5),role, rs.getString(8),
 								rs.getString(2), rs.getString(3), rs.getString(1), rs.getString(4), rs.getString(5),
 								rs.getDate(6), new MyFile(), null);
 					} else {
@@ -1209,10 +1209,7 @@ public class mysqlConnection {
 				stm6.setInt(1, id);
 				stm6.setString(2, "decision");
 				ResultSet rs3 = stm6.executeQuery();
-				System.out.println("llll");
-				System.out.println(id);
 				if (rs3.next()) {
-					System.out.println("ggg");
 					stm3 = con.prepareStatement(
 							"UPDATE icm.requestinphase SET state='over' WHERE request_id = ? and phase='decision' and repetion=?;");
 					stm3.setInt(1, id);
@@ -1328,7 +1325,7 @@ public class mysqlConnection {
 			long newmillis = Startdate.getTime() + (int) (1000 * 60 * 60 * 24);
 			Date newStartdate = new java.sql.Date(newmillis);
 			long week = Startdate.getTime() + (int) (1000 * 60 * 60 * 24 * 7);
-			Date dueDate = new java.sql.Date(week);
+			Date dueDate=new java.sql.Date(week);
 			PreparedStatement stm3 = con.prepareStatement("INSERT INTO icm.requestinphase  VALUES(?,?,?,?,?,?,?) ");
 			stm3.setInt(1, er.getRequestID());
 			stm3.setString(2, "decision");
@@ -2672,9 +2669,6 @@ public class mysqlConnection {
 
 	public static void changestatewaitforapproveDecision(Connection con, int id, int repetion) {
 		PreparedStatement st = null;
-		System.out.println("xxc");
-		System.out.println(id);
-		System.out.println(repetion);
 		try {
 			st = con.prepareStatement(
 					"UPDATE icm.requestinphase SET state='waitingForApprove' WHERE request_id=? AND phase='decision' AND repetion=?;");

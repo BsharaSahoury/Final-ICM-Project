@@ -52,10 +52,12 @@ public class ComitteeMemberHomeController implements Initializable {
 	public static Employee employee;
 	public static Employee Chairman;
 	private static int flag = 0;
+	private static String myjob;
 
 	public void start(Employee employee) {
 		this.comitteeMember = employee;
 		this.employee = employee;
+		this.myjob = employee.getJob();
 		primaryStage = LoginController.primaryStage;
 		Platform.runLater(new Runnable() {
 			@Override
@@ -106,10 +108,18 @@ public class ComitteeMemberHomeController implements Initializable {
 	public void RequestWorkedOnAction(ActionEvent event) throws Exception {
 		flag = 0;
 		RequestWorkON = new RequestsWorkedOnController();
-		runLater(() -> {
-			RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnCommittemember.fxml", comitteeMember,
-					"Comittee Member", "decision");
-		});
+		if (myjob.equals("chairman")) {
+			runLater(() -> {
+				RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnCommittemember.fxml", comitteeMember, "Chairman",
+						"decision");
+			});
+		} else {
+			runLater(() -> {
+				RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnCommittemember.fxml", comitteeMember,
+						"Comittee Member", "decision");
+			});
+		}
+
 	}
 
 	public static int getFlag() {

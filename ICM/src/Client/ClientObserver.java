@@ -21,6 +21,7 @@ public class ClientObserver implements Observer {
 	public void update(Observable o, Object arg) {
 		if (arg instanceof String) {
 			String s = (String) arg;
+			System.out.println(s);
 			if (s.equals("#OC:Connection error.")) {
 				System.out.println("Client Stopped!!");
 				/// CONNECTION ERROR alert

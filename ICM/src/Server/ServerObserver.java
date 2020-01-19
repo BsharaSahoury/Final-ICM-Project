@@ -11,8 +11,8 @@ public class ServerObserver implements Observer {
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
-		if(arg1 instanceof String) {
-			String str=(String)arg1;
+		if (arg1 instanceof String) {
+			String str = (String) arg1;
 			System.out.println(str);
 		}
 	}

@@ -16,44 +16,52 @@ public class Notification implements Serializable {
 	private String dateStr;
 	private String type;
 	private int id;
+
 	public Notification(String content, Date date, String type) {
-		this.content =content;
+		this.content = content;
 		this.date = date;
-		this.dateStr=date.toString();
+		this.dateStr = date.toString();
 		this.type = type;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
-		this.content =  content;
+		this.content = content;
 	}
+
 	public Date getDate() {
 		return date;
 	}
+
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
 	public String getDateStr() {
 		return dateStr;
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public void setDateStr(String dateStr) {
 		this.dateStr = dateStr;
 	}
+
 	public String getType() {
 		return type;
 	}
+
 	public void setType(String type) {
 		this.type = type;
 	}
-	
-	
-	
 
 }

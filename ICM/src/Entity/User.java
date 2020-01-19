@@ -17,21 +17,24 @@ public class User implements Serializable {
 	private String username;
 	private String firstName;
 	private String lastName;
-	private ArrayList<Request> myRequests = new ArrayList<Request>(); 
+	private ArrayList<Request> myRequests = new ArrayList<Request>();
+
 	public User() {
 
 	}
-	public User(String username,String firstName, String lastName) {
-		this.username=username;
-		this.firstName=firstName;
-		this.lastName=lastName;
+
+	public User(String username, String firstName, String lastName) {
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
-	public User(String username,String password,String firstName, String lastName) {
-		this.username=username;
-		this.password=password;
-		this.firstName=firstName;
-		this.lastName=lastName;
-	}	
+
+	public User(String username, String password, String firstName, String lastName) {
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
 
 	public User(String email, String password, String username, String firstName, String lastName) {
 		this.email = email;

@@ -14,20 +14,20 @@ public class ClientPeriodricReportObserver implements Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		if(arg1 instanceof Object[]) {
-			Object[] arg2=(Object[])arg1;
-			if(arg2[0] instanceof String) {
-				String keymessage=(String)arg2[0];
-				if(keymessage.equals("Pdays") || keymessage.equals("Pmonths") || keymessage.equals("Pyears")) {
-					Date from=(Date)arg2[1];
-					Date to=(Date)arg2[2];
-					ArrayList<Long> arr=(ArrayList<Long>)arg2[3];
-					String Rtype=(String)arg2[4];
-					ReportController.ctrl.buildGraph(arr,from,to,keymessage,Rtype);
+		if (arg1 instanceof Object[]) {
+			Object[] arg2 = (Object[]) arg1;
+			if (arg2[0] instanceof String) {
+				String keymessage = (String) arg2[0];
+				if (keymessage.equals("Pdays") || keymessage.equals("Pmonths") || keymessage.equals("Pyears")) {
+					Date from = (Date) arg2[1];
+					Date to = (Date) arg2[2];
+					ArrayList<Long> arr = (ArrayList<Long>) arg2[3];
+					String Rtype = (String) arg2[4];
+					ReportController.ctrl.buildGraph(arr, from, to, keymessage, Rtype);
 				}
 			}
 		}
-		
+
 	}
 
 }

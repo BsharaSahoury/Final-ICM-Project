@@ -17,29 +17,27 @@ public class ClientSubmissionObserver implements Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		if(arg1 instanceof Object[]) {
-			Object[] arg2=(Object[])arg1;
-			if(arg2[0] instanceof String) {
-				String keymessage=(String)arg2[0];
-				if(keymessage.equals("sumbissionSucceeded")) {
+		if (arg1 instanceof Object[]) {
+			Object[] arg2 = (Object[]) arg1;
+			if (arg2[0] instanceof String) {
+				String keymessage = (String) arg2[0];
+				if (keymessage.equals("sumbissionSucceeded")) {
 					Platform.runLater(new Runnable() {
 
 						@Override
 						public void run() {
 							Alert alert = new Alert(AlertType.INFORMATION);
-					        alert.setTitle("TEST");
-					        alert.setHeaderText("Success");
-					        alert.setContentText("your request has been submitted successfully");
-					        alert.showAndWait();
+							alert.setTitle("TEST");
+							alert.setHeaderText("Success");
+							alert.setContentText("your request has been submitted successfully");
+							alert.showAndWait();
 						}
-						
+
 					});
-					
+
+				}
 			}
+
 		}
-		
-	}
 	}
 }
-
-

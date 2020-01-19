@@ -14,7 +14,7 @@ import Boundary.PerformanceLeaderHomeController;
 import Boundary.StudentHomeController;
 import Boundary.TesterHomeController;
 
-public class ClientProfileSettingObserver implements Observer{
+public class ClientProfileSettingObserver implements Observer {
 	public ClientProfileSettingObserver(Observable client) {
 		client.addObserver(this);
 	}
@@ -24,7 +24,7 @@ public class ClientProfileSettingObserver implements Observer{
 		// TODO Auto-generated method stub
 		if (arg1 instanceof Object[]) {
 			Object[] getMsg = (Object[]) arg1;
-			if (getMsg.length==3 && getMsg[0] instanceof String) {
+			if (getMsg.length == 3 && getMsg[0] instanceof String) {
 				String message = (String) getMsg[0];
 				if (message.equals("ProfileSetting")) {
 					if (getMsg[1] instanceof ArrayList<?>) {
