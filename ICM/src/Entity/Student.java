@@ -2,10 +2,13 @@ package Entity;
 
 import java.util.ArrayList;
  /**
-  * The Student: represents a Student that he is a Student in the database.
+  * The Student: represents a Student that he is a student in the database.
   *  Student is an ICM-User in DataBase that his Role is Student
   *  Class Student Extends from User Class
-  *  The Student has private variables: id, department and the variables of User
+  *  The Student has private variables: 
+  * @param id
+  * @param department
+  * and variables of User Class
   * @author Arkan Muhammad
   */
 public class Student extends User {
@@ -74,7 +77,7 @@ public class Student extends User {
 	/**
 	 * setId(int id) method to Set id of Student
 	 * @param id : the method received a parameter with int type that
-	 * id describe the id of the Student
+	 * it describe the id of the Student
 	 */
 	public void setId(int id) {
 		this.id = id;
