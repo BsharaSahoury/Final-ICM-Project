@@ -97,7 +97,7 @@ public class MakeDicisionController implements Initializable {
 				Message[1] = "ask for additional Information";
 			Message[2] = ExplainDectxt.getText();
 			Message[3] = Integer.toString(ctrl.selected.getR().getId());
-			Message[4]=Integer.toString(ctrl.selected.getRepetion());
+			Message[4] = Integer.toString(ctrl.selected.getRepetion());
 			try {
 				cc.getClient().sendToServer(Message);
 				Sendbtn.setDisable(true);

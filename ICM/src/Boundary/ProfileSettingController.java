@@ -24,20 +24,19 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
-
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler; 
+import javafx.event.EventHandler;
 
 public class ProfileSettingController {
-	
+
 	private static ClientConsole cc;
 
 	@FXML
 	private TextField id_txt;
 	@FXML
-	private TextField username_txt;	
+	private TextField username_txt;
 	@FXML
-	private TextField fullname_txt;	
+	private TextField fullname_txt;
 	@FXML
 	private TextField email_txt;
 	@FXML
@@ -58,48 +57,48 @@ public class ProfileSettingController {
 	private ImageView userImage;
 	public static Stage primaryStage;
 	private AnchorPane lowerAnchorPane;
-	
+
 	@FXML
 	private static SplitPane splitpane;
-	private FXMLLoader loader;	
+	private FXMLLoader loader;
 	private static User user;
 	private static String userjob;
 	private static ArrayList<String> arrOfProfileSetting;
 	File choosenFile;
 	public static ProfileSettingController ProfileSetting;
 
-
-	public void start(SplitPane splitpane, User user,String userJob) {
-			this.splitpane=splitpane;
-			this.user=user;
-			this.userjob=userJob;
-			primaryStage=LoginController.primaryStage;
-			String[] msg=new String[3];
-			this.cc=LoginController.cc;
-			try{	
-				loader = new FXMLLoader(getClass().getResource("/Boundary/ProfileSetting.fxml"));
-				lowerAnchorPane = loader.load();
-				splitpane.getItems().set(1, lowerAnchorPane);
-				msg[0]="ProfileSetting";
-				msg[1]=user.getUsername();
-				msg[2]=userjob;
-				cc.getClient().sendToServer(msg);
-			} catch(Exception e) {
-				e.printStackTrace();
-		}		
+	public void start(SplitPane splitpane, User user, String userJob) {
+		this.splitpane = splitpane;
+		this.user = user;
+		this.userjob = userJob;
+		primaryStage = LoginController.primaryStage;
+		String[] msg = new String[3];
+		this.cc = LoginController.cc;
+		try {
+			loader = new FXMLLoader(getClass().getResource("/Boundary/ProfileSetting.fxml"));
+			lowerAnchorPane = loader.load();
+			splitpane.getItems().set(1, lowerAnchorPane);
+			msg[0] = "ProfileSetting";
+			msg[1] = user.getUsername();
+			msg[2] = userjob;
+			cc.getClient().sendToServer(msg);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
+
 	public void fillProfileSettingData(ArrayList<String> arr1) {
-	arrOfProfileSetting=arr1;	
-	loader.<ProfileSettingController>getController().setProfileSetting(arr1);		
+		arrOfProfileSetting = arr1;
+		loader.<ProfileSettingController>getController().setProfileSetting(arr1);
 	}
 
-	public void setProfileSetting(ArrayList<String> arr){
-		if(arr!=null) {
+	public void setProfileSetting(ArrayList<String> arr) {
+		if (arr != null) {
 			id_txt.setText(arr.get(0));
 			id_txt.setEditable(false);
 			username_txt.setText(arr.get(1));
 			username_txt.setEditable(false);
-			fullname_txt.setText(arr.get(2));			
+			fullname_txt.setText(arr.get(2));
 			fullname_txt.setEditable(false);
 			email_txt.setText(arr.get(3));
 			email_txt.setEditable(false);

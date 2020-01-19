@@ -81,7 +81,7 @@ public class PerformanceLeaderHomeController implements Initializable {
 		HomeController home = new HomeController();
 		runLater(() -> {
 			home.start(splitpane);
-		}); 
+		});
 	}
 
 	public void RequestWorkedOnAction(ActionEvent event) throws Exception {
@@ -89,7 +89,7 @@ public class PerformanceLeaderHomeController implements Initializable {
 		runLater(() -> {
 			RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnEngineer.fxml", performanceLeader, "Engineer",
 					"performance");
-			});
+		});
 	}
 
 	public void RequestSubmissionAction(ActionEvent event) throws Exception {
@@ -144,9 +144,9 @@ public class PerformanceLeaderHomeController implements Initializable {
 	public void RequestThatIlead(ActionEvent event) throws Exception {
 		RequestWorkON = new RequestsWorkedOnController();
 		runLater(() -> {
-			RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnPerformer.fxml", performanceLeader, "Performance Leader",
-					"performance");
-			});
+			RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnPerformer.fxml", performanceLeader,
+					"Performance Leader", "performance");
+		});
 	}
 
 	private void runLater(Func f) {

@@ -86,9 +86,10 @@ public class RequestChangesStatusToActiveForAdmin extends AllRequestsController 
 
 	public void BackBtnAction(ActionEvent e) {
 		runLater(() -> {
-		InspectorHomeController.AllRequests.start(splitpane, "/Boundary/allRequests.fxml", "Inspector");
+			InspectorHomeController.AllRequests.start(splitpane, "/Boundary/allRequests.fxml", "Inspector");
 		});
 	}
+
 	private void runLater(Func f) {
 		f.call();
 		Platform.runLater(() -> {

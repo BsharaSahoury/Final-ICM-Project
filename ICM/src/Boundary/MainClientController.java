@@ -128,8 +128,8 @@ public class MainClientController {
 			ClientDelaysReportObserver cdro = new ClientDelaysReportObserver(cc.getClient());
 
 			ClientGetFullNameEmployeeObserver ddde = new ClientGetFullNameEmployeeObserver(cc.getClient());
-			ClientExtendRequestTimeObserver certo=new ClientExtendRequestTimeObserver(cc.getClient());
-			ClientGetExtensionDataObsaerver cedo=new ClientGetExtensionDataObsaerver(cc.getClient());
+			ClientExtendRequestTimeObserver certo = new ClientExtendRequestTimeObserver(cc.getClient());
+			ClientGetExtensionDataObsaerver cedo = new ClientGetExtensionDataObsaerver(cc.getClient());
 			cc.getClient().openConnection();
 			wrong.setVisible(false);
 			login = new LoginController();

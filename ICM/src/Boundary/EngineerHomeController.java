@@ -82,15 +82,15 @@ public class EngineerHomeController implements Initializable {
 		HomeController home = new HomeController();
 		runLater(() -> {
 			home.start(splitpane);
-		}); 
+		});
 	}
 
 	public void RequestThatIlead(ActionEvent event) throws Exception {
 		RequestWorkON = new RequestsWorkedOnController();
 		runLater(() -> {
-			RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnPerformer.fxml", performanceLeader, "Performance Leader",
-					"performance");
-			});
+			RequestWorkON.start(splitpane, "/Boundary/RequestWorkOnPerformer.fxml", performanceLeader,
+					"Performance Leader", "performance");
+		});
 	}
 
 	public void RequestWorkedOnAction(ActionEvent event) throws Exception {
@@ -98,7 +98,7 @@ public class EngineerHomeController implements Initializable {
 		runLater(() -> {
 			RequestWorkON.start(splitpane, "/Boundary/Engineer-Home.fxml", performanceLeader, "Performance Leader",
 					"performance");
-			});
+		});
 	}
 
 	public void RequestSubmissionAction(ActionEvent event) throws Exception {

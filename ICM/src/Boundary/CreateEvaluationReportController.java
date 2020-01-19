@@ -45,6 +45,7 @@ public class CreateEvaluationReportController implements Initializable {
 	private Request chosenRequest;
 	private static int id;
 	public static CreateEvaluationReportController evaluationReport;
+
 	public void start(SplitPane splitpane, int id) {
 		try {
 			this.id = id;
@@ -59,7 +60,7 @@ public class CreateEvaluationReportController implements Initializable {
 	}
 
 	public void sendReport() {
-		if(ClientConsole.map.get(id).equals("frozen")) {
+		if (ClientConsole.map.get(id).equals("frozen")) {
 			ClientConsole.displayFreezeError();
 			return;
 		}
@@ -78,28 +79,25 @@ public class CreateEvaluationReportController implements Initializable {
 			alert.showAndWait();
 			return;
 		}
-		 try 
-	        { 
-	            // checking valid integer using parseInt() method 
-	            int t=Integer.parseInt(duration.getText());
-	            if(t<=0)
-{
-	            	Alert alert = new Alert(AlertType.WARNING);
-					alert.setTitle("Wrong Input");
-					alert.setHeaderText("ERROR");
-					alert.setContentText("Please fill a positive number in duration");
-					alert.showAndWait();
-					return;
-}
-	        }  
-	        catch (NumberFormatException e)  
-	        { 
-	        	Alert alert = new Alert(AlertType.WARNING);
+		try {
+			// checking valid integer using parseInt() method
+			int t = Integer.parseInt(duration.getText());
+			if (t <= 0) {
+				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Wrong Input");
 				alert.setHeaderText("ERROR");
-				alert.setContentText("Please fill a number in duration");
+				alert.setContentText("Please fill a positive number in duration");
 				alert.showAndWait();
-				return;	        } 
+				return;
+			}
+		} catch (NumberFormatException e) {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Wrong Input");
+			alert.setHeaderText("ERROR");
+			alert.setContentText("Please fill a number in duration");
+			alert.showAndWait();
+			return;
+		}
 		EvaluationReport er = new EvaluationReport(Location.getText(), DescriptionOfChange.getText(),
 				ExpectedResult.getText(), constraints.getText(), Risks.getText(), Integer.valueOf(duration.getText()),
 				id);
@@ -110,7 +108,6 @@ public class CreateEvaluationReportController implements Initializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 
 	}
 
