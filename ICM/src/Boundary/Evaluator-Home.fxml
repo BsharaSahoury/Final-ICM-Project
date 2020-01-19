@@ -163,7 +163,7 @@
                         <Image url="@../Images/logo%20ICM.png" />
                      </image>
                   </ImageView>
-                  <Line endX="421.0" endY="-14.000007629394531" layoutX="301.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
+                  <Line endX="421.0" endY="-14.000007629394531" layoutX="301.0" layoutY="45.0" startX="-299.0" startY="-13.0" />
                   <Label layoutX="18.0" layoutY="6.0" text="ICM">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -195,7 +195,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <MenuButton fx:id="UserNameMenu" layoutX="779.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="153.0" style="-fx-background-color: #9d1b34;" text="UserName" textFill="WHITE">
+            <MenuButton fx:id="UserNameMenu" layoutX="779.0" layoutY="1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="153.0" style="-fx-background-color: #9d1b34;" text="UserName" textFill="WHITE">
                <items>
                   <MenuItem mnemonicParsing="false" text="Role : Evaluator">
                      <graphic>

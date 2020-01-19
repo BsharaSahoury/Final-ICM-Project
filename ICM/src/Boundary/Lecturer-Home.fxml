@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="932.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.LecturerHomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="932.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.LecturerHomeController">
 	<children>
 		<SplitPane fx:id="splitpane" dividerPositions="0.21916630855178343" layoutY="-1.0" prefHeight="601.0" prefWidth="900.0">
 			<items>
@@ -141,7 +141,7 @@
 								<Image url="@../Images/logo%20ICM.png" />
 							</image>
 						</ImageView>
-						<Line endX="421.0" endY="-14.000007629394531" layoutX="301.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
+						<Line endX="421.0" endY="-14.000007629394531" layoutX="301.0" layoutY="44.0" startX="-299.0" startY="-13.0" />
 						<Label layoutX="18.0" layoutY="6.0" text="ICM">
 							<font>
 								<Font name="System Bold" size="12.0" />
@@ -173,7 +173,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <MenuButton fx:id="UserNameMenu" layoutX="465.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="153.0" style="-fx-background-color: #9d1b34;" text="UserName" textFill="WHITE">
+            <MenuButton fx:id="UserNameMenu" layoutX="465.0" layoutY="1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="153.0" style="-fx-background-color: #9d1b34;" text="UserName" textFill="WHITE">
                <items>
                   <MenuItem mnemonicParsing="false" text="Role : Lecturer">
                      <graphic>

@@ -15,18 +15,8 @@
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="728.0">
          <children>
-            <Line endX="419.0" endY="-13.0" layoutX="299.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
-            <Label layoutX="26.0" layoutY="6.0" text="ICM">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="52.0" layoutY="6.0" text="-&gt;" />
-            <Label layoutX="64.0" layoutY="6.0" prefHeight="17.0" prefWidth="249.0" text="Request that I work on-&gt;Insert test results">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
+            <Line endX="419.0" endY="-13.0" layoutX="299.0" layoutY="43.0" startX="-299.0" startY="-13.0" />
+            <Label layoutX="17.0" layoutY="6.0" text="ICM -&gt; Request work on -&gt; Insert test results" />
             <Label layoutX="189.0" layoutY="255.0" prefHeight="38.0" prefWidth="114.0" text="Failure Details:" textFill="#9d1b34">
                <font>
                   <Font name="System Bold" size="16.0" />

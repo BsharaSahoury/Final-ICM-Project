@@ -13,12 +13,7 @@
       <AnchorPane layoutX="-1.0" prefHeight="600.0" prefWidth="728.0">
          <children>
             <Line endX="422.5" endY="-13.0" layoutX="299.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
-            <Label layoutX="40.0" layoutY="6.0" text="ICM -&gt; Requests that I work on -&gt; Duration" />
-            <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="7.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/back-arrow.png" />
-               </image>
-            </ImageView>
+            <Label layoutX="36.0" layoutY="6.0" text="ICM -&gt; Requests that I work on -&gt; Duration" />
             <Label contentDisplay="RIGHT" graphicTextGap="150.0" layoutX="31.0" layoutY="229.0" text="Duration:">
                <font>
                   <Font name="System Bold" size="14.0" />

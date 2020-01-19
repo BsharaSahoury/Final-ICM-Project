@@ -11,20 +11,10 @@
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="728.0">
          <children>
-            <Line endX="429.0" endY="-12.999996185302734" layoutX="299.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
-            <Label layoutX="26.0" layoutY="6.0" text="ICM">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="52.0" layoutY="6.0" text="-&gt;" />
-            <Label layoutX="64.0" layoutY="6.0" text="Notifications-&gt;Decision CommitteeMember">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
+            <Line endX="429.0" endY="-12.999996185302734" layoutX="299.0" layoutY="43.0" startX="-299.0" startY="-13.0" />
+            <Label layoutX="34.0" layoutY="6.0" text="ICM -&gt; Notifications-&gt; Decision of Duration" />
             <Label layoutX="49.0" layoutY="208.0" prefHeight="31.0" prefWidth="235.0" text="if you want to change choose new duration:" />
-            <Label layoutX="49.0" layoutY="56.0" prefHeight="31.0" prefWidth="282.0" text="Decision of duratin:" underline="true">
+            <Label layoutX="49.0" layoutY="56.0" prefHeight="31.0" prefWidth="282.0" text="Decision of Duration:" underline="true">
                <font>
                   <Font size="19.0" />
                </font>

@@ -12,20 +12,10 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="601.0" prefWidth="728.0" style="-fx-background-insets: 8888888888888;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.RequestsWorkedOnController">
+<AnchorPane prefHeight="601.0" prefWidth="728.0" style="-fx-background-insets: 8888888888888;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.RequestsWorkedOnController">
    <children>
-      <Line endX="426.99993896484375" endY="-12.0" layoutX="299.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
-      <Label layoutX="26.0" layoutY="6.0" text="ICM">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="52.0" layoutY="6.0" text="-&gt;" />
-      <Label layoutX="64.0" layoutY="6.0" text="Request that I work on">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
+      <Line endX="426.99993896484375" endY="-12.0" layoutX="299.0" layoutY="43.0" startX="-299.0" startY="-13.0" />
+      <Label layoutX="26.0" layoutY="6.0" text="ICM -&gt; Request that I work on" />
       <Label layoutX="121.0" layoutY="206.0" />
       <TableView fx:id="tableRequests" layoutX="-3.0" layoutY="142.0" prefHeight="367.0" prefWidth="729.0" stylesheets="@css1.css">
          <columns>
