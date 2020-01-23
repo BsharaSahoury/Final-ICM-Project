@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="messages.ChooseTesterMessageController">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="728.0">
+         <children>
+            <Line endX="429.0" endY="-12.999996185302734" layoutX="299.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
+            <Label layoutX="32.0" layoutY="6.0" text="ICM -&gt; Notifications-&gt;Choose Tester Message" />
+            <Label layoutX="121.0" layoutY="206.0" />
+            <Label layoutX="49.0" layoutY="56.0" prefHeight="31.0" prefWidth="183.0" text="Choose Tester:" underline="true">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="label1" layoutX="52.0" layoutY="105.0" prefHeight="18.0" prefWidth="347.0" text="Performance phase is complete for request#???">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Button fx:id="recruit" layoutX="308.0" layoutY="263.0" mnemonicParsing="false" onAction="#recruitAction" prefHeight="48.0" prefWidth="91.0" style="-fx-background-color: #9d1b34;" text="Recruit" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Label fx:id="evaluatorLabel" layoutX="52.0" layoutY="133.0" text="Please choose a tester from the comittee members for the testing phase.">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <ComboBox fx:id="combo" layoutX="517.0" layoutY="131.0" prefWidth="175.0" promptText="comittee members" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

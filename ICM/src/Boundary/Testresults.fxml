@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.TestResultController">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="728.0">
+         <children>
+            <Line endX="419.0" endY="-13.0" layoutX="299.0" layoutY="44.0" startX="-299.0" startY="-13.0" />
+            <Label layoutX="34.0" layoutY="7.0" prefHeight="17.0" prefWidth="301.0" text="ICM -&gt; Request that I work on-&gt;Insert test results" />
+            <ImageView fitHeight="98.0" fitWidth="168.0" layoutX="38.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/testresults.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="231.0" layoutY="56.0" prefHeight="61.0" prefWidth="193.0" text="Test Results" textAlignment="CENTER" textFill="#9d1b34" underline="true">
+               <font>
+                  <Font name="Georgia Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="189.0" layoutY="145.0" text="Choose one of this options:" textFill="#9d1b34">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Label>
+            <RadioButton fx:id="TestFaildRadioButton" layoutX="189.0" layoutY="201.0" mnemonicParsing="false" onAction="#radioselectFaild" text="Test failed" textFill="#9d1b34">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="TestResultGroup" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton layoutX="359.0" layoutY="201.0" mnemonicParsing="false" onAction="#radioselectSuccess" text="Test passed" textFill="#9d1b34" toggleGroup="$TestResultGroup">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </RadioButton>
+            <Button disable="true" layoutX="497.0" layoutY="523.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="170.0" style="-fx-background-color: #9d1b34; -fx-background-radius: 20px;" text="Send" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

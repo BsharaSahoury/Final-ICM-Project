@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.SetDurationController">
+   <children>
+      <AnchorPane layoutX="-1.0" prefHeight="600.0" prefWidth="728.0">
+         <children>
+            <Line endX="422.5" endY="-13.0" layoutX="299.0" layoutY="42.0" startX="-299.0" startY="-13.0" />
+            <Label layoutX="25.0" layoutY="7.0" text="ICM -&gt; Requests that I work on -&gt; Duration" />
+            <Label contentDisplay="RIGHT" graphicTextGap="150.0" layoutX="31.0" layoutY="200.0" text="Duration:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="dueDate" layoutX="279.0" layoutY="194.0" prefHeight="1.0" prefWidth="166.0" promptText="Due date" />
+            <DatePicker fx:id="startDate" layoutX="102.0" layoutY="197.0" prefHeight="1.0" prefWidth="123.0" promptText="Start date" />
+            <Label contentDisplay="RIGHT" graphicTextGap="120.0" layoutX="245.0" layoutY="198.0" text="To">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="193.0" layoutY="94.0" text="Set Duratin for the Evaluation phase: ">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="save" layoutX="227.0" layoutY="297.0" mnemonicParsing="false" onAction="#saveBtn" prefHeight="50.0" prefWidth="79.0" style="-fx-background-color: #9d1b34;" text="save" textFill="#fffdfd" />
+            <ImageView fitHeight="137.0" fitWidth="145.0" layoutX="30.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/kisspng-timesheet-computer-icons-time-tracking-software-cl-land-developer-5b495960560b54.7467423115315336643525.png" />
+               </image></ImageView>
+            <TextField fx:id="note" layoutX="138.0" layoutY="407.0" prefHeight="25.0" prefWidth="249.0" style="-fx-background-insets: 555555;" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
